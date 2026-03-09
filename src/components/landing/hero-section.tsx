@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Panel } from "@/components/ui/panel";
-import { heroHighlights, heroMetrics } from "@/content/landing";
+import { heroChecklist, heroProofPoints } from "@/content/landing";
 
 export function HeroSection() {
   return (
@@ -20,54 +18,53 @@ export function HeroSection() {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(to_top,rgba(7,17,35,0.88),transparent)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[680px] max-w-4xl flex-col justify-between px-6 py-14 text-center text-white md:px-10 md:py-20">
-          <div className="space-y-7">
-            <div className="flex justify-center">
-              <Badge tone="dark">Premium Brand Landing System</Badge>
-            </div>
-
-            <div className="space-y-5">
+          <div className="space-y-8">
+            <div className="space-y-4">
               <h1 className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.04em] text-white md:text-7xl">
-                מהלך מדויק שממקם את העסק שלכם בעמדת יתרון כבר מהמסך הראשון.
+                אתה לא צריך עוד לידים.
+                <span className="mt-3 block text-[var(--accent-soft)]">
+                  אתה צריך מערכת שממירה אותם לעסקאות.
+                </span>
               </h1>
               <p className="mx-auto max-w-2xl text-lg leading-8 text-white/78 md:text-xl">
-                שפה ויזואלית שנשענת על צבעי הלוגו, היררכיה יוקרתית ורקע שמכניס
-                עומק וביטחון. ההירו הזה בנוי להרגיש פרימיום, ממוקד ומוכן להמרה.
+                Checkmate מחברת בין שיווק, טיפול בלידים, תיאום פגישות ותהליך
+                המכירה. כדי לייצר יותר פגישות שמתקיימות, יותר שליטה, ויותר
+                סגירות.
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href="#cta" variant="gold" size="lg">
-                קובעים שיחת אסטרטגיה
-              </Button>
-              <Button href="#features" variant="secondary" size="lg">
-                צופים במבנה העמוד
-              </Button>
+            <div className="mx-auto flex max-w-xl flex-col items-start gap-3 text-right">
+              {heroChecklist.map((item) => (
+                <div
+                  key={item}
+                  className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-4 py-3 text-base font-medium text-white/92 backdrop-blur"
+                >
+                  <span className="text-[var(--accent-soft)]">✔</span>
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-white/76">
-              {heroHighlights.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 backdrop-blur"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                  {item}
-                </span>
-              ))}
+            <div className="space-y-4">
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button href="#cta" variant="gold" size="lg">
+                  בדיקת התאמה (15 דק׳)
+                </Button>
+              </div>
+              <p className="text-sm font-medium text-white/76 md:text-base">
+                מיועד לעסקים עם עסקה ממוצעת של 15,000 ₪ ומעלה
+              </p>
             </div>
           </div>
 
-          <div className="grid gap-4 pt-10 md:grid-cols-3">
-            {heroMetrics.map((metric) => (
-              <Panel key={metric.label} tone="dark" className="p-5 text-right">
-                <p className="font-display text-2xl font-semibold text-white">
-                  {metric.value}
-                </p>
-                <p className="mt-3 text-sm font-semibold text-white/88">
-                  {metric.label}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/68">{metric.note}</p>
-              </Panel>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/12 pt-8 text-sm font-medium text-white/74 md:text-base">
+            {heroProofPoints.map((item, index) => (
+              <div key={item} className="inline-flex items-center gap-3">
+                <span>{item}</span>
+                {index < heroProofPoints.length - 1 ? (
+                  <span className="text-[var(--accent-soft)]/80">|</span>
+                ) : null}
+              </div>
             ))}
           </div>
         </div>

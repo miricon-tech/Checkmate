@@ -5,28 +5,17 @@ export const navigation = [
   { name: "השקה", href: "#cta" },
 ] as const;
 
-export const heroHighlights = [
-  "פלטת נאבי וזהב עקבית בכל הרכיבים",
-  "Hero עם עומק ויזואלי ו־CTA ברור",
-  "מערכת רכיבים שממשיכה את אותה השפה",
+export const heroChecklist = [
+  "טיפול מלא בלידים",
+  "תיאום פגישות ושיפור מערך המכירות",
+  "שקיפות מלאה ודוחות KPI",
 ] as const;
 
-export const heroMetrics = [
-  {
-    value: "Brand Tokens",
-    label: "מערכת עיצוב עקבית",
-    note: "צבעי לוגו, surfaces, גבולות וצללים יושבים על אותם foundations.",
-  },
-  {
-    value: "Premium Hero",
-    label: "שכבות עומק וטיפוגרפיה נקייה",
-    note: "תמונה, overlay וצבעי מותג עובדים יחד כדי לייצר נוכחות יוקרתית.",
-  },
-  {
-    value: "Vercel Ready",
-    label: "מוכן להמשך פיתוח והשקה",
-    note: "הקוד נשאר מודולרי כך שאפשר להמשיך לעמודים, טפסים ו־deploy.",
-  },
+export const heroProofPoints = [
+  "שקיפות מלאה",
+  "CRM מסודר",
+  "דוחות KPI",
+  "תהליך ברור",
 ] as const;
 
 export const featureCards = [
