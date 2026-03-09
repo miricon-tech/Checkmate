@@ -1,13 +1,26 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from "react";
 import { cn } from "@/lib/cn";
 
-type ButtonProps = {
+type SharedButtonProps = {
   children: ReactNode;
   className?: string;
-  href: string;
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary" | "surface" | "gold";
+};
+
+type LinkButtonProps = SharedButtonProps & {
+  href: string;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "href">;
+
+type NativeButtonProps = SharedButtonProps & {
+  href?: undefined;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className">;
+
+type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variantClasses = {
   primary: "ui-button ui-button--primary",
@@ -22,21 +35,44 @@ const sizeClasses = {
   lg: "px-6 py-3.5 text-base",
 } as const;
 
-export function Button({
-  children,
-  className,
-  href,
-  size = "md",
-  variant = "primary",
-  ...props
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  if ("href" in props && typeof props.href === "string") {
+    const {
+      children,
+      className,
+      href,
+      size = "md",
+      variant = "primary",
+      ...anchorProps
+    } = props;
+
+    return (
+      <a
+        href={href}
+        className={cn(variantClasses[variant], sizeClasses[size], className)}
+        {...anchorProps}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  const {
+    children,
+    className,
+    size = "md",
+    type = "button",
+    variant = "primary",
+    ...buttonProps
+  } = props;
+
   return (
-    <a
-      href={href}
+    <button
+      type={type}
       className={cn(variantClasses[variant], sizeClasses[size], className)}
-      {...props}
+      {...buttonProps}
     >
       {children}
-    </a>
+    </button>
   );
 }

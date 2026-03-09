@@ -4,6 +4,7 @@ import {
   launchSteps,
 } from "@/content/landing";
 import { HeroSection } from "@/components/landing/hero-section";
+import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LeadForm } from "@/components/landing/lead-form";
 import { SectionHeading } from "@/components/landing/section-heading";
@@ -103,17 +104,20 @@ export function LandingPage() {
       </section>
 
       <section id="cta" className="px-6 pb-16 pt-10 md:px-10 md:pb-24">
-        <div className="mx-auto max-w-6xl rounded-[40px] bg-[linear-gradient(135deg,#0f2748_0%,#16345c_58%,#294e7f_100%)] px-6 py-8 text-white shadow-[0_28px_90px_rgba(22,52,92,0.24)] md:px-10 md:py-12">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(252,248,239,0.96)_100%)] px-6 py-8 text-[var(--accent-deep)] shadow-[0_28px_90px_rgba(22,52,92,0.08)] md:px-10 md:py-12">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(200,164,93,0.18),transparent_72%)]" />
+          <div className="pointer-events-none absolute -left-12 top-12 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.08),transparent_72%)] blur-3xl" />
+          <div className="pointer-events-none absolute -right-16 bottom-0 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(200,164,93,0.16),transparent_74%)] blur-3xl" />
           <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-center">
-            <div className="space-y-5">
-              <p className="text-xs uppercase tracking-[0.28em] text-white/60">
+            <div className="relative space-y-5">
+              <p className="text-xs uppercase tracking-[0.28em] text-[var(--accent)]">
                 Next Move
               </p>
-              <h2 className="font-display text-4xl leading-tight font-semibold md:text-5xl">
+              <h2 className="font-display text-4xl leading-tight font-semibold text-[var(--accent-deep)] md:text-5xl">
                 מכאן אפשר לדייק את המסר, לחבר את ההמרות ולהוציא עמוד שנראה כמו
                 מותג פרימיום אמיתי.
               </h2>
-              <p className="max-w-2xl text-base leading-7 text-white/78 md:text-lg">
+              <p className="max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">
                 הרקע, הטוקנים והרכיבים כבר עובדים יחד. השלב הבא הוא למלא את
                 התוכן הנכון, לחדד את ההצעה ולהפוך את כל השכבות האלה לעמוד
                 שממיר.
@@ -124,6 +128,8 @@ export function LandingPage() {
           </div>
         </div>
       </section>
+
+      <FloatingWhatsApp />
     </main>
   );
 }
