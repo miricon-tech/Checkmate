@@ -409,3 +409,51 @@ a {
   width: 2.9rem;
   box-shadow: 0 10px 24px rgba(22, 52, 92, 0.08);
 }
+
+.ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.ui-field__label {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.ui-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  min-height: 3.35rem;
+  padding: 0.95rem 1rem;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.ui-input::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.ui-input:focus {
+  border-color: rgba(240, 209, 138, 0.62);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(240, 209, 138, 0.12);
+}
+
+.ui-textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.ui-form-note {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}

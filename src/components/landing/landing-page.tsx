@@ -5,8 +5,8 @@ import {
 } from "@/content/landing";
 import { HeroSection } from "@/components/landing/hero-section";
 import { LandingHeader } from "@/components/landing/landing-header";
+import { LeadForm } from "@/components/landing/lead-form";
 import { SectionHeading } from "@/components/landing/section-heading";
-import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 
 export function LandingPage() {
@@ -120,27 +120,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <Panel tone="dark" className="p-6">
-              <div className="space-y-4">
-                <div className="rounded-3xl border border-white/12 bg-white/8 px-4 py-4">
-                  <p className="text-sm font-semibold text-white">
-                    מה כדאי לחבר עכשיו
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-white/70">
-                    קופי מותאם לעסק, טופס או WhatsApp, ו־analytics בסיסי כדי
-                    שכל CTA יימדד.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button href="#hero" variant="gold" className="flex-1 justify-center">
-                    חוזרים להירו
-                  </Button>
-                  <Button href="#architecture" variant="secondary" className="flex-1 justify-center">
-                    עוברים לרכיבים
-                  </Button>
-                </div>
-              </div>
-            </Panel>
+            <LeadForm />
           </div>
         </div>
       </section>
