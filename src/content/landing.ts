@@ -1,39 +1,52 @@
+export const navigation = [
+  { name: "הירו", href: "#hero" },
+  { name: "יכולות", href: "#features" },
+  { name: "מבנה", href: "#architecture" },
+  { name: "השקה", href: "#cta" },
+] as const;
+
+export const heroHighlights = [
+  "פלטת נאבי וזהב עקבית בכל הרכיבים",
+  "Hero עם עומק ויזואלי ו־CTA ברור",
+  "מערכת רכיבים שממשיכה את אותה השפה",
+] as const;
+
 export const heroMetrics = [
   {
-    value: "Next.js + TypeScript",
-    label: "תשתית מודרנית וקריאה",
-    note: "App Router, קבצים מסודרים וכניסה נקייה להרחבה.",
+    value: "Brand Tokens",
+    label: "מערכת עיצוב עקבית",
+    note: "צבעי לוגו, surfaces, גבולות וצללים יושבים על אותם foundations.",
   },
   {
-    value: "Adobe Font",
-    label: "טיפוגרפיה מחוברת גלובלית",
-    note: "ה־Typekit נטען ב־layout וזמין לכל ה־sections.",
+    value: "Premium Hero",
+    label: "שכבות עומק וטיפוגרפיה נקייה",
+    note: "תמונה, overlay וצבעי מותג עובדים יחד כדי לייצר נוכחות יוקרתית.",
   },
   {
     value: "Vercel Ready",
-    label: "מוכן לבנייה והעלאה",
-    note: "מבנה סטנדרטי שמתאים ישירות ל־deploy.",
+    label: "מוכן להמשך פיתוח והשקה",
+    note: "הקוד נשאר מודולרי כך שאפשר להמשיך לעמודים, טפסים ו־deploy.",
   },
 ] as const;
 
 export const featureCards = [
   {
-    eyebrow: "Hero ראשון",
-    title: "מסר חד כבר במסך הפתיחה",
+    eyebrow: "Premium System",
+    title: "שפת מותג שמתחילה בטוקנים ונגמרת בחוויה",
     description:
-      "כותרת, תת־כותרת, CTA מרכזי והוכחה תומכת בנויים כך שאפשר להחליף את הקופי בלי לפרק את המבנה.",
+      "הצבעים, המשטחים, הכפתורים והטיפוגרפיה נשענים כולם על אותה פלטה, כדי שכל העמוד ירגיש מוצר אחד ולא חיבור של בלוקים.",
   },
   {
-    eyebrow: "Sections מודולריים",
-    title: "כל מקטע מוכן להחלפה או הרחבה",
+    eyebrow: "Reusable UI",
+    title: "רכיבי בסיס שחוזרים בכל האתר",
     description:
-      "כרטיסי ערך, שלבי עבודה וקריאת פעולה סופית מופרדים לקומפוננטות כדי שיהיה פשוט להוסיף בלוקים נוספים.",
+      "כפתורים, badges ו־panels הוגדרו סביב טוקנים גלובליים כך שכל הרחבה עתידית ממשיכה את אותה השפה הוויזואלית.",
   },
   {
-    eyebrow: "Responsive",
-    title: "נראה יציב גם במובייל וגם בדסקטופ",
+    eyebrow: "Responsive Precision",
+    title: "נוכחות נקייה בכל breakpoint",
     description:
-      "העמוד משתמש בגריד, spacing וטיפוגרפיה שמגיבים טוב למסכים צרים ורחבים בלי עיצוב כפול.",
+      "ה־header, ה־hero והכרטיסים מתנהגים באופן עקבי במובייל ובדסקטופ בלי לאבד את תחושת הפרימיום.",
   },
 ] as const;
 
@@ -81,7 +94,7 @@ export const launchSteps = [
 
 export const checklist = [
   "Header עם ניווט פנימי ו־CTA קבוע.",
-  "Hero עם הצעת ערך ראשית ופאנל תמיכה.",
+  "Hero עם תמונת רקע, overlay וטקסט מעליה.",
   "מקטע יתרונות עם כרטיסים קלים לעריכה.",
   "מקטע ארכיטקטורה שמסביר איפה עורכים כל דבר.",
   "CTA מסכם שמוכן לחיבור לטופס או ללינק חיצוני.",
