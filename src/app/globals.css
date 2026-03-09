@@ -10,6 +10,8 @@
   --accent: #d46d3a;
   --accent-soft: #e9c49b;
   --accent-deep: #234640;
+  --logo-navy: #16345c;
+  --logo-gold: #c8a45d;
   --font-body-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display-stack: "avenir-next-world", "Avenir Next", "Segoe UI", sans-serif;
 }
@@ -85,4 +87,23 @@ a {
 
 .muted-copy {
   color: var(--muted);
+}
+
+.brand-mark {
+  direction: ltr;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.08em;
+  font-family: var(--font-display-stack);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.brand-mark__main {
+  color: var(--logo-navy);
+}
+
+.brand-mark__accent {
+  color: var(--logo-gold);
+  text-shadow: 0 0 18px rgba(200, 164, 93, 0.18);
 }

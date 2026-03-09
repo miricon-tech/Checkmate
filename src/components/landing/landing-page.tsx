@@ -13,8 +13,16 @@ export function LandingPage() {
       <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 mx-auto h-80 max-w-5xl rounded-full bg-[radial-gradient(circle,rgba(233,196,155,0.55),transparent_68%)] blur-3xl" />
       <header className="px-6 pt-6 md:px-10">
         <div className="surface-card surface-card-strong mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 md:px-7">
-          <a href="#" className="font-display text-sm font-semibold tracking-[0.35em]">
-            CHECKMATE
+          <a
+            href="#"
+            dir="ltr"
+            aria-label="Checkmath"
+            className="text-sm font-semibold"
+          >
+            <span className="brand-mark">
+              <span className="brand-mark__main">Check</span>
+              <span className="brand-mark__accent">Math</span>
+            </span>
           </a>
           <nav className="hidden items-center gap-8 text-sm text-foreground/70 md:flex">
             <a href="#features">יכולות</a>
