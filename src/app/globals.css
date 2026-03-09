@@ -31,6 +31,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--accent) rgba(22, 52, 92, 0.1);
+  scrollbar-width: thin;
 }
 
 body {
@@ -52,8 +54,57 @@ a {
   background: rgba(212, 109, 58, 0.22);
 }
 
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(22, 52, 92, 0.08);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(255, 255, 255, 0.84);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(240, 209, 138, 1) 0%,
+    rgba(212, 171, 88, 1) 52%,
+    rgba(22, 52, 92, 1) 100%
+  );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 218, 143, 1) 0%,
+    rgba(212, 171, 88, 1) 48%,
+    rgba(16, 40, 74, 1) 100%
+  );
+}
+
 .page-shell {
   isolation: isolate;
+}
+
+.scroll-progress {
+  height: 3px;
+  width: 100%;
+  background: rgba(22, 52, 92, 0.08);
+  overflow: hidden;
+}
+
+.scroll-progress__bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: right center;
+  background: linear-gradient(
+    90deg,
+    rgba(22, 52, 92, 1) 0%,
+    rgba(200, 164, 93, 1) 72%,
+    rgba(240, 209, 138, 1) 100%
+  );
+  transition: transform 140ms ease-out;
 }
 
 .surface-card {
