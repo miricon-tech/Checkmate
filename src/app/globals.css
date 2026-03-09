@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f0e3;
+  --background: #fcfbf8;
   --foreground: #111a1f;
-  --surface: rgba(255, 252, 247, 0.74);
-  --surface-strong: rgba(255, 252, 247, 0.92);
-  --border: rgba(17, 26, 31, 0.12);
+  --surface: rgba(255, 255, 255, 0.88);
+  --surface-strong: rgba(255, 255, 255, 0.97);
+  --border: rgba(22, 52, 92, 0.08);
   --muted: #5a655f;
-  --accent: #d46d3a;
-  --accent-soft: #e9c49b;
-  --accent-deep: #234640;
+  --accent: #c8a45d;
+  --accent-soft: #efe2bf;
+  --accent-deep: #16345c;
   --logo-navy: #16345c;
   --logo-gold: #c8a45d;
   --font-body-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -37,20 +37,8 @@ body {
   font-family: var(--font-body-stack);
   min-height: 100vh;
   background-image:
-    radial-gradient(circle at top, rgba(212, 109, 58, 0.18), transparent 28%),
-    linear-gradient(140deg, #faf5eb 0%, #efe5d3 48%, #f8f6f1 100%);
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(17, 26, 31, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 26, 31, 0.04) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    radial-gradient(circle at top, rgba(200, 164, 93, 0.08), transparent 26%),
+    linear-gradient(180deg, #fffdf9 0%, #fcfbf8 62%, #fbfaf7 100%);
 }
 
 a {
@@ -70,9 +58,8 @@ a {
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow:
-    0 24px 70px rgba(17, 26, 31, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
+    0 16px 42px rgba(22, 52, 92, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .surface-card-strong {
@@ -93,17 +80,61 @@ a {
   direction: ltr;
   display: inline-flex;
   align-items: baseline;
-  gap: 0.08em;
+  gap: 0;
   font-family: var(--font-display-stack);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+  text-transform: none;
 }
 
 .brand-mark__main {
   color: var(--logo-navy);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .brand-mark__accent {
-  color: var(--logo-gold);
-  text-shadow: 0 0 18px rgba(200, 164, 93, 0.18);
+  background: linear-gradient(
+    180deg,
+    #f5da8f 0%,
+    #ddb255 32%,
+    #c79424 67%,
+    #a96d08 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.38rem;
+  text-align: center;
+}
+
+.brand-lockup__wordmark {
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+}
+
+.brand-lockup__line {
+  height: 2px;
+  width: min(100%, 18rem);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(169, 109, 8, 0) 0%,
+    rgba(200, 164, 93, 0.95) 18%,
+    rgba(169, 109, 8, 0.95) 82%,
+    rgba(169, 109, 8, 0) 100%
+  );
+}
+
+.brand-lockup__tagline {
+  color: var(--logo-navy);
+  font-size: clamp(1rem, 2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }

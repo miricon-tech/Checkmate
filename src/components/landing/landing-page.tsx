@@ -10,31 +10,39 @@ import { SectionHeading } from "@/components/landing/section-heading";
 export function LandingPage() {
   return (
     <main className="page-shell relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 mx-auto h-80 max-w-5xl rounded-full bg-[radial-gradient(circle,rgba(233,196,155,0.55),transparent_68%)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-10 -z-10 mx-auto h-56 max-w-4xl rounded-full bg-[radial-gradient(circle,rgba(200,164,93,0.14),transparent_72%)] blur-3xl" />
       <header className="px-6 pt-6 md:px-10">
-        <div className="surface-card surface-card-strong mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 md:px-7">
-          <a
-            href="#"
-            dir="ltr"
-            aria-label="Checkmath"
-            className="text-sm font-semibold"
-          >
-            <span className="brand-mark">
-              <span className="brand-mark__main">Check</span>
-              <span className="brand-mark__accent">Math</span>
-            </span>
-          </a>
-          <nav className="hidden items-center gap-8 text-sm text-foreground/70 md:flex">
+        <div className="surface-card surface-card-strong mx-auto max-w-6xl rounded-[34px] px-5 py-5 md:px-8 md:py-6">
+          <div className="grid items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
+            <nav className="hidden items-center justify-start gap-8 text-sm text-foreground/70 md:flex">
             <a href="#features">יכולות</a>
             <a href="#architecture">מבנה</a>
             <a href="#launch">עלייה לאוויר</a>
-          </nav>
-          <a
-            href="#cta"
-            className="rounded-full bg-[var(--accent-deep)] px-4 py-2 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-[#193430]"
-          >
-            לצעד הבא
-          </a>
+            </nav>
+
+            <a
+              href="#"
+              dir="ltr"
+              aria-label="Checkmate"
+              className="brand-lockup justify-self-center"
+            >
+              <span className="brand-mark brand-lockup__wordmark">
+                <span className="brand-mark__main">Check</span>
+                <span className="brand-mark__accent">mate</span>
+              </span>
+              <span className="brand-lockup__line" />
+              <span className="brand-lockup__tagline">מנוע הצמיחה של העסק</span>
+            </a>
+
+            <div className="flex justify-center md:justify-end">
+              <a
+                href="#cta"
+                className="rounded-full bg-[var(--accent-deep)] px-5 py-2.5 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-[#10284a]"
+              >
+                לצעד הבא
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
