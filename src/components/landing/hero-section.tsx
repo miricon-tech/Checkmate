@@ -5,6 +5,13 @@ export function HeroSection() {
   return (
     <section id="hero" className="w-full pb-10 pt-0 md:pb-14">
       <div className="hero-scroll-frame relative isolate min-h-[76vh] overflow-hidden bg-[var(--accent-deep)]">
+        <div className="sr-only">
+          <h1>Checkmate - מערכת לטיפול בלידים, תיאום פגישות ושיפור מכירות</h1>
+          <p>
+            Checkmate מחברת בין שיווק, טיפול בלידים, תיאום פגישות ותהליך
+            המכירה כדי לייצר יותר פגישות שמתקיימות, יותר שליטה ויותר סגירות.
+          </p>
+        </div>
         <Image
           src="/home-page-hero/Chessboard.png"
           alt=""
