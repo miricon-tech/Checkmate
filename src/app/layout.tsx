@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Checkmate | Landing Page Infrastructure",
   description:
     "Landing page scaffold built with Next.js, TypeScript, Tailwind, and Adobe Fonts.",
+  icons: {
+    icon: "/checkmate_logo.png",
+    shortcut: "/checkmate_logo.png",
+    apple: "/checkmate_logo.png",
+  },
 };
 
 export default function RootLayout({
