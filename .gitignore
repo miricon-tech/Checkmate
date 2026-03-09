@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temporary scaffold folder copied from the lowercase bootstrap
+/checkmate/

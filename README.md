@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Checkmate Landing Page
 
-## Getting Started
+Landing page scaffold built with `Next.js`, `TypeScript`, `Tailwind CSS` and an Adobe Typekit font.
 
-First, run the development server:
+## Stack
+
+- `Next.js 16`
+- `React 19`
+- `TypeScript`
+- `Tailwind CSS 4`
+
+## Local commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
+pnpm lint
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where to edit
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/page.tsx`: entry point for the homepage.
+- `src/components/landing/landing-page.tsx`: landing page sections and layout.
+- `src/components/landing/section-heading.tsx`: reusable section heading component.
+- `src/content/landing.ts`: headline text, cards, and section content.
+- `src/app/layout.tsx`: metadata, RTL setup, and Adobe Typekit link.
+- `src/app/globals.css`: design tokens, global styles, and font variables.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adobe font
 
-## Learn More
+The project loads this stylesheet globally:
 
-To learn more about Next.js, take a look at the following resources:
+```html
+<link rel="stylesheet" href="https://use.typekit.net/nvz5wxq.css">
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The loaded font family is `avenir-next-world`, exposed through the `font-display` utility and CSS variables in `src/app/globals.css`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Vercel flow
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create or connect a remote Git repository.
+2. Push the `main` branch.
+3. Import the repository into Vercel.
+4. Set any required environment variables.
+5. Deploy.
