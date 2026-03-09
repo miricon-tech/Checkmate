@@ -4,8 +4,8 @@ import { heroChecklist, heroProofPoints } from "@/content/landing";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="mx-auto max-w-6xl px-6 pb-14 pt-8 md:px-10 md:pb-20">
-      <div className="relative isolate overflow-hidden rounded-[42px] border border-[var(--border)] bg-[var(--accent-deep)] shadow-[0_24px_90px_rgba(22,52,92,0.16)]">
+    <section id="hero" className="w-full pb-14 pt-8 md:pb-20">
+      <div className="relative isolate min-h-[720px] overflow-hidden border-y border-[var(--border)] bg-[var(--accent-deep)] shadow-[0_24px_90px_rgba(22,52,92,0.16)]">
         <Image
           src="/home-page-hero/Chessboard.png"
           alt=""
@@ -17,8 +17,8 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(200,164,93,0.26),transparent_34%)]" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(to_top,rgba(7,17,35,0.88),transparent)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[680px] max-w-4xl flex-col justify-between px-6 py-14 text-center text-white md:px-10 md:py-20">
-          <div className="space-y-8">
+        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-6xl flex-col justify-between px-6 py-14 text-center text-white md:px-10 md:py-20">
+          <div className="mx-auto max-w-4xl space-y-8">
             <div className="space-y-4">
               <h1 className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.04em] text-white md:text-7xl">
                 אתה לא צריך עוד לידים.
@@ -57,7 +57,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/12 pt-8 text-sm font-medium text-white/74 md:text-base">
+          <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/12 pt-8 text-sm font-medium text-white/74 md:text-base">
             {heroProofPoints.map((item, index) => (
               <div key={item} className="inline-flex items-center gap-3">
                 <span>{item}</span>
