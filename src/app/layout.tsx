@@ -59,11 +59,6 @@ export const metadata: Metadata = {
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
       process.env.GOOGLE_SITE_VERIFICATION,
   },
-  icons: {
-    icon: "/checkmate_logo.png",
-    shortcut: "/checkmate_logo.png",
-    apple: "/checkmate_logo.png",
-  },
 };
 
 export const viewport: Viewport = {
