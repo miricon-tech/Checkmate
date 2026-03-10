@@ -36,8 +36,8 @@ export function LandingHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="pt-6">
-      <div className="surface-card surface-card-strong w-full border-x-0 px-6 py-5 md:px-10 md:py-6">
+    <header className="w-full">
+      <div className="surface-card surface-card-strong w-full rounded-b-[34px] rounded-t-none border-x-0 border-t-0 px-6 py-5 md:px-10 md:py-6">
         <div className="mx-auto grid max-w-6xl items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
           <nav className="hidden items-center justify-start gap-7 md:flex">
             {navigation.map((item) => (

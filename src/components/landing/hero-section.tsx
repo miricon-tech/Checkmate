@@ -4,7 +4,7 @@ import { heroChecklist, heroProofPoints } from "@/content/landing";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="w-full pb-14 pt-8 md:pb-20">
+    <section id="hero" className="w-full pb-14 pt-0 md:pb-20">
       <div className="relative isolate min-h-[720px] overflow-hidden border-y border-[var(--border)] bg-[var(--accent-deep)] shadow-[0_24px_90px_rgba(22,52,92,0.16)]">
         <Image
           src="/home-page-hero/Chessboard.png"
