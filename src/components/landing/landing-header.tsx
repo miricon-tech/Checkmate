@@ -36,9 +36,9 @@ export function LandingHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="px-6 pt-6 md:px-10">
-      <div className="surface-card surface-card-strong mx-auto max-w-6xl rounded-[34px] px-5 py-5 md:px-8 md:py-6">
-        <div className="grid items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
+    <header className="pt-6">
+      <div className="surface-card surface-card-strong w-full border-x-0 px-6 py-5 md:px-10 md:py-6">
+        <div className="mx-auto grid max-w-6xl items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
           <nav className="hidden items-center justify-start gap-7 md:flex">
             {navigation.map((item) => (
               <a key={item.name} href={item.href} className="ui-nav-link">
@@ -71,27 +71,29 @@ export function LandingHeader() {
         </div>
 
         {mobileMenuOpen ? (
-          <Panel id="mobile-nav" tone="soft" className="mt-4 p-4 md:hidden">
-            <nav className="flex flex-col gap-2">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="rounded-2xl px-4 py-3 text-sm font-semibold text-[var(--accent-deep)] transition hover:bg-[rgba(22,52,92,0.06)]"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-            <Button
-              href="#cta"
-              className="mt-4 w-full"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              לשיחת אסטרטגיה
-            </Button>
-          </Panel>
+          <div className="mx-auto max-w-6xl">
+            <Panel id="mobile-nav" tone="soft" className="mt-4 p-4 md:hidden">
+              <nav className="flex flex-col gap-2">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold text-[var(--accent-deep)] transition hover:bg-[rgba(22,52,92,0.06)]"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </nav>
+              <Button
+                href="#cta"
+                className="mt-4 w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                לשיחת אסטרטגיה
+              </Button>
+            </Panel>
+          </div>
         ) : null}
       </div>
     </header>
