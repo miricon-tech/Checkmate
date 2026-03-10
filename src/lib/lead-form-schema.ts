@@ -2,6 +2,17 @@ import { z } from "zod";
 
 const phoneCharactersPattern = /^[\d\s()+-]+$/;
 
+export const monthlyRevenueOptions = [
+  { value: "up_to_80", label: "עד 80,000 ש\"ח" },
+  { value: "80_to_150", label: "80,000–150,000 ש\"ח" },
+  { value: "150_to_300", label: "150,000–300,000 ש\"ח" },
+  { value: "300_plus", label: "300,000 ש\"ח ומעלה" },
+] as const;
+
+const monthlyRevenueValues = new Set(
+  monthlyRevenueOptions.map((option) => option.value)
+);
+
 export const leadFormSchema = z.object({
   fullName: z.string().trim().min(2, "יש למלא שם מלא."),
   phone: z
@@ -14,16 +25,19 @@ export const leadFormSchema = z.object({
         value.replace(/\D/g, "").length >= 9,
       "יש למלא מספר טלפון תקין."
     ),
-  email: z.string().trim().email("יש למלא כתובת אימייל תקינה."),
-  company: z.string().trim().min(2, "יש למלא שם עסק או תחום."),
-  message: z
+  company: z.string().trim().min(2, "יש למלא את שם העסק."),
+  monthlyRevenue: z
     .string()
     .trim()
-    .max(800, "אפשר לקצר מעט את ההודעה.")
     .refine(
-      (value) => value.length === 0 || value.length >= 10,
-      "כדאי לפרט לפחות 10 תווים או להשאיר את השדה ריק."
+      (value) => monthlyRevenueValues.has(value as (typeof monthlyRevenueOptions)[number]["value"]),
+      "יש לבחור מחזור חודשי משוער."
     ),
+  challenge: z
+    .string()
+    .trim()
+    .min(10, "כדאי לפרט בקצרה מה האתגר המרכזי היום.")
+    .max(800, "אפשר לקצר מעט את התיאור."),
   website: z.string().trim().max(0, "Invalid submission."),
 });
 

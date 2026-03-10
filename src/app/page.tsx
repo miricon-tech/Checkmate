@@ -3,7 +3,7 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { LandingPage } from "@/components/landing/landing-page";
 import { siteConfig } from "@/lib/site-config";
 
-const homeTitle = "מערכת לטיפול בלידים, תיאום פגישות ושיפור מערך המכירות";
+const homeTitle = "שותף צמיחה חיצוני לעסקי B2B ושירות בישראל";
 
 export const metadata: Metadata = {
   title: homeTitle,

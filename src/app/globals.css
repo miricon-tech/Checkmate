@@ -446,6 +446,19 @@ a {
   color: rgba(93, 108, 119, 0.6);
 }
 
+.ui-select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(22, 52, 92, 0.88) 50%),
+    linear-gradient(135deg, rgba(22, 52, 92, 0.88) 50%, transparent 50%);
+  background-position:
+    calc(1.1rem) calc(50% - 0.15rem),
+    calc(1.45rem) calc(50% - 0.15rem);
+  background-repeat: no-repeat;
+  background-size: 0.45rem 0.45rem, 0.45rem 0.45rem;
+  padding-inline-start: 3rem;
+}
+
 .ui-input:focus {
   border-color: rgba(240, 209, 138, 0.62);
   background: rgba(255, 255, 255, 1);

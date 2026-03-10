@@ -1,6 +1,6 @@
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
-const pageTitle = "מערכת לטיפול בלידים, תיאום פגישות ושיפור מערך המכירות";
+const pageTitle = "שותף צמיחה חיצוני לעסקי B2B ושירות בישראל";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -51,12 +51,14 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": absoluteUrl("/#service"),
-      name: "Checkmate Lead Management System",
+      name: "Checkmate Growth Partner Program",
       description: siteConfig.description,
       serviceType: [
+        "שותף צמיחה חיצוני",
         "טיפול בלידים",
         "תיאום פגישות",
         "שיפור מערך המכירות",
+        "מודל מבוסס ביצועים וצמיחה",
         "דוחות KPI",
       ],
       provider: {

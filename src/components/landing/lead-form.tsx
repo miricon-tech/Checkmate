@@ -1,18 +1,23 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import { useId, useState } from "react";
 import type { ZodError } from "zod";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { leadFormSchema, type LeadFormValues } from "@/lib/lead-form-schema";
+import { cn } from "@/lib/cn";
+import {
+  leadFormSchema,
+  monthlyRevenueOptions,
+  type LeadFormValues,
+} from "@/lib/lead-form-schema";
 
 const initialValues: LeadFormValues = {
   fullName: "",
   phone: "",
-  email: "",
   company: "",
-  message: "",
+  monthlyRevenue: "",
+  challenge: "",
   website: "",
 };
 
@@ -21,6 +26,15 @@ type LeadFormErrors = Partial<Record<keyof LeadFormValues, string>>;
 type LeadFormStatus =
   | { tone: "success" | "error"; message: string }
   | null;
+
+type LeadFormProps = {
+  className?: string;
+  description?: string;
+  note?: string;
+  submitLabel?: string;
+  title?: string;
+  tone?: "default" | "strong" | "soft" | "dark";
+};
 
 function getFieldErrors(error: ZodError<LeadFormValues>) {
   const fieldErrors = error.flatten().fieldErrors;
@@ -33,13 +47,23 @@ function getFieldErrors(error: ZodError<LeadFormValues>) {
   ) as LeadFormErrors;
 }
 
-export function LeadForm() {
+export function LeadForm({
+  className,
+  description = "שיחה קצרה כדי לבדוק אם יש כאן פוטנציאל צמיחה אמיתי.",
+  note = "הפרטים נועדו לבדוק התאמה ראשונית למודל העבודה של Checkmate.",
+  submitLabel = "בדיקת התאמה (15 דק׳)",
+  title = "בדיקת התאמה לעסק",
+  tone = "strong",
+}: LeadFormProps) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<LeadFormErrors>({});
   const [status, setStatus] = useState<LeadFormStatus>(null);
+  const formId = useId();
+
+  const fieldErrorId = (field: keyof LeadFormValues) => `${formId}-${field}-error`;
 
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
     const fieldName = name as keyof LeadFormValues;
@@ -67,7 +91,7 @@ export function LeadForm() {
         setErrors({});
         setStatus({
           tone: "success",
-          message: "השליחה אומתה. אפשר עכשיו לחבר את הטופס ליעד קליטה אמיתי.",
+          message: "הפרטים התקבלו. אם יש התאמה, ניצור קשר להמשך.",
         });
         setValues(initialValues);
         return;
@@ -76,7 +100,7 @@ export function LeadForm() {
       setErrors(nextErrors);
       setStatus({
         tone: "error",
-        message: "יש כמה שדות שצריך לדייק לפני שליחה.",
+        message: "יש כמה פרטים שכדאי לדייק לפני שליחה.",
       });
       return;
     }
@@ -84,20 +108,20 @@ export function LeadForm() {
     setErrors({});
     setStatus({
       tone: "success",
-      message: "הפרטים תקינים והטופס מוכן לחיבור ל־CRM, WhatsApp או webhook.",
+      message: "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
     });
     setValues(initialValues);
   };
 
   return (
-    <Panel tone="strong" className="p-6 md:p-7">
+    <Panel tone={tone} className={cn("p-6 md:p-7", className)}>
       <form className="space-y-4" noValidate onSubmit={handleSubmit}>
         <div className="space-y-1">
           <p className="text-sm font-semibold text-[var(--accent-deep)]">
-            השאירו פרטים
+            {title}
           </p>
           <p className="text-sm leading-6 text-[rgba(17,26,31,0.62)]">
-            נחזור אליכם לבדיקת התאמה קצרה של 15 דקות.
+            {description}
           </p>
         </div>
 
@@ -120,10 +144,10 @@ export function LeadForm() {
               value={values.fullName}
               onChange={handleChange}
               aria-invalid={Boolean(errors.fullName)}
-              aria-describedby={errors.fullName ? "lead-full-name-error" : undefined}
+              aria-describedby={errors.fullName ? fieldErrorId("fullName") : undefined}
             />
             {errors.fullName ? (
-              <span id="lead-full-name-error" className="ui-field__error">
+              <span id={fieldErrorId("fullName")} className="ui-field__error">
                 {errors.fullName}
               </span>
             ) : null}
@@ -141,32 +165,11 @@ export function LeadForm() {
               value={values.phone}
               onChange={handleChange}
               aria-invalid={Boolean(errors.phone)}
-              aria-describedby={errors.phone ? "lead-phone-error" : undefined}
+              aria-describedby={errors.phone ? fieldErrorId("phone") : undefined}
             />
             {errors.phone ? (
-              <span id="lead-phone-error" className="ui-field__error">
+              <span id={fieldErrorId("phone")} className="ui-field__error">
                 {errors.phone}
-              </span>
-            ) : null}
-          </label>
-
-          <label className="ui-field">
-            <span className="ui-field__label">אימייל</span>
-            <input
-              type="email"
-              name="email"
-              placeholder="name@business.co.il"
-              className="ui-input"
-              autoComplete="email"
-              inputMode="email"
-              value={values.email}
-              onChange={handleChange}
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "lead-email-error" : undefined}
-            />
-            {errors.email ? (
-              <span id="lead-email-error" className="ui-field__error">
-                {errors.email}
               </span>
             ) : null}
           </label>
@@ -176,36 +179,65 @@ export function LeadForm() {
             <input
               type="text"
               name="company"
-              placeholder="שם העסק או התחום"
+              placeholder="איך נקרא העסק?"
               className="ui-input"
               autoComplete="organization"
               value={values.company}
               onChange={handleChange}
               aria-invalid={Boolean(errors.company)}
-              aria-describedby={errors.company ? "lead-company-error" : undefined}
+              aria-describedby={errors.company ? fieldErrorId("company") : undefined}
             />
             {errors.company ? (
-              <span id="lead-company-error" className="ui-field__error">
+              <span id={fieldErrorId("company")} className="ui-field__error">
                 {errors.company}
               </span>
             ) : null}
           </label>
 
           <label className="ui-field">
-            <span className="ui-field__label">מה חשוב לכם לשפר?</span>
-            <textarea
-              name="message"
-              rows={4}
-              placeholder="לידים, תיאום פגישות, מכירות, שליטה בדוחות..."
-              className="ui-input ui-textarea"
-              value={values.message}
+            <span className="ui-field__label">מחזור חודשי משוער</span>
+            <select
+              name="monthlyRevenue"
+              className="ui-input ui-select"
+              value={values.monthlyRevenue}
               onChange={handleChange}
-              aria-invalid={Boolean(errors.message)}
-              aria-describedby={errors.message ? "lead-message-error" : undefined}
+              aria-invalid={Boolean(errors.monthlyRevenue)}
+              aria-describedby={
+                errors.monthlyRevenue ? fieldErrorId("monthlyRevenue") : undefined
+              }
+            >
+              <option value="">בחרו טווח מחזור</option>
+              {monthlyRevenueOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            {errors.monthlyRevenue ? (
+              <span
+                id={fieldErrorId("monthlyRevenue")}
+                className="ui-field__error"
+              >
+                {errors.monthlyRevenue}
+              </span>
+            ) : null}
+          </label>
+
+          <label className="ui-field">
+            <span className="ui-field__label">מה האתגר המרכזי היום?</span>
+            <textarea
+              name="challenge"
+              rows={4}
+              placeholder="למשל: יש לידים אבל אין תהליך סגירה ברור, הכול נשען עליי, או שאין מספיק פגישות שמתקיימות."
+              className="ui-input ui-textarea"
+              value={values.challenge}
+              onChange={handleChange}
+              aria-invalid={Boolean(errors.challenge)}
+              aria-describedby={errors.challenge ? fieldErrorId("challenge") : undefined}
             />
-            {errors.message ? (
-              <span id="lead-message-error" className="ui-field__error">
-                {errors.message}
+            {errors.challenge ? (
+              <span id={fieldErrorId("challenge")} className="ui-field__error">
+                {errors.challenge}
               </span>
             ) : null}
           </label>
@@ -224,13 +256,10 @@ export function LeadForm() {
         ) : null}
 
         <Button type="submit" variant="gold" className="w-full justify-center">
-          בדיקת התאמה (15 דק׳)
+          {submitLabel}
         </Button>
 
-        <p className="ui-form-note">
-          ולידציה עם Zod פעילה עכשיו. היעד הבא הוא לחבר את השליחה ל־CRM,
-          WhatsApp או לאוטומציה שתבחרו.
-        </p>
+        <p className="ui-form-note">{note}</p>
       </form>
     </Panel>
   );

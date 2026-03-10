@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { heroChecklist, heroProofPoints } from "@/content/landing";
+import { LeadForm } from "@/components/landing/lead-form";
+import { heroChecklist, heroMetrics } from "@/content/landing";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="w-full pb-14 pt-0 md:pb-20">
-      <div className="relative isolate min-h-[720px] overflow-hidden border-y border-[var(--border)] bg-[var(--accent-deep)] shadow-[0_24px_90px_rgba(22,52,92,0.16)]">
+    <section id="hero" className="w-full">
+      <div className="relative isolate overflow-hidden border-b border-[var(--border)] bg-[var(--accent-deep)]">
         <Image
           src="/home-page-hero/Chessboard.png"
           alt=""
@@ -13,59 +13,77 @@ export function HeroSection() {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,17,35,0.22)_0%,rgba(7,17,35,0.48)_34%,rgba(7,17,35,0.86)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(200,164,93,0.26),transparent_34%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(to_top,rgba(7,17,35,0.88),transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,17,35,0.88)_12%,rgba(7,17,35,0.76)_40%,rgba(7,17,35,0.52)_68%,rgba(7,17,35,0.82)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,164,93,0.22),transparent_32%)]" />
+        <div className="absolute inset-y-0 right-0 w-1/2 bg-[linear-gradient(to_left,rgba(255,255,255,0.08),transparent)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-6xl flex-col justify-between px-6 py-14 text-center text-white md:px-10 md:py-20">
-          <div className="mx-auto max-w-4xl space-y-8">
-            <div className="space-y-4">
-              <h1 className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.04em] text-white md:text-7xl">
-                אתה לא צריך עוד לידים.
-                <span className="mt-3 block text-[var(--accent-soft)]">
-                  אתה צריך מערכת שממירה אותם לעסקאות.
-                </span>
-              </h1>
-              <p className="mx-auto max-w-2xl text-lg leading-8 text-white/78 md:text-xl">
-                Checkmate מחברת בין שיווק, טיפול בלידים, תיאום פגישות ותהליך
-                המכירה. כדי לייצר יותר פגישות שמתקיימות, יותר שליטה, ויותר
-                סגירות.
-              </p>
-            </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
+            <div className="space-y-8 text-white">
+              <div className="inline-flex items-center rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm font-semibold tracking-[0.04em] text-white/90 backdrop-blur">
+                לא עוד סוכנות. שותף צמיחה.
+              </div>
 
-            <div className="mx-auto flex max-w-xl flex-col items-start gap-3 text-right">
-              {heroChecklist.map((item) => (
-                <div
-                  key={item}
-                  className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-4 py-3 text-base font-medium text-white/92 backdrop-blur"
-                >
-                  <span className="text-[var(--accent-soft)]">✔</span>
-                  <span>{item}</span>
+              <div className="max-w-3xl space-y-5">
+                <h1 className="font-display text-5xl leading-[0.95] font-semibold tracking-[-0.04em] text-white md:text-7xl">
+                  העסק כבר עובד.
+                  <span className="mt-3 block text-[var(--accent-soft)]">
+                    אז למה הצמיחה עדיין תקועה?
+                  </span>
+                </h1>
+                <p className="max-w-2xl text-lg leading-8 text-white/78 md:text-xl">
+                  Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B
+                  ושירות בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים,
+                  מכירות ותהליך סגירה למערכת אחת שמביאה תוצאות מדידות.
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {heroChecklist.map((item) => (
+                  <div
+                    key={item}
+                    className="inline-flex items-start gap-3 rounded-[24px] border border-white/12 bg-white/10 px-4 py-4 text-right text-base font-medium text-white/92 backdrop-blur"
+                  >
+                    <span className="mt-1 text-[var(--accent-soft)]">●</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3 text-sm font-medium text-white/78">
+                <div className="rounded-full border border-white/10 bg-white/8 px-4 py-2 backdrop-blur">
+                  עסקים בישראל עם עסקה ממוצעת של 15,000 ש&quot;ח ומעלה
                 </div>
-              ))}
+                <div className="rounded-full border border-white/10 bg-white/8 px-4 py-2 backdrop-blur">
+                  B2B / שירות / SME בשלב צמיחה
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                {heroMetrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.06)_100%)] p-5 backdrop-blur"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/52">
+                      {metric.label}
+                    </p>
+                    <p className="mt-3 text-lg leading-7 font-semibold text-white">
+                      {metric.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button href="#cta" variant="gold" size="lg">
-                  בדיקת התאמה (15 דק׳)
-                </Button>
-              </div>
-              <p className="text-sm font-medium text-white/76 md:text-base">
-                מיועד לעסקים עם עסקה ממוצעת של 15,000 ₪ ומעלה
-              </p>
+            <div id="hero-lead-form" className="lg:justify-self-end">
+              <LeadForm
+                className="w-full max-w-xl border-white/22 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(255,250,241,0.96)_100%)] shadow-[0_30px_80px_rgba(7,17,35,0.28)]"
+                description="שיחה קצרה כדי לבדוק אם יש כאן פוטנציאל צמיחה אמיתי."
+                note="אם יש התאמה, נמשיך לפגישת אבחון ממוקדת סביב המערכת העסקית והשלב הבא בצמיחה."
+                title="בדיקת התאמה לעסק"
+              />
             </div>
-          </div>
-
-          <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/12 pt-8 text-sm font-medium text-white/74 md:text-base">
-            {heroProofPoints.map((item, index) => (
-              <div key={item} className="inline-flex items-center gap-3">
-                <span>{item}</span>
-                {index < heroProofPoints.length - 1 ? (
-                  <span className="text-[var(--accent-soft)]/80">|</span>
-                ) : null}
-              </div>
-            ))}
           </div>
         </div>
       </div>
