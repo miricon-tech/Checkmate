@@ -638,6 +638,7 @@ a {
 
 .contact-split__aside {
   position: relative;
+  order: 1;
   padding: 2rem 1.5rem 1.75rem;
 }
 
@@ -714,14 +715,81 @@ a {
 }
 
 .contact-split__form-wrap {
+  order: 2;
   padding: 1.5rem;
 }
 
 .contact-form-panel {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(22, 52, 92, 0.08);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(22, 52, 92, 0.08) 0%, rgba(22, 52, 92, 0) 42%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.985) 0%,
+      rgba(248, 251, 255, 0.975) 54%,
+      rgba(252, 248, 240, 0.94) 100%
+    );
+  box-shadow:
+    0 24px 56px rgba(22, 52, 92, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.contact-form-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22, 52, 92, 0.05) 0%,
+      rgba(22, 52, 92, 0.02) 18%,
+      rgba(255, 255, 255, 0) 44%,
+      rgba(200, 164, 93, 0.08) 100%
+    );
+}
+
+.contact-form-panel > form {
+  position: relative;
+}
+
+.contact-form-panel .type-form-title {
+  color: var(--accent-deep);
+}
+
+.contact-form-panel .type-body-sm {
+  color: rgba(62, 75, 90, 0.72);
+}
+
+.contact-form-panel .ui-field__label {
+  color: rgba(22, 52, 92, 0.88);
+}
+
+.contact-form-panel .ui-input {
+  border-color: rgba(22, 52, 92, 0.12);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(251, 253, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.98) 100%
+    );
+  box-shadow:
+    0 10px 22px rgba(22, 52, 92, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.contact-form-panel .ui-input:focus {
+  border-color: rgba(22, 52, 92, 0.22);
+  box-shadow:
+    0 0 0 3px rgba(22, 52, 92, 0.08),
+    0 14px 28px rgba(22, 52, 92, 0.08);
+}
+
+.contact-form-panel .ui-form-note {
+  color: rgba(62, 75, 90, 0.78);
 }
 
 .ui-panel--dark {
@@ -1147,10 +1215,12 @@ a {
   }
 
   .contact-split__aside {
+    order: 2;
     padding: 2.75rem 2.5rem 2.5rem;
   }
 
   .contact-split__form-wrap {
+    order: 1;
     padding: 2.25rem 2.5rem;
   }
 

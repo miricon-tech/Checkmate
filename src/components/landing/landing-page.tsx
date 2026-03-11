@@ -165,6 +165,7 @@ export function LandingPage() {
                 <LeadForm
                   className="contact-form-panel"
                   submitLabel="לקביעת בדיקת התאמה"
+                  tone="default"
                 />
               </div>
             </div>
