@@ -3,6 +3,7 @@
 import type { ChangeEvent, FormEvent } from "react";
 import { useId, useState } from "react";
 import type { ZodError } from "zod";
+import { TurnstileWidget } from "@/components/landing/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/cn";
@@ -59,6 +60,8 @@ export function LeadForm({
   const [errors, setErrors] = useState<LeadFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<LeadFormStatus>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
   const formId = useId();
 
   const fieldErrorId = (field: keyof LeadFormValues) => `${formId}-${field}-error`;
@@ -113,9 +116,21 @@ export function LeadForm({
     setErrors({});
     setIsSubmitting(true);
 
+    if (!turnstileToken) {
+      setStatus({
+        tone: "error",
+        message: "צריך להשלים את אימות האבטחה לפני שליחת הטופס.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/lead", {
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          turnstileToken,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -126,12 +141,18 @@ export function LeadForm({
         | {
             fieldErrors?: LeadFormErrors;
             message?: string;
+            resetTurnstile?: boolean;
           }
         | null;
 
       if (!response.ok) {
         if (payload?.fieldErrors) {
           setErrors(payload.fieldErrors);
+        }
+
+        if (payload?.resetTurnstile) {
+          setTurnstileToken("");
+          setTurnstileResetKey((current) => current + 1);
         }
 
         setStatus({
@@ -150,6 +171,8 @@ export function LeadForm({
           "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
       });
       setValues(initialValues);
+      setTurnstileToken("");
+      setTurnstileResetKey((current) => current + 1);
     } catch {
       setStatus({
         tone: "error",
@@ -301,6 +324,31 @@ export function LeadForm({
             {status.message}
           </div>
         ) : null}
+
+        <TurnstileWidget
+          onError={() => {
+            setTurnstileToken("");
+            setStatus({
+              tone: "error",
+              message: "אימות האבטחה לא הושלם. אפשר לנסות שוב.",
+            });
+          }}
+          onExpire={() => {
+            setTurnstileToken("");
+            setStatus({
+              tone: "error",
+              message: "אימות האבטחה פג. צריך לאשר שוב לפני שליחה.",
+            });
+          }}
+          onVerify={(token) => {
+            setTurnstileToken(token);
+
+            if (status?.tone === "error") {
+              setStatus(null);
+            }
+          }}
+          resetKey={turnstileResetKey}
+        />
 
         <Button
           aria-busy={isSubmitting}

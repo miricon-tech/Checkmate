@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { sendLeadNotification } from "@/lib/lead-email";
 import {
   checkLeadRateLimit,
+  getClientIp,
   getLeadGuardConfig,
   hasAllowedLeadOrigin,
   hasJsonContentType,
@@ -11,6 +12,7 @@ import {
   leadFormSchema,
   type LeadFormValues,
 } from "@/lib/lead-form-schema";
+import { verifyTurnstileToken } from "@/lib/lead-turnstile";
 
 export const runtime = "nodejs";
 
@@ -118,11 +120,57 @@ export async function POST(request: Request) {
     );
   }
 
+  const turnstileToken =
+    payload && typeof payload === "object"
+      ? String(
+          (payload as Record<string, unknown>).turnstileToken ?? ""
+        ).trim()
+      : "";
+
+  if (!turnstileToken) {
+    return jsonResponse(
+      {
+        message: "צריך להשלים את אימות האבטחה לפני שליחת הטופס.",
+        resetTurnstile: true,
+      },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const turnstileResult = await verifyTurnstileToken(
+      turnstileToken,
+      getClientIp(request)
+    );
+
+    if (!turnstileResult.ok) {
+      return jsonResponse(
+        {
+          message: "אימות האבטחה לא הושלם. אפשר לנסות שוב.",
+          resetTurnstile: turnstileResult.resetRequired,
+        },
+        { status: 400 }
+      );
+    }
+  } catch (error) {
+    console.error("Failed to verify Turnstile token", error);
+
+    return jsonResponse(
+      {
+        message:
+          "בדיקת האבטחה לא זמינה כרגע. אפשר לנסות שוב בעוד רגע או לפנות אלינו ישירות.",
+        resetTurnstile: true,
+      },
+      { status: 503 }
+    );
+  }
+
   try {
     await sendLeadNotification(result.data);
 
     return jsonResponse({
       message: "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
+      resetTurnstile: true,
     });
   } catch (error) {
     console.error("Failed to deliver lead form email", error);
@@ -131,6 +179,7 @@ export async function POST(request: Request) {
       {
         message:
           "השליחה לא הושלמה כרגע. אפשר לנסות שוב בעוד רגע או לפנות אלינו ישירות.",
+        resetTurnstile: true,
       },
       { status: 500 }
     );
