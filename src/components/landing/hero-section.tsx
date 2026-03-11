@@ -63,14 +63,14 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-7 max-w-[11ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[10.5ch]">
+            <h1 className="type-display-hero mt-7 max-w-[12.5ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[11.5ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-6 max-w-[32rem] text-[var(--muted)] lg:mt-7">
+            <p className="type-body-xl mt-6 max-w-[30rem] text-[var(--muted)] lg:mt-7">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
