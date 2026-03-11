@@ -23,7 +23,7 @@ export function LandingPage() {
       <a href="#main-content" className="skip-link">
         דלגו לתוכן הראשי
       </a>
-      <main id="main-content" className="page-shell relative overflow-hidden pb-16">
+      <main id="main-content" className="page-shell relative overflow-x-clip pb-16">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-16 -z-10 mx-auto h-px max-w-5xl"
