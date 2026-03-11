@@ -45,16 +45,16 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-28 lg:px-10 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-28 sm:pb-32 lg:px-10 lg:py-40">
         <div
           dir="ltr"
-          className="lg:grid lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start lg:gap-16 xl:gap-24"
+          className="lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start lg:gap-18 xl:gap-24"
         >
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl lg:col-start-2 lg:row-start-1 lg:mx-0 lg:justify-self-end lg:pt-8"
+            className="mx-auto max-w-2xl lg:col-start-2 lg:row-start-1 lg:mx-0 lg:max-w-[34rem] lg:justify-self-end lg:pt-10"
           >
-            <div className="mt-8 sm:mt-12 lg:mt-6">
+            <div className="mt-8 sm:mt-12 lg:mt-10">
               <div className="inline-flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.16)] px-3 py-1 text-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
@@ -66,14 +66,14 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="mt-10 font-display text-5xl leading-[0.95] font-semibold tracking-[-0.04em] text-[var(--accent-deep)] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-10 text-pretty font-display text-5xl leading-[0.93] font-semibold tracking-[-0.045em] text-[var(--accent-deep)] sm:text-6xl lg:text-[5.35rem]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+            <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
@@ -93,20 +93,17 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:justify-self-start lg:pt-8">
-            <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[40rem] xl:max-w-[42rem]">
-              <div className="relative overflow-hidden rounded-[34px] bg-[rgba(255,255,255,0.92)] p-3 shadow-[0_28px_70px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
-                <div className="absolute left-5 top-5 z-10 rounded-full border border-white/72 bg-white/90 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-[var(--accent-deep)] shadow-[0_10px_24px_rgba(22,52,92,0.08)]">
-                  CHECKMATE SYSTEM
-                </div>
+          <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:justify-self-start lg:pt-6">
+            <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[44rem] xl:max-w-[47rem]">
+              <div className="relative overflow-hidden rounded-[34px] bg-[rgba(255,255,255,0.94)] p-2 shadow-[0_32px_90px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
                 <Image
                   src="/home-page-hero/Chessboard.png"
                   alt="לוח שחמט באווירה עסקית"
                   width={1536}
                   height={1024}
                   priority
-                  sizes="(max-width: 1024px) 100vw, 44vw"
-                  className="w-full rounded-[28px] bg-[rgba(255,255,255,0.7)] shadow-xl ring-1 ring-[rgba(22,52,92,0.08)]"
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  className="w-full rounded-[30px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.07)]"
                 />
               </div>
             </div>
