@@ -5,6 +5,7 @@ import {
   processCards,
 } from "@/content/landing";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
+import { HeroQualification } from "@/components/landing/hero-qualification";
 import { HeroSection } from "@/components/landing/hero-section";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LeadForm } from "@/components/landing/lead-form";
@@ -17,6 +18,12 @@ export function LandingPage() {
       <div className="pointer-events-none absolute inset-x-0 top-16 -z-10 mx-auto h-64 max-w-5xl rounded-full bg-[radial-gradient(circle,rgba(200,164,93,0.16),transparent_74%)] blur-3xl" />
       <LandingHeader />
       <HeroSection />
+
+      <section id="qualification" className="px-6 py-14 md:px-10 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <HeroQualification />
+        </div>
+      </section>
 
       <section
         id="how-it-works"
