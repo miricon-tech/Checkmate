@@ -45,16 +45,13 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-12 pb-28 sm:pb-32 lg:px-10 lg:py-40">
-        <div
-          dir="ltr"
-          className="lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start lg:gap-18 xl:gap-24"
-        >
+      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:px-8 lg:py-40">
+        <div className="lg:flex lg:flex-row-reverse lg:items-start">
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl lg:col-start-2 lg:row-start-1 lg:mx-0 lg:max-w-[34rem] lg:justify-self-end lg:pt-10"
+            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[34rem] lg:pt-8"
           >
-            <div className="mt-6 sm:mt-10 lg:mt-8">
+            <div className="mt-10 sm:mt-14 lg:mt-8">
               <div className="inline-flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.15)] px-3 py-1 type-body-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
@@ -93,8 +90,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:translate-x-4 lg:-translate-y-3 lg:justify-self-start lg:pt-4">
-            <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[45rem] xl:max-w-[48rem]">
+          <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mt-0 lg:mr-10 lg:ml-0 lg:max-w-none lg:flex-none xl:mr-32">
+            <div className="w-full max-w-3xl flex-none sm:max-w-5xl lg:max-w-[44rem] xl:max-w-[48rem]">
               <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
                 <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[41rem]">
                   <Image
@@ -103,7 +100,23 @@ export function HeroSection() {
                     fill
                     priority
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                    className="object-cover object-[44%_center] scale-[1.02]"
+                    className="object-cover object-[46%_center] scale-[1.035]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,18,34,0.26)_0%,rgba(8,18,34,0.08)_32%,rgba(255,255,255,0)_58%,rgba(200,164,93,0.22)_100%)]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.32)_0%,rgba(255,255,255,0)_100%)]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(180deg,rgba(8,18,34,0)_0%,rgba(8,18,34,0.2)_100%)]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-4 rounded-[26px] border border-[rgba(255,255,255,0.18)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]"
                   />
                 </div>
               </div>
