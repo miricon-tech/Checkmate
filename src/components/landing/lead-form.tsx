@@ -187,10 +187,10 @@ export function LeadForm({
     <Panel tone={tone} className={cn("p-6 md:p-7", className)}>
       <form className="space-y-4" noValidate onSubmit={handleSubmit}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold text-[var(--accent-deep)]">
+          <p className="type-form-title text-[var(--accent-deep)]">
             {title}
           </p>
-          <p className="text-sm leading-6 text-[rgba(17,26,31,0.62)]">
+          <p className="type-body-sm text-[rgba(17,26,31,0.62)]">
             {description}
           </p>
         </div>

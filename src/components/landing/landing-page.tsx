@@ -44,11 +44,11 @@ export function LandingPage() {
             {processCards.map((card) => (
               <article key={card.title}>
                 <Panel className="h-full p-6 md:p-7">
-                  <p className="eyebrow text-xs font-semibold">{card.eyebrow}</p>
-                  <h3 className="font-display mt-4 text-2xl font-semibold text-foreground">
+                  <p className="eyebrow type-kicker">{card.eyebrow}</p>
+                  <h3 className="type-display-feature mt-4 text-foreground">
                     {card.title}
                   </h3>
-                  <p className="muted-copy mt-4 text-base leading-7">
+                  <p className="type-body muted-copy mt-4">
                     {card.description}
                   </p>
                 </Panel>
@@ -68,7 +68,7 @@ export function LandingPage() {
               description="זה לא מסלול לעסק בתחילת הדרך. זה מתאים לעסקים שכבר מוכרים, יודעים שהשירות שלהם חזק, אבל נתקעים כי השיווק, המכירות והניהול לא מחוברים למערכת אחת שעובדת."
             />
             <Panel tone="soft" className="p-6 md:p-7">
-              <p className="text-base leading-8 text-foreground">
+              <p className="type-body-lg text-foreground">
                 אם רוב הלידים, הפגישות והסגירות עדיין נשענים יותר מדי על בעל
                 העסק, או שהשיווק מביא חשיפה בלי ודאות עסקית אמיתית, זה בדרך כלל
                 הסימן שהצמיחה נעצרת בגלל המערכת, לא בגלל המוצר.
@@ -80,10 +80,10 @@ export function LandingPage() {
             {fitCards.map((card) => (
               <article key={card.title}>
                 <Panel tone="strong" className="h-full p-6 md:p-7">
-                  <h3 className="font-display text-2xl font-semibold text-foreground">
+                  <h3 className="type-display-feature text-foreground">
                     {card.title}
                   </h3>
-                  <p className="muted-copy mt-4 text-base leading-7">
+                  <p className="type-body muted-copy mt-4">
                     {card.description}
                   </p>
                 </Panel>
@@ -103,10 +103,10 @@ export function LandingPage() {
             {differenceCards.map((card) => (
               <article key={card.title}>
                 <Panel className="h-full p-6 md:p-7">
-                  <h3 className="font-display text-2xl font-semibold text-foreground">
+                  <h3 className="type-display-feature text-foreground">
                     {card.title}
                   </h3>
-                  <p className="muted-copy mt-4 text-base leading-7">
+                  <p className="type-body muted-copy mt-4">
                     {card.description}
                   </p>
                 </Panel>
@@ -123,14 +123,14 @@ export function LandingPage() {
 
             <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
               <div className="relative space-y-6">
-                <p className="text-xs uppercase tracking-[0.28em] text-[var(--accent)]">
+                <p className="type-kicker text-[var(--accent)]">
                   בדיקת התאמה
                 </p>
-                <h2 className="font-display text-4xl leading-tight font-semibold text-[var(--accent-deep)] md:text-5xl">
+                <h2 className="type-display-section text-[var(--accent-deep)]">
                   השיחה הראשונה לא נועדה למכור בלחץ. היא נועדה לבדוק אם יש כאן
                   פוטנציאל צמיחה אמיתי.
                 </h2>
-                <p className="max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">
+                <p className="type-body-lg max-w-2xl text-[var(--muted)]">
                   בבדיקת ההתאמה נבחן איפה העסק תקוע, מה כרגע נשען יותר מדי על
                   הבעלים, האם יש בסיס נכון להגדלת מחזור, והאם מודל העבודה של
                   Checkmate מתאים לשלב הבא.
@@ -140,7 +140,7 @@ export function LandingPage() {
                   {ctaChecklist.map((item) => (
                     <div
                       key={item}
-                      className="inline-flex items-start gap-3 rounded-[24px] border border-[rgba(22,52,92,0.08)] bg-white/72 px-4 py-4 text-right text-base font-medium text-[var(--accent-deep)]"
+                      className="type-body inline-flex items-start gap-3 rounded-[24px] border border-[rgba(22,52,92,0.08)] bg-white/72 px-4 py-4 text-right font-medium text-[var(--accent-deep)]"
                     >
                       <span className="mt-1 text-[var(--accent)]">●</span>
                       <span>{item}</span>

@@ -56,24 +56,24 @@ export function HeroSection() {
           >
             <div className="mt-6 sm:mt-10 lg:mt-8">
               <div className="inline-flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.15)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--accent-deep)]">
+                <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.15)] px-3 py-1 type-body-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[color:rgba(93,108,119,0.96)] sm:text-sm">
+                <span className="type-link inline-flex items-center gap-1.5 text-[color:rgba(93,108,119,0.96)]">
                   <span>שותף צמיחה לעסקי B2B ושירות בישראל</span>
                   <ChevronRightTiny />
                 </span>
               </div>
             </div>
 
-            <h1 className="mt-9 max-w-[11ch] text-pretty font-display text-5xl leading-[0.92] font-semibold tracking-[-0.05em] text-[var(--accent-deep)] sm:text-6xl lg:max-w-[10.5ch] lg:text-[5.45rem]">
+            <h1 className="type-display-hero mt-9 max-w-[11ch] text-[var(--accent-deep)] lg:max-w-[10.5ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="mt-7 max-w-[32rem] text-lg leading-8 text-[var(--muted)] sm:text-xl">
+            <p className="type-body-xl mt-7 max-w-[32rem] text-[var(--muted)]">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
@@ -85,7 +85,7 @@ export function HeroSection() {
               </Button>
               <a
                 href="#qualification"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                className="type-link inline-flex items-center gap-2 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
               >
                 <span>למי זה מתאים</span>
                 <ChevronRightTiny />

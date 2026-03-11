@@ -99,10 +99,10 @@ export function HeroQualification({
     return (
       <div className="mt-8 space-y-4">
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+          <p className="type-kicker text-[var(--accent)]">
             Qualification
           </p>
-          <p className="text-sm leading-6 text-[var(--muted)]">
+          <p className="type-body-sm text-[var(--muted)]">
             בחרו את מה שהכי קרוב למצב שלכם, ונראה אם יש כאן פוטנציאל אמיתי
             לצמיחה.
           </p>
@@ -119,15 +119,15 @@ export function HeroQualification({
                   <QualificationIcon name={card.icon} />
                 </div>
                 <div className="min-w-0 space-y-2">
-                  <h3 className="font-display text-base leading-6 font-semibold text-[var(--accent-deep)]">
+                  <h3 className="type-display-feature text-[var(--accent-deep)]">
                     {card.title}
                   </h3>
-                  <p className="text-sm leading-6 text-[var(--muted)]">
+                  <p className="type-body-sm text-[var(--muted)]">
                     {card.description}
                   </p>
                   <a
                     href={card.href}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                    className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
                     <ChevronRightTiny />
@@ -147,13 +147,13 @@ export function HeroQualification({
 
       <div className="relative space-y-6">
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+          <p className="type-kicker text-[var(--accent)]">
             Qualification
           </p>
-          <h2 className="font-display text-3xl leading-tight font-semibold text-[var(--accent-deep)] md:text-[2.1rem]">
+          <h2 className="type-display-section text-[var(--accent-deep)]">
             איפה העסק שלך תקוע היום?
           </h2>
-          <p className="text-base leading-7 text-[var(--muted)]">
+          <p className="type-body-lg text-[var(--muted)]">
             בחרו את מה שהכי קרוב למצב שלכם, ונראה אם יש כאן פוטנציאל אמיתי
             לצמיחה.
           </p>
@@ -170,15 +170,15 @@ export function HeroQualification({
                   <QualificationIcon name={card.icon} />
                 </div>
                 <div className="min-w-0 space-y-3">
-                  <h3 className="font-display text-lg leading-7 font-semibold text-[var(--accent-deep)]">
+                  <h3 className="type-display-feature text-[var(--accent-deep)]">
                     {card.title}
                   </h3>
-                  <p className="text-sm leading-6 text-[var(--muted)]">
+                  <p className="type-body-sm text-[var(--muted)]">
                     {card.description}
                   </p>
                   <a
                     href={card.href}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                    className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
                     <ChevronRightTiny />
