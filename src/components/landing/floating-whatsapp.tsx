@@ -1,11 +1,13 @@
+const whatsappNumber = "972546712130";
+
 const whatsappMessage = encodeURIComponent(
-  "שלום Checkmate, אני רוצה בדיקת התאמה של 15 דקות."
+  "היי אופק,\nיש לי עסק שמתמחה ב/אני עוסק ב\nוהייתי רוצה להבין קצת יותר פרטים לגבי השירותים שלך"
 );
 
 export function FloatingWhatsApp() {
   return (
     <a
-      href={`https://wa.me/?text=${whatsappMessage}`}
+      href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
       target="_blank"
       rel="noreferrer"
       aria-label="פתיחת שיחה ב-WhatsApp עם Checkmate"
