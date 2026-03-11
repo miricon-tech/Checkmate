@@ -57,6 +57,7 @@ export function LeadForm({
 }: LeadFormProps) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<LeadFormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<LeadFormStatus>(null);
   const formId = useId();
 
@@ -79,8 +80,12 @@ export function LeadForm({
     }
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
 
     const result = leadFormSchema.safeParse(values);
 
@@ -106,11 +111,53 @@ export function LeadForm({
     }
 
     setErrors({});
-    setStatus({
-      tone: "success",
-      message: "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
-    });
-    setValues(initialValues);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/lead", {
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const payload = (await response.json().catch(() => null)) as
+        | {
+            fieldErrors?: LeadFormErrors;
+            message?: string;
+          }
+        | null;
+
+      if (!response.ok) {
+        if (payload?.fieldErrors) {
+          setErrors(payload.fieldErrors);
+        }
+
+        setStatus({
+          tone: "error",
+          message:
+            payload?.message ??
+            "השליחה לא הושלמה כרגע. אפשר לנסות שוב בעוד רגע.",
+        });
+        return;
+      }
+
+      setStatus({
+        tone: "success",
+        message:
+          payload?.message ??
+          "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
+      });
+      setValues(initialValues);
+    } catch {
+      setStatus({
+        tone: "error",
+        message: "יש בעיית תקשורת זמנית. נסו שוב בעוד רגע.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -255,8 +302,14 @@ export function LeadForm({
           </div>
         ) : null}
 
-        <Button type="submit" variant="gold" className="w-full justify-center">
-          {submitLabel}
+        <Button
+          aria-busy={isSubmitting}
+          className="w-full justify-center"
+          disabled={isSubmitting}
+          type="submit"
+          variant="gold"
+        >
+          {isSubmitting ? "שולחים..." : submitLabel}
         </Button>
 
         <p className="ui-form-note">{note}</p>
