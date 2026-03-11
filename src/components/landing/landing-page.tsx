@@ -28,7 +28,7 @@ export function LandingPage() {
         <LandingHeader />
         <HeroSection />
 
-        <section id="qualification" className="px-6 py-14 md:px-10 md:py-20">
+        <section id="qualification" className="px-6 py-14 lg:px-10 lg:py-20">
           <div className="mx-auto max-w-6xl">
             <HeroQualification />
           </div>
@@ -38,15 +38,15 @@ export function LandingPage() {
 
         <section
           id="fit"
-          className="mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-24"
+          className="mx-auto max-w-6xl px-6 py-14 lg:px-10 lg:py-24"
         >
-          <div className="grid gap-8 md:grid-cols-[0.94fr_1.06fr] md:items-end">
+          <div className="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-end">
             <SectionHeading
               eyebrow="למי זה מתאים"
               title="לעסקים בישראל שכבר הוכיחו שיש שוק, אבל מרגישים שהתקרה קרובה מדי."
               description="זה לא מסלול לעסק בתחילת הדרך. זה מתאים לעסקים שכבר מוכרים, יודעים שהשירות שלהם חזק, אבל נתקעים כי השיווק, המכירות והניהול לא מחוברים למערכת אחת שעובדת."
             />
-            <Panel tone="soft" className="p-6 md:p-7">
+            <Panel tone="soft" className="p-6 lg:p-7">
               <p className="type-body-lg text-foreground">
                 אם רוב הלידים, הפגישות והסגירות עדיין נשענים יותר מדי על בעל
                 העסק, או שהשיווק מביא חשיפה בלי ודאות עסקית אמיתית, זה בדרך כלל
@@ -55,10 +55,10 @@ export function LandingPage() {
             </Panel>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {fitCards.map((card) => (
               <article key={card.title}>
-                <Panel tone="strong" className="h-full p-6 md:p-7">
+                <Panel tone="strong" className="h-full p-6 lg:p-7">
                   <h3 className="type-display-feature text-foreground">
                     {card.title}
                   </h3>
@@ -71,17 +71,17 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-24">
+        <section className="mx-auto max-w-6xl px-6 py-14 lg:px-10 lg:py-24">
           <SectionHeading
             eyebrow="למה Checkmate"
             title="ההבדל הוא לא רק בביצוע. הוא במודל העבודה."
             description="רוב הספקים עובדים על ריטיינר חודשי או פרויקט. Checkmate בנויה כשותף צמיחה ארוך טווח, עם פוקוס ברור על revenue, ROI ושיפור רציף של התהליך העסקי כולו."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {differenceCards.map((card) => (
               <article key={card.title}>
-                <Panel className="h-full p-6 md:p-7">
+                <Panel className="h-full p-6 lg:p-7">
                   <h3 className="type-display-feature text-foreground">
                     {card.title}
                   </h3>
@@ -94,7 +94,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="cta" className="px-6 pb-16 pt-6 md:px-10 md:pb-24">
+        <section id="cta" className="px-6 pb-16 pt-6 lg:px-10 lg:pb-24">
           <div className="contact-split mx-auto max-w-7xl">
             <div className="contact-split__grid" dir="ltr">
               <div className="contact-split__aside" dir="rtl">
@@ -148,7 +148,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <footer className="site-footer px-6 pb-8 pt-2 md:px-10 md:pb-10">
+        <footer className="site-footer px-6 pb-8 pt-2 lg:px-10 lg:pb-10">
           <div className="mx-auto max-w-7xl">
             <p className="site-footer__copy">
               © {currentYear} Checkmate. כל הזכויות שמורות.

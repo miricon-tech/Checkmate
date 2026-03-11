@@ -104,7 +104,7 @@ function ProcessVisual({ index }: { index: number }) {
 
 export function ProcessBento() {
   return (
-    <section id="how-it-works" className="process-bento-section px-6 py-16 md:px-10 md:py-24">
+    <section id="how-it-works" className="process-bento-section px-6 py-16 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <Badge tone="gold">איך זה עובד</Badge>

@@ -40,7 +40,7 @@ export function HeroQualification({
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3">
           {qualificationCards.map((card) => (
             <article
               key={card.title}
@@ -74,7 +74,7 @@ export function HeroQualification({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-[34px] border border-[rgba(22,52,92,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(253,249,241,0.98)_100%)] p-6 shadow-[0_28px_80px_rgba(22,52,92,0.12)] md:p-7">
+    <div className="relative overflow-hidden rounded-[34px] border border-[rgba(22,52,92,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(253,249,241,0.98)_100%)] p-6 shadow-[0_28px_80px_rgba(22,52,92,0.12)] lg:p-7">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.9)_8%,rgba(255,255,255,0.72)_62%,rgba(240,209,138,0.18)_100%)]" />
 
       <div className="relative space-y-6">
