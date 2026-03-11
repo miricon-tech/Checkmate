@@ -82,6 +82,27 @@ function readStoredPreferences() {
   }
 }
 
+function AccessibilityGlyph() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.8"
+    >
+      <circle cx="12" cy="4.75" r="1.75" />
+      <path d="M6.75 8.5h10.5" />
+      <path d="M12 8.5v10.75" />
+      <path d="M12 11.5 8.75 19" />
+      <path d="M12 11.5 15.25 19" />
+    </svg>
+  );
+}
+
 export function AccessibilityControls() {
   const [isOpen, setIsOpen] = useState(false);
   const [preferences, setPreferences] =
@@ -186,16 +207,12 @@ export function AccessibilityControls() {
         onClick={() => setIsOpen((current) => !current)}
         aria-expanded={isOpen}
         aria-controls="accessibility-panel"
+        aria-label={isOpen ? "סגירת כלי הנגישות" : "פתיחת כלי הנגישות"}
       >
         <span className="accessibility-trigger__icon" aria-hidden="true">
-          ◐
+          <AccessibilityGlyph />
         </span>
-        <span className="accessibility-trigger__content">
-          <span className="accessibility-trigger__title">נגישות</span>
-          <span className="accessibility-trigger__copy">
-            התאמות קריאה, ניגודיות ותנועה
-          </span>
-        </span>
+        <span className="sr-only">נגישות</span>
       </button>
     </aside>
   );

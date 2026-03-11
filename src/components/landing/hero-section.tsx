@@ -45,13 +45,13 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:px-8 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-6 lg:pb-24">
         <div className="lg:flex lg:items-start lg:gap-x-10 xl:gap-x-24">
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[35rem] lg:pt-8"
+            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[35rem]"
           >
-            <div className="mt-10 sm:mt-14 lg:mt-8">
+            <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.15)] px-3 py-1 type-body-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
@@ -63,20 +63,20 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-9 max-w-[11ch] text-[var(--accent-deep)] lg:max-w-[10.5ch]">
+            <h1 className="type-display-hero mt-7 max-w-[11ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[10.5ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-7 max-w-[32rem] text-[var(--muted)]">
+            <p className="type-body-xl mt-6 max-w-[32rem] text-[var(--muted)] lg:mt-7">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-9">
               <Button href="#cta" variant="gold" size="lg">
                 בדיקת התאמה (15 דק׳)
               </Button>
@@ -90,7 +90,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 flex w-full max-w-2xl sm:mt-24 lg:mx-0 lg:mt-0 lg:w-[42rem] lg:max-w-none lg:flex-none xl:w-[47rem]">
+          <div className="mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mx-0 lg:mt-0 lg:w-[42rem] lg:max-w-none lg:flex-none xl:w-[47rem]">
             <div className="w-full flex-none">
               <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
                 <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
