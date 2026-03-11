@@ -137,7 +137,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <LeadForm />
+            <LeadForm submitLabel="לקביעת בדיקת התאמה" />
           </div>
         </div>
       </section>

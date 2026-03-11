@@ -11,18 +11,36 @@ export const heroChecklist = [
   "מודל מבוסס ביצועים וצמיחה",
 ] as const;
 
-export const heroMetrics = [
+export const heroTrustBullets = [
+  "עסקי B2B ושירות בישראל",
+  "עסקה ממוצעת של 15,000 ש\"ח ומעלה",
+  "פוקוס על ROI, Pipeline ושליטה",
+] as const;
+
+export const qualificationCards = [
   {
-    label: "מודל עבודה",
-    value: "שותף צמיחה חיצוני",
+    cta: "בדיקת התאמה",
+    description:
+      "העסק עובד, אבל הצמיחה עדיין נשענת על בעל העסק, על הפניות, ועל מהלכים לא עקביים.",
+    href: "#cta",
+    icon: "briefcase",
+    title: "יש ביקוש, אבל אין מערכת",
   },
   {
-    label: "מיקוד",
-    value: "פגישות, סגירות ו־ROI",
+    cta: "לבדוק התאמה",
+    description:
+      "הבעיה היא לא רק בכמות הלידים, אלא במה שקורה מרגע שהם נכנסים ועד לרגע הסגירה.",
+    href: "#cta",
+    icon: "trend",
+    title: "יש לידים, אבל אין מספיק סגירה",
   },
   {
-    label: "שליטה",
-    value: "KPI, CRM ו־Pipeline ברור",
+    cta: "לקביעת שיחת התאמה",
+    description:
+      "שיווק, מכירות, תהליך סגירה, KPI ו־ROI תחת הובלה אחת שמחוברת לתוצאה.",
+    href: "#cta",
+    icon: "clipboard",
+    title: "צריך מנוע צמיחה מלא",
   },
 ] as const;
 
