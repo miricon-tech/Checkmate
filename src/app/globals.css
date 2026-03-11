@@ -352,7 +352,7 @@ a {
   gap: 0;
   font-family: var(--font-display-stack);
   font-weight: 600;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.056em;
   line-height: 0.88;
   text-transform: none;
 }
@@ -363,6 +363,7 @@ a {
 }
 
 .brand-mark__accent {
+  display: inline-block;
   background: linear-gradient(
     180deg,
     #f5da8f 0%,
@@ -370,9 +371,12 @@ a {
     #c79424 67%,
     #a96d08 100%
   );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  padding-inline-end: 0.038em;
 }
 
 .brand-lockup {
