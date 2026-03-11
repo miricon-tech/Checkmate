@@ -272,77 +272,77 @@ a {
 }
 
 .type-kicker {
-  font-size: clamp(0.68rem, 0.1vw + 0.66rem, 0.76rem);
+  font-size: clamp(0.67rem, 0.08vw + 0.65rem, 0.74rem);
   font-weight: 700;
-  letter-spacing: 0.18em;
-  line-height: 1.38;
+  letter-spacing: 0.16em;
+  line-height: 1.34;
   text-transform: uppercase;
 }
 
 .type-display-hero {
   font-family: var(--font-display-stack);
-  font-size: clamp(2.45rem, 1.62rem + 2.9vw, 4.85rem);
+  font-size: clamp(2.18rem, 1.5rem + 2.35vw, 4.25rem);
   font-weight: 600;
-  letter-spacing: -0.042em;
-  line-height: 0.98;
+  letter-spacing: -0.032em;
+  line-height: 1.03;
   text-wrap: balance;
 }
 
 .type-display-section {
   font-family: var(--font-display-stack);
-  font-size: clamp(1.76rem, 1.18rem + 1.85vw, 3.1rem);
+  font-size: clamp(1.62rem, 1.14rem + 1.45vw, 2.7rem);
   font-weight: 600;
-  letter-spacing: -0.034em;
-  line-height: 1.1;
+  letter-spacing: -0.028em;
+  line-height: 1.14;
   text-wrap: balance;
 }
 
 .type-display-feature {
   font-family: var(--font-display-stack);
-  font-size: clamp(1.06rem, 0.98rem + 0.48vw, 1.38rem);
+  font-size: clamp(1.02rem, 0.96rem + 0.34vw, 1.26rem);
   font-weight: 600;
-  letter-spacing: -0.022em;
-  line-height: 1.34;
+  letter-spacing: -0.016em;
+  line-height: 1.38;
   text-wrap: balance;
 }
 
 .type-form-title {
   font-family: var(--font-display-stack);
-  font-size: clamp(1.08rem, 0.97rem + 0.46vw, 1.3rem);
+  font-size: clamp(1.03rem, 0.95rem + 0.32vw, 1.2rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.34;
+  letter-spacing: -0.014em;
+  line-height: 1.36;
 }
 
 .type-body-xl {
-  font-size: clamp(1rem, 0.94rem + 0.36vw, 1.18rem);
-  letter-spacing: -0.014em;
-  line-height: 1.8;
-}
-
-.type-body-lg {
-  font-size: clamp(0.97rem, 0.93rem + 0.18vw, 1.06rem);
-  letter-spacing: -0.012em;
-  line-height: 1.76;
-}
-
-.type-body {
-  font-size: clamp(0.94rem, 0.92rem + 0.1vw, 0.99rem);
+  font-size: clamp(0.98rem, 0.94rem + 0.24vw, 1.1rem);
   letter-spacing: -0.01em;
   line-height: 1.74;
 }
 
-.type-body-sm {
-  font-size: clamp(0.84rem, 0.82rem + 0.08vw, 0.9rem);
+.type-body-lg {
+  font-size: clamp(0.95rem, 0.92rem + 0.14vw, 1.02rem);
+  letter-spacing: -0.01em;
+  line-height: 1.72;
+}
+
+.type-body {
+  font-size: clamp(0.92rem, 0.9rem + 0.08vw, 0.97rem);
   letter-spacing: -0.008em;
-  line-height: 1.62;
+  line-height: 1.7;
+}
+
+.type-body-sm {
+  font-size: clamp(0.82rem, 0.8rem + 0.06vw, 0.87rem);
+  letter-spacing: -0.006em;
+  line-height: 1.56;
 }
 
 .type-link {
-  font-size: clamp(0.87rem, 0.85rem + 0.08vw, 0.93rem);
+  font-size: clamp(0.85rem, 0.84rem + 0.06vw, 0.9rem);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.48;
+  letter-spacing: -0.008em;
+  line-height: 1.44;
 }
 
 .brand-mark {

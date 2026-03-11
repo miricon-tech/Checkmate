@@ -49,7 +49,7 @@ export function HeroSection() {
         <div className="lg:flex lg:items-start lg:gap-x-10 xl:gap-x-24">
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[35rem]"
+            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[32rem] xl:max-w-[33rem]"
           >
             <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -63,14 +63,14 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-7 max-w-[12.5ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[11.5ch]">
+            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[12.2ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-6 max-w-[30rem] text-[var(--muted)] lg:mt-7">
+            <p className="type-body-xl mt-6 max-w-[28.5rem] text-[var(--muted)] lg:mt-7">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
@@ -90,7 +90,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mx-0 lg:mt-0 lg:w-[42rem] lg:max-w-none lg:flex-none xl:w-[47rem]">
+          <div className="mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:-ml-12 lg:mx-0 lg:mt-0 lg:w-[45rem] lg:max-w-none lg:flex-none xl:-ml-20 xl:w-[51rem]">
             <div className="w-full flex-none">
               <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
                 <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
@@ -100,7 +100,7 @@ export function HeroSection() {
                     fill
                     priority
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                    className="object-cover object-[52%_center] scale-[1.04]"
+                    className="object-cover object-[58%_center] scale-[1.08]"
                   />
                   <div
                     aria-hidden="true"
