@@ -29,7 +29,7 @@ function BriefcaseIcon() {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
+      strokeWidth="1.65"
     >
       <path d="M8 7V5.8A1.8 1.8 0 0 1 9.8 4h4.4A1.8 1.8 0 0 1 16 5.8V7" />
       <path d="M4.8 7h14.4A1.8 1.8 0 0 1 21 8.8v7.4A1.8 1.8 0 0 1 19.2 18H4.8A1.8 1.8 0 0 1 3 16.2V8.8A1.8 1.8 0 0 1 4.8 7Z" />
@@ -48,7 +48,7 @@ function TrendIcon() {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
+      strokeWidth="1.65"
     >
       <path d="M4 17.5 9 12.5l3.2 3.2L20 8" />
       <path d="M14.5 8H20v5.5" />
@@ -67,7 +67,7 @@ function ClipboardIcon() {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
+      strokeWidth="1.65"
     >
       <path d="M9 5.5h6" />
       <path d="M9.8 4h4.4A1.8 1.8 0 0 1 16 5.8V7h1.4A1.6 1.6 0 0 1 19 8.6v10.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V8.6A1.6 1.6 0 0 1 6.6 7H8V5.8A1.8 1.8 0 0 1 9.8 4Z" />
@@ -112,10 +112,10 @@ export function HeroQualification({
           {qualificationCards.map((card) => (
             <article
               key={card.title}
-              className="rounded-[24px] border border-[rgba(22,52,92,0.08)] bg-white/90 px-4 py-4 shadow-[0_10px_26px_rgba(22,52,92,0.05)]"
+              className="premium-card px-4 py-4"
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(22,52,92,1)_0%,rgba(33,72,120,1)_100%)] text-white shadow-[0_8px_22px_rgba(22,52,92,0.16)]">
+                <div className="premium-icon-shell premium-icon-shell--md">
                   <QualificationIcon name={card.icon} />
                 </div>
                 <div className="min-w-0 space-y-2">
@@ -163,10 +163,10 @@ export function HeroQualification({
           {qualificationCards.map((card) => (
             <article
               key={card.title}
-              className="rounded-[26px] border border-[rgba(22,52,92,0.08)] bg-white/86 p-5 shadow-[0_12px_30px_rgba(22,52,92,0.06)] backdrop-blur-sm"
+              className="premium-card p-5 backdrop-blur-sm"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(22,52,92,1)_0%,rgba(33,72,120,1)_100%)] text-white shadow-[0_10px_24px_rgba(22,52,92,0.18)]">
+                <div className="premium-icon-shell premium-icon-shell--lg">
                   <QualificationIcon name={card.icon} />
                 </div>
                 <div className="min-w-0 space-y-3">
