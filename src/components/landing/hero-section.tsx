@@ -46,10 +46,10 @@ export function HeroSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:px-8 lg:py-40">
-        <div className="lg:flex lg:flex-row-reverse lg:items-start">
+        <div className="lg:flex lg:items-start lg:gap-x-10 xl:gap-x-24">
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[34rem] lg:pt-8"
+            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[35rem] lg:pt-8"
           >
             <div className="mt-10 sm:mt-14 lg:mt-8">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -90,17 +90,17 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mt-0 lg:mr-10 lg:ml-0 lg:max-w-none lg:flex-none xl:mr-32">
-            <div className="w-full max-w-3xl flex-none sm:max-w-5xl lg:max-w-[44rem] xl:max-w-[48rem]">
+          <div className="mx-auto mt-16 flex w-full max-w-2xl sm:mt-24 lg:mx-0 lg:mt-0 lg:w-[42rem] lg:max-w-none lg:flex-none xl:w-[47rem]">
+            <div className="w-full flex-none">
               <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
-                <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[41rem]">
+                <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
                   <Image
                     src="/home-page-hero/Chessboard.png"
                     alt="לוח שחמט באווירה עסקית"
                     fill
                     priority
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                    className="object-cover object-[46%_center] scale-[1.035]"
+                    className="object-cover object-[52%_center] scale-[1.04]"
                   />
                   <div
                     aria-hidden="true"
