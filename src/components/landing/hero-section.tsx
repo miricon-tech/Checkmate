@@ -76,32 +76,60 @@ export function HeroSection() {
 
           <div className="mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:-ml-12 lg:mx-0 lg:mt-0 lg:w-[45rem] lg:max-w-none lg:flex-none xl:-ml-20 xl:w-[51rem]">
             <div className="w-full flex-none">
-              <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
-                <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
-                  <Image
-                    src="/home-page-hero/Chessboard.png"
-                    alt="לוח שחמט באווירה עסקית"
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                    className="object-cover object-[58%_center] scale-[1.08]"
-                  />
+              <div className="relative isolate">
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-8 left-10 right-14 h-24 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.18)_0%,rgba(22,52,92,0)_72%)] blur-3xl"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-5 right-10 h-28 w-40 rounded-full bg-[radial-gradient(circle,rgba(240,209,138,0.34)_0%,rgba(240,209,138,0)_72%)] blur-3xl"
+                />
+
+                <div className="relative overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(248,251,255,0.94)_58%,rgba(251,246,236,0.96)_100%)] p-[0.65rem] shadow-[0_40px_110px_rgba(22,52,92,0.14)]">
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,18,34,0.26)_0%,rgba(8,18,34,0.08)_32%,rgba(255,255,255,0)_58%,rgba(200,164,93,0.22)_100%)]"
+                    className="pointer-events-none absolute inset-x-12 top-0 h-14 bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0)_72%)]"
                   />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.32)_0%,rgba(255,255,255,0)_100%)]"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(180deg,rgba(8,18,34,0)_0%,rgba(8,18,34,0.2)_100%)]"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-4 rounded-[26px] border border-[rgba(255,255,255,0.18)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]"
-                  />
+
+                  <div className="relative h-[22rem] overflow-hidden rounded-[34px] bg-[rgba(244,241,233,0.86)] shadow-[0_28px_56px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
+                    <Image
+                      src="/home-page-hero/Chessboard.png"
+                      alt="לוח שחמט באווירה עסקית"
+                      fill
+                      priority
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
+                      className="object-cover object-[59%_center] scale-[1.1] brightness-[0.97] contrast-[1.03] saturate-[0.94]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,18,34,0.3)_0%,rgba(8,18,34,0.12)_28%,rgba(255,255,255,0.02)_54%,rgba(200,164,93,0.18)_100%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.3)_0%,rgba(255,255,255,0)_100%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute left-0 top-0 h-full w-24 bg-[linear-gradient(90deg,rgba(8,18,34,0.14)_0%,rgba(8,18,34,0)_100%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(8,18,34,0)_0%,rgba(8,18,34,0.24)_100%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute right-0 top-0 h-28 w-40 bg-[radial-gradient(circle_at_top_right,rgba(240,209,138,0.24)_0%,rgba(240,209,138,0)_72%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_30%)]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-[1.15rem] rounded-[28px] border border-[rgba(255,255,255,0.16)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
