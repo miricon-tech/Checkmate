@@ -94,17 +94,18 @@ export function HeroSection() {
           </div>
 
           <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:translate-x-4 lg:-translate-y-3 lg:justify-self-start lg:pt-4">
-            <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[44rem] xl:max-w-[47rem]">
+            <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[45rem] xl:max-w-[48rem]">
               <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
-                <Image
-                  src="/home-page-hero/Chessboard.png"
-                  alt="לוח שחמט באווירה עסקית"
-                  width={1536}
-                  height={1024}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="w-full rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)]"
-                />
+                <div className="relative h-[22rem] overflow-hidden rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[41rem]">
+                  <Image
+                    src="/home-page-hero/Chessboard.png"
+                    alt="לוח שחמט באווירה עסקית"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
+                    className="object-cover object-[44%_center] scale-[1.02]"
+                  />
+                </div>
               </div>
             </div>
           </div>
