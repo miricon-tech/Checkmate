@@ -87,18 +87,32 @@ function AccessibilityGlyph() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-[1.15rem] w-[1.15rem]"
       fill="none"
-      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
     >
-      <circle cx="12" cy="4.75" r="1.75" />
-      <path d="M6.75 8.5h10.5" />
-      <path d="M12 8.5v10.75" />
-      <path d="M12 11.5 8.75 19" />
-      <path d="M12 11.5 15.25 19" />
+      <path
+        d="M6.7 8.7c1.45 1.16 3.33 1.74 5.3 1.74s3.85-.58 5.3-1.74"
+        stroke="var(--accent)"
+        strokeWidth="1.55"
+      />
+      <circle cx="12" cy="4.7" r="1.55" fill="currentColor" />
+      <path
+        d="M12 8.9v6.1"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M12 11.8 8.8 18.35"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M12 11.8 15.2 18.35"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
     </svg>
   );
 }

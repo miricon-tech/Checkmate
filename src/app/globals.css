@@ -889,34 +889,55 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.35rem;
-  height: 3.35rem;
+  position: relative;
+  width: 3.45rem;
+  height: 3.45rem;
   padding: 0;
   border: 1px solid rgba(22, 52, 92, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
+  border-radius: 1.15rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(250, 247, 240, 0.94) 100%
+  );
   box-shadow:
-    0 14px 28px rgba(22, 52, 92, 0.12),
-    0 0 0 4px rgba(255, 255, 255, 0.82);
+    0 16px 30px rgba(22, 52, 92, 0.12),
+    0 0 0 4px rgba(255, 255, 255, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   color: var(--accent-deep);
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
-    border-color 160ms ease;
+    border-color 160ms ease,
+    background 160ms ease;
 }
 
 .accessibility-trigger__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(
+  width: 2.38rem;
+  height: 2.38rem;
+  border-radius: 0.9rem;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(
     180deg,
-    rgba(22, 52, 92, 0.06) 0%,
-    rgba(200, 164, 93, 0.14) 100%
+    rgba(22, 52, 92, 0.08) 0%,
+    rgba(200, 164, 93, 0.18) 100%
   );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 8px 18px rgba(22, 52, 92, 0.08);
+}
+
+.accessibility-trigger:hover {
+  transform: translateY(-1px);
+  border-color: rgba(200, 164, 93, 0.22);
+  box-shadow:
+    0 20px 34px rgba(22, 52, 92, 0.15),
+    0 0 0 4px rgba(255, 255, 255, 0.88),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
 .accessibility-panel {
