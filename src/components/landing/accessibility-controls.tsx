@@ -1,5 +1,6 @@
 "use client";
 
+import { Accessibility } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type AccessibilityPreferences = {
@@ -80,41 +81,6 @@ function readStoredPreferences() {
   } catch {
     return defaultPreferences;
   }
-}
-
-function AccessibilityGlyph() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-[1.15rem] w-[1.15rem]"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path
-        d="M6.7 8.7c1.45 1.16 3.33 1.74 5.3 1.74s3.85-.58 5.3-1.74"
-        stroke="var(--accent)"
-        strokeWidth="1.55"
-      />
-      <circle cx="12" cy="4.7" r="1.55" fill="currentColor" />
-      <path
-        d="M12 8.9v6.1"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M12 11.8 8.8 18.35"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M12 11.8 15.2 18.35"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
 }
 
 export function AccessibilityControls() {
@@ -224,7 +190,7 @@ export function AccessibilityControls() {
         aria-label={isOpen ? "סגירת כלי הנגישות" : "פתיחת כלי הנגישות"}
       >
         <span className="accessibility-trigger__icon" aria-hidden="true">
-          <AccessibilityGlyph />
+          <Accessibility className="h-[1.1rem] w-[1.1rem]" strokeWidth={1.85} />
         </span>
         <span className="sr-only">נגישות</span>
       </button>

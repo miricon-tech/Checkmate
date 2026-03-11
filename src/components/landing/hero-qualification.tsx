@@ -1,91 +1,23 @@
+import {
+  BriefcaseBusiness,
+  ChevronLeft,
+  ClipboardCheck,
+  TrendingUp,
+} from "lucide-react";
 import { qualificationCards } from "@/content/landing";
 
 type QualificationIconName = (typeof qualificationCards)[number]["icon"];
 
-function ChevronRightTiny() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 20 20"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-    >
-      <path d="M7 4.5 12.5 10 7 15.5" />
-    </svg>
-  );
-}
-
-function BriefcaseIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.65"
-    >
-      <path d="M8 7V5.8A1.8 1.8 0 0 1 9.8 4h4.4A1.8 1.8 0 0 1 16 5.8V7" />
-      <path d="M4.8 7h14.4A1.8 1.8 0 0 1 21 8.8v7.4A1.8 1.8 0 0 1 19.2 18H4.8A1.8 1.8 0 0 1 3 16.2V8.8A1.8 1.8 0 0 1 4.8 7Z" />
-      <path d="M3 11.5h18" />
-    </svg>
-  );
-}
-
-function TrendIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.65"
-    >
-      <path d="M4 17.5 9 12.5l3.2 3.2L20 8" />
-      <path d="M14.5 8H20v5.5" />
-      <path d="M4 20h16" />
-    </svg>
-  );
-}
-
-function ClipboardIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.65"
-    >
-      <path d="M9 5.5h6" />
-      <path d="M9.8 4h4.4A1.8 1.8 0 0 1 16 5.8V7h1.4A1.6 1.6 0 0 1 19 8.6v10.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V8.6A1.6 1.6 0 0 1 6.6 7H8V5.8A1.8 1.8 0 0 1 9.8 4Z" />
-      <path d="m8.5 14 2.2 2.2L15.5 11.5" />
-    </svg>
-  );
-}
-
 function QualificationIcon({ name }: { name: QualificationIconName }) {
   if (name === "briefcase") {
-    return <BriefcaseIcon />;
+    return <BriefcaseBusiness className="h-5 w-5" strokeWidth={1.7} />;
   }
 
   if (name === "trend") {
-    return <TrendIcon />;
+    return <TrendingUp className="h-5 w-5" strokeWidth={1.7} />;
   }
 
-  return <ClipboardIcon />;
+  return <ClipboardCheck className="h-5 w-5" strokeWidth={1.7} />;
 }
 
 type HeroQualificationProps = {
@@ -130,7 +62,7 @@ export function HeroQualification({
                     className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
-                    <ChevronRightTiny />
+                    <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
                   </a>
                 </div>
               </div>
@@ -181,7 +113,7 @@ export function HeroQualification({
                     className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
-                    <ChevronRightTiny />
+                    <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
                   </a>
                 </div>
               </div>

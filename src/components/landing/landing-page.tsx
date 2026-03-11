@@ -1,3 +1,4 @@
+import { Building2, TrendingUp, Workflow } from "lucide-react";
 import {
   ctaChecklist,
   differenceCards,
@@ -13,68 +14,7 @@ import { LeadForm } from "@/components/landing/lead-form";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Panel } from "@/components/ui/panel";
 
-function BusinessIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-6 w-6"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-    >
-      <path d="M4.75 20h14.5" />
-      <path d="M6 20V8.4A1.4 1.4 0 0 1 7.4 7h9.2A1.4 1.4 0 0 1 18 8.4V20" />
-      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
-      <path d="M9 11h.01M12 11h.01M15 11h.01M9 14.5h.01M12 14.5h.01M15 14.5h.01" />
-    </svg>
-  );
-}
-
-function LinkFlowIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-6 w-6"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-    >
-      <path d="M6 7.5h5.5" />
-      <path d="M6 16.5h5.5" />
-      <path d="M15 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z" />
-      <path d="M15 12a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z" />
-      <path d="M9 7.5v9" />
-      <path d="M9 12h3" />
-    </svg>
-  );
-}
-
-function GrowthIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-6 w-6"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-    >
-      <path d="M4.5 19.5h15" />
-      <path d="M6.5 15.5 10 12l2.8 2.8L18 9.5" />
-      <path d="M13.5 9.5H18V14" />
-    </svg>
-  );
-}
-
-const ctaDetailIcons = [BusinessIcon, LinkFlowIcon, GrowthIcon] as const;
+const ctaDetailIcons = [Building2, Workflow, TrendingUp] as const;
 
 export function LandingPage() {
   return (
@@ -203,13 +143,13 @@ export function LandingPage() {
 
                   <dl className="contact-detail-list">
                     {ctaChecklist.map((item, index) => {
-                      const Icon = ctaDetailIcons[index] ?? BusinessIcon;
+                      const Icon = ctaDetailIcons[index] ?? Building2;
 
                       return (
                         <div key={item} className="contact-detail">
                           <dt className="contact-detail__icon">
                             <span className="sr-only">{item}</span>
-                            <Icon />
+                            <Icon className="h-5 w-5" strokeWidth={1.75} />
                           </dt>
                           <dd className="type-body text-[var(--accent-deep)]">
                             {item}

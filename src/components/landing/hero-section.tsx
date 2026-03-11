@@ -1,22 +1,6 @@
 import Image from "next/image";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-function ChevronRightTiny() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 20 20"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-    >
-      <path d="M7 4.5 12.5 10 7 15.5" />
-    </svg>
-  );
-}
 
 export function HeroSection() {
   return (
@@ -58,7 +42,7 @@ export function HeroSection() {
                 </span>
                 <span className="type-link inline-flex items-center gap-1.5 text-[color:rgba(93,108,119,0.96)]">
                   <span>שותף צמיחה לעסקי B2B ושירות בישראל</span>
-                  <ChevronRightTiny />
+                  <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
                 </span>
               </div>
             </div>
@@ -85,7 +69,7 @@ export function HeroSection() {
                 className="type-link inline-flex items-center gap-2 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
               >
                 <span>למי זה מתאים</span>
-                <ChevronRightTiny />
+                <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
               </a>
             </div>
           </div>
