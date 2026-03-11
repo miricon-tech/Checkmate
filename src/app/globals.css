@@ -558,12 +558,31 @@ a {
   font-weight: 600;
   letter-spacing: -0.012em;
   line-height: 1.2;
+  text-decoration: none;
+  will-change: transform;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease;
+}
+
+.ui-button::before {
+  content: "";
+  position: absolute;
+  inset-inline: 18%;
+  bottom: 0.5rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.2) 0%, rgba(22, 52, 92, 0) 72%);
+  opacity: 0;
+  filter: blur(10px);
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    background 220ms ease;
 }
 
 .motion-button::after {
@@ -580,6 +599,11 @@ a {
   );
   transform: translateX(-145%) skewX(-18deg);
   transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ui-button:focus-visible {
+  outline: 3px solid rgba(200, 164, 93, 0.28);
+  outline-offset: 3px;
 }
 
 .ui-button--primary {
@@ -614,6 +638,18 @@ a {
     0 14px 34px rgba(184, 132, 28, 0.14),
     inset 0 1px 0 rgba(255, 247, 217, 0.76);
   color: #2e2410;
+}
+
+.ui-button--primary::before {
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.28) 0%, rgba(22, 52, 92, 0) 72%);
+}
+
+.ui-button--surface::before {
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.14) 0%, rgba(22, 52, 92, 0) 72%);
+}
+
+.ui-button--gold::before {
+  background: radial-gradient(circle, rgba(200, 164, 93, 0.28) 0%, rgba(200, 164, 93, 0) 72%);
 }
 
 .ui-badge {
@@ -839,6 +875,30 @@ a {
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     color 220ms ease;
+}
+
+.motion-link {
+  position: relative;
+}
+
+.motion-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.18rem;
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(200, 164, 93, 0.9) 0%,
+    rgba(22, 52, 92, 0.6) 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.72);
+  transform-origin: right center;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .process-bento-visual {
@@ -2033,11 +2093,42 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   .ui-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  .ui-button:hover::before {
+    opacity: 1;
+    transform: translateY(0.08rem) scaleX(1.08);
   }
 
   .motion-button:hover::after {
     transform: translateX(145%) skewX(-18deg);
+  }
+
+  .ui-button--primary:hover {
+    box-shadow:
+      0 22px 42px rgba(22, 52, 92, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .ui-button--surface:hover {
+    border-color: rgba(200, 164, 93, 0.24);
+    box-shadow:
+      0 18px 34px rgba(22, 52, 92, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  }
+
+  .ui-button--gold:hover {
+    background: #e2c27b;
+    border-color: rgba(169, 109, 8, 0.34);
+    box-shadow:
+      0 20px 38px rgba(184, 132, 28, 0.18),
+      inset 0 1px 0 rgba(255, 249, 224, 0.82);
+  }
+
+  .motion-link:hover::after {
+    opacity: 0.88;
+    transform: scaleX(1);
   }
 
   .motion-panel:hover,
@@ -2066,6 +2157,10 @@ a {
   .motion-link:hover svg,
   .motion-link:hover .lucide {
     transform: translateX(-2px);
+  }
+
+  .motion-link:hover {
+    color: var(--accent);
   }
 
   .whatsapp-fab:hover {
@@ -2138,4 +2233,13 @@ a {
     transform: scale(1.11) translateY(-4px);
     filter: saturate(0.86) brightness(0.97);
   }
+}
+
+.ui-button:active {
+  transform: translateY(0) scale(0.992);
+}
+
+.motion-link:active svg,
+.motion-link:active .lucide {
+  transform: translateX(-1px);
 }
