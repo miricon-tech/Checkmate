@@ -79,55 +79,55 @@ export function HeroSection() {
               <div className="relative isolate">
                 <div
                   aria-hidden="true"
-                  className="absolute -bottom-8 left-10 right-14 h-24 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.18)_0%,rgba(22,52,92,0)_72%)] blur-3xl"
+                  className="absolute -bottom-8 left-10 right-14 h-24 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.14)_0%,rgba(22,52,92,0)_72%)] blur-3xl"
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute -top-5 right-10 h-28 w-40 rounded-full bg-[radial-gradient(circle,rgba(240,209,138,0.34)_0%,rgba(240,209,138,0)_72%)] blur-3xl"
+                  className="absolute -top-5 right-10 h-28 w-40 rounded-full bg-[radial-gradient(circle,rgba(240,209,138,0.2)_0%,rgba(240,209,138,0)_72%)] blur-3xl"
                 />
 
-                <div className="relative overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(248,251,255,0.94)_58%,rgba(251,246,236,0.96)_100%)] p-[0.65rem] shadow-[0_40px_110px_rgba(22,52,92,0.14)]">
+                <div className="relative overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.965)_0%,rgba(248,251,255,0.95)_58%,rgba(251,247,239,0.96)_100%)] p-[0.65rem] shadow-[0_34px_88px_rgba(22,52,92,0.12)]">
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-12 top-0 h-14 bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0)_72%)]"
+                    className="pointer-events-none absolute inset-x-12 top-0 h-14 bg-[radial-gradient(circle,rgba(255,255,255,0.68)_0%,rgba(255,255,255,0)_72%)]"
                   />
 
-                  <div className="relative h-[22rem] overflow-hidden rounded-[34px] bg-[rgba(244,241,233,0.86)] shadow-[0_28px_56px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
+                  <div className="relative h-[22rem] overflow-hidden rounded-[34px] bg-[rgba(244,241,233,0.9)] shadow-[0_24px_48px_rgba(22,52,92,0.1)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
                     <Image
                       src="/home-page-hero/Chessboard.png"
                       alt="לוח שחמט באווירה עסקית"
                       fill
                       priority
                       sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                      className="object-cover object-[59%_center] scale-[1.1] brightness-[0.97] contrast-[1.03] saturate-[0.94]"
+                      className="object-cover object-[59%_center] scale-[1.095] brightness-[0.955] contrast-[0.99] saturate-[0.82]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,18,34,0.3)_0%,rgba(8,18,34,0.12)_28%,rgba(255,255,255,0.02)_54%,rgba(200,164,93,0.18)_100%)]"
+                      className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,18,34,0.22)_0%,rgba(8,18,34,0.08)_28%,rgba(255,255,255,0.05)_56%,rgba(200,164,93,0.1)_100%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.3)_0%,rgba(255,255,255,0)_100%)]"
+                      className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0)_100%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute left-0 top-0 h-full w-24 bg-[linear-gradient(90deg,rgba(8,18,34,0.14)_0%,rgba(8,18,34,0)_100%)]"
+                      className="absolute left-0 top-0 h-full w-24 bg-[linear-gradient(90deg,rgba(8,18,34,0.1)_0%,rgba(8,18,34,0)_100%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(8,18,34,0)_0%,rgba(8,18,34,0.24)_100%)]"
+                      className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(8,18,34,0)_0%,rgba(8,18,34,0.18)_100%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute right-0 top-0 h-28 w-40 bg-[radial-gradient(circle_at_top_right,rgba(240,209,138,0.24)_0%,rgba(240,209,138,0)_72%)]"
+                      className="absolute right-0 top-0 h-28 w-40 bg-[radial-gradient(circle_at_top_right,rgba(240,209,138,0.14)_0%,rgba(240,209,138,0)_72%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_30%)]"
+                      className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0)_30%)]"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-[1.15rem] rounded-[28px] border border-[rgba(255,255,255,0.16)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]"
+                      className="absolute inset-[1.15rem] rounded-[28px] border border-[rgba(255,255,255,0.14)] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
                     />
                   </div>
                 </div>
