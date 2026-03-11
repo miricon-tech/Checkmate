@@ -3,7 +3,6 @@ import {
   ctaChecklist,
   differenceCards,
   fitCards,
-  processCards,
 } from "@/content/landing";
 import { AccessibilityControls } from "@/components/landing/accessibility-controls";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
@@ -11,10 +10,12 @@ import { HeroQualification } from "@/components/landing/hero-qualification";
 import { HeroSection } from "@/components/landing/hero-section";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LeadForm } from "@/components/landing/lead-form";
+import { ProcessBento } from "@/components/landing/process-bento";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Panel } from "@/components/ui/panel";
 
 const ctaDetailIcons = [Building2, Workflow, TrendingUp] as const;
+const currentYear = new Date().getFullYear();
 
 export function LandingPage() {
   return (
@@ -33,32 +34,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section
-          id="how-it-works"
-          className="mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-24"
-        >
-          <SectionHeading
-            eyebrow="איך זה עובד"
-            title="מחברים את כל מה שהעסק מחזיק היום בנפרד למערכת צמיחה אחת."
-            description="במקום לנהל שיווק, מכירות, follow-up ו־CRM כגופים נפרדים, Checkmate מיישרת את כולם סביב יעד אחד: יותר פגישות שמתקיימות, יותר שליטה ויותר הכנסה."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {processCards.map((card) => (
-              <article key={card.title}>
-                <Panel className="h-full p-6 md:p-7">
-                  <p className="eyebrow type-kicker">{card.eyebrow}</p>
-                  <h3 className="type-display-feature mt-4 text-foreground">
-                    {card.title}
-                  </h3>
-                  <p className="type-body muted-copy mt-4">
-                    {card.description}
-                  </p>
-                </Panel>
-              </article>
-            ))}
-          </div>
-        </section>
+        <ProcessBento />
 
         <section
           id="fit"
@@ -171,6 +147,14 @@ export function LandingPage() {
             </div>
           </div>
         </section>
+
+        <footer className="site-footer px-6 pb-8 pt-2 md:px-10 md:pb-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="site-footer__copy">
+              © {currentYear} Checkmate. כל הזכויות שמורות.
+            </p>
+          </div>
+        </footer>
 
         <FloatingWhatsApp />
         <AccessibilityControls />
