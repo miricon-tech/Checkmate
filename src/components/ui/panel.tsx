@@ -8,10 +8,10 @@ type PanelProps = {
 } & Omit<HTMLAttributes<HTMLDivElement>, "className">;
 
 const toneClasses = {
-  default: "ui-panel",
-  strong: "ui-panel ui-panel--strong",
-  soft: "ui-panel ui-panel--soft",
-  dark: "ui-panel ui-panel--dark",
+  default: "ui-panel motion-panel",
+  strong: "ui-panel ui-panel--strong motion-panel",
+  soft: "ui-panel ui-panel--soft motion-panel",
+  dark: "ui-panel ui-panel--dark motion-panel",
 } as const;
 
 export function Panel({

@@ -23,10 +23,10 @@ type NativeButtonProps = SharedButtonProps & {
 type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variantClasses = {
-  primary: "ui-button ui-button--primary",
-  secondary: "ui-button ui-button--secondary",
-  surface: "ui-button ui-button--surface",
-  gold: "ui-button ui-button--gold",
+  primary: "ui-button ui-button--primary motion-button",
+  secondary: "ui-button ui-button--secondary motion-button",
+  surface: "ui-button ui-button--surface motion-button",
+  gold: "ui-button ui-button--gold motion-button",
 } as const;
 
 const sizeClasses = {

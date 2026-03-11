@@ -59,7 +59,7 @@ export function HeroQualification({
                   </p>
                   <a
                     href={card.href}
-                    className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                    className="motion-link type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
                     <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
@@ -110,7 +110,7 @@ export function HeroQualification({
                   </p>
                   <a
                     href={card.href}
-                    className="type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                    className="motion-link type-link inline-flex items-center gap-1 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
                   >
                     <span>{card.cta}</span>
                     <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />

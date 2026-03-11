@@ -90,6 +90,18 @@ html[data-accessibility-motion="reduced"] *::after {
   }
 }
 
+@keyframes fade-up-premium {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -166,6 +178,18 @@ a {
 
 .page-shell {
   isolation: isolate;
+}
+
+.motion-fade-up {
+  animation: fade-up-premium 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.motion-fade-up--delay-1 {
+  animation-delay: 80ms;
+}
+
+.motion-fade-up--delay-2 {
+  animation-delay: 170ms;
 }
 
 .scroll-progress {
@@ -425,6 +449,9 @@ a {
 }
 
 .ui-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -442,8 +469,28 @@ a {
     color 180ms ease;
 }
 
+.motion-button::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 18%,
+    rgba(255, 255, 255, 0.34) 48%,
+    rgba(255, 255, 255, 0) 82%
+  );
+  transform: translateX(-145%) skewX(-18deg);
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .ui-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.motion-button:hover::after {
+  transform: translateX(145%) skewX(-18deg);
 }
 
 .ui-button--primary {
@@ -536,6 +583,41 @@ a {
   box-shadow:
     0 18px 46px rgba(22, 52, 92, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.motion-panel,
+.premium-card,
+.process-bento-card,
+.contact-detail,
+.contact-form-panel {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.motion-panel:hover,
+.premium-card:hover,
+.process-bento-card:hover,
+.contact-detail:hover,
+.contact-form-panel:hover {
+  transform: translateY(-3px);
+}
+
+.motion-panel:hover,
+.premium-card:hover {
+  box-shadow:
+    0 22px 52px rgba(22, 52, 92, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.process-bento-card:hover {
+  box-shadow: 0 28px 82px rgba(22, 52, 92, 0.12);
+}
+
+.contact-detail:hover {
+  border-color: rgba(200, 164, 93, 0.18);
 }
 
 .ui-panel--strong {
@@ -719,6 +801,18 @@ a {
   margin-top: 0.9rem;
   max-width: 31rem;
   color: rgba(63, 76, 91, 0.82);
+}
+
+.motion-link svg,
+.motion-link .lucide {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms ease;
+}
+
+.motion-link:hover svg,
+.motion-link:hover .lucide {
+  transform: translateX(-2px);
 }
 
 .process-bento-visual {
@@ -1524,6 +1618,26 @@ a {
   color: var(--accent-deep);
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.hero-figure__frame,
+.hero-figure__media,
+.hero-figure__image {
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms ease,
+    filter 520ms ease,
+    border-color 320ms ease;
+}
+
+.hero-figure:hover .hero-figure__frame {
+  transform: translateY(-3px);
+  box-shadow: 0 42px 96px rgba(22, 52, 92, 0.16);
+}
+
+.hero-figure:hover .hero-figure__image {
+  transform: scale(1.11) translateY(-4px);
+  filter: saturate(0.86) brightness(0.97);
 }
 
 @media (min-width: 1024px) {

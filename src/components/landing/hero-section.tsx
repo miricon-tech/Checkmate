@@ -33,7 +33,7 @@ export function HeroSection() {
         <div className="lg:flex lg:items-start lg:gap-x-10 xl:gap-x-24">
           <div
             dir="rtl"
-            className="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[32rem] xl:max-w-[33rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[32rem] xl:max-w-[33rem]"
           >
             <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -66,7 +66,7 @@ export function HeroSection() {
               </Button>
               <a
                 href="#qualification"
-                className="type-link inline-flex items-center gap-2 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                className="motion-link type-link inline-flex items-center gap-2 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
               >
                 <span>למי זה מתאים</span>
                 <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
@@ -74,9 +74,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:-ml-12 lg:mx-0 lg:mt-0 lg:w-[45rem] lg:max-w-none lg:flex-none xl:-ml-20 xl:w-[51rem]">
+          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:-ml-12 lg:mx-0 lg:mt-0 lg:w-[45rem] lg:max-w-none lg:flex-none xl:-ml-20 xl:w-[51rem]">
             <div className="w-full flex-none">
-              <div className="relative isolate">
+              <div className="hero-figure relative isolate">
                 <div
                   aria-hidden="true"
                   className="absolute -bottom-8 left-10 right-14 h-24 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.14)_0%,rgba(22,52,92,0)_72%)] blur-3xl"
@@ -86,20 +86,20 @@ export function HeroSection() {
                   className="absolute -top-5 right-10 h-28 w-40 rounded-full bg-[radial-gradient(circle,rgba(240,209,138,0.2)_0%,rgba(240,209,138,0)_72%)] blur-3xl"
                 />
 
-                <div className="relative overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.965)_0%,rgba(248,251,255,0.95)_58%,rgba(251,247,239,0.96)_100%)] p-[0.65rem] shadow-[0_34px_88px_rgba(22,52,92,0.12)]">
+                <div className="hero-figure__frame relative overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.965)_0%,rgba(248,251,255,0.95)_58%,rgba(251,247,239,0.96)_100%)] p-[0.65rem] shadow-[0_34px_88px_rgba(22,52,92,0.12)]">
                   <div
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-x-12 top-0 h-14 bg-[radial-gradient(circle,rgba(255,255,255,0.68)_0%,rgba(255,255,255,0)_72%)]"
                   />
 
-                  <div className="relative h-[22rem] overflow-hidden rounded-[34px] bg-[rgba(244,241,233,0.9)] shadow-[0_24px_48px_rgba(22,52,92,0.1)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
+                  <div className="hero-figure__media relative h-[22rem] overflow-hidden rounded-[34px] bg-[rgba(244,241,233,0.9)] shadow-[0_24px_48px_rgba(22,52,92,0.1)] ring-1 ring-[rgba(22,52,92,0.06)] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
                     <Image
                       src="/home-page-hero/Chessboard.png"
                       alt="לוח שחמט באווירה עסקית"
                       fill
                       priority
                       sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
-                      className="object-cover object-[59%_center] scale-[1.095] brightness-[0.955] contrast-[0.99] saturate-[0.82]"
+                      className="hero-figure__image object-cover object-[59%_center] scale-[1.095] brightness-[0.955] contrast-[0.99] saturate-[0.82]"
                     />
                     <div
                       aria-hidden="true"
