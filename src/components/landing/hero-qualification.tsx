@@ -88,14 +88,61 @@ function QualificationIcon({ name }: { name: QualificationIconName }) {
   return <ClipboardIcon />;
 }
 
-export function HeroQualification() {
+type HeroQualificationProps = {
+  compact?: boolean;
+};
+
+export function HeroQualification({
+  compact = false,
+}: HeroQualificationProps = {}) {
+  if (compact) {
+    return (
+      <div className="mt-8 space-y-4">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+            Qualification
+          </p>
+          <p className="text-sm leading-6 text-[var(--muted)]">
+            בחרו את מה שהכי קרוב למצב שלכם, ונראה אם יש כאן פוטנציאל אמיתי
+            לצמיחה.
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {qualificationCards.map((card) => (
+            <article
+              key={card.title}
+              className="rounded-[24px] border border-[rgba(22,52,92,0.08)] bg-white/90 px-4 py-4 shadow-[0_10px_26px_rgba(22,52,92,0.05)]"
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(22,52,92,1)_0%,rgba(33,72,120,1)_100%)] text-white shadow-[0_8px_22px_rgba(22,52,92,0.16)]">
+                  <QualificationIcon name={card.icon} />
+                </div>
+                <div className="min-w-0 space-y-2">
+                  <h3 className="font-display text-base leading-6 font-semibold text-[var(--accent-deep)]">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm leading-6 text-[var(--muted)]">
+                    {card.description}
+                  </p>
+                  <a
+                    href={card.href}
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                  >
+                    <span>{card.cta}</span>
+                    <ChevronRightTiny />
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative overflow-hidden rounded-[34px] border border-[rgba(22,52,92,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(253,249,241,0.98)_100%)] p-6 shadow-[0_28px_80px_rgba(22,52,92,0.12)] md:p-7">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.08] mix-blend-multiply"
-        style={{ backgroundImage: "url('/home-page-hero/Chessboard.png')" }}
-      />
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.9)_8%,rgba(255,255,255,0.72)_62%,rgba(240,209,138,0.18)_100%)]" />
 
       <div className="relative space-y-6">
