@@ -485,14 +485,6 @@ a {
   transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ui-button:hover {
-  transform: translateY(-2px);
-}
-
-.motion-button:hover::after {
-  transform: translateX(145%) skewX(-18deg);
-}
-
 .ui-button--primary {
   background: linear-gradient(
     135deg,
@@ -595,29 +587,6 @@ a {
     box-shadow 220ms ease,
     border-color 220ms ease,
     background-color 220ms ease;
-}
-
-.motion-panel:hover,
-.premium-card:hover,
-.process-bento-card:hover,
-.contact-detail:hover,
-.contact-form-panel:hover {
-  transform: translateY(-3px);
-}
-
-.motion-panel:hover,
-.premium-card:hover {
-  box-shadow:
-    0 22px 52px rgba(22, 52, 92, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.94);
-}
-
-.process-bento-card:hover {
-  box-shadow: 0 28px 82px rgba(22, 52, 92, 0.12);
-}
-
-.contact-detail:hover {
-  border-color: rgba(200, 164, 93, 0.18);
 }
 
 .ui-panel--strong {
@@ -808,11 +777,6 @@ a {
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     color 220ms ease;
-}
-
-.motion-link:hover svg,
-.motion-link:hover .lucide {
-  transform: translateX(-2px);
 }
 
 .process-bento-visual {
@@ -1380,15 +1344,6 @@ a {
     background-color 180ms ease;
 }
 
-.whatsapp-fab:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 18px 40px rgba(22, 52, 92, 0.12),
-    0 0 0 5px rgba(255, 255, 255, 0.88),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
-  border-color: rgba(200, 164, 93, 0.28);
-}
-
 .whatsapp-fab:focus-visible,
 .accessibility-trigger:focus-visible,
 .accessibility-option:focus-visible,
@@ -1500,15 +1455,6 @@ a {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 8px 18px rgba(22, 52, 92, 0.08);
-}
-
-.accessibility-trigger:hover {
-  transform: translateY(-1px);
-  border-color: rgba(200, 164, 93, 0.22);
-  box-shadow:
-    0 20px 34px rgba(22, 52, 92, 0.15),
-    0 0 0 4px rgba(255, 255, 255, 0.88),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
 .accessibility-panel {
@@ -1630,16 +1576,6 @@ a {
     border-color 320ms ease;
 }
 
-.hero-figure:hover .hero-figure__frame {
-  transform: translateY(-3px);
-  box-shadow: 0 42px 96px rgba(22, 52, 92, 0.16);
-}
-
-.hero-figure:hover .hero-figure__image {
-  transform: scale(1.11) translateY(-4px);
-  filter: saturate(0.86) brightness(0.97);
-}
-
 @media (min-width: 1024px) {
   .process-bento-card__copy {
     padding: 1.9rem 1.9rem 1rem;
@@ -1708,5 +1644,71 @@ a {
 
   .accessibility-panel {
     width: min(calc(100vw - 1.5rem), 16.8rem);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ui-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .motion-button:hover::after {
+    transform: translateX(145%) skewX(-18deg);
+  }
+
+  .motion-panel:hover,
+  .premium-card:hover,
+  .process-bento-card:hover,
+  .contact-detail:hover,
+  .contact-form-panel:hover {
+    transform: translateY(-3px);
+  }
+
+  .motion-panel:hover,
+  .premium-card:hover {
+    box-shadow:
+      0 22px 52px rgba(22, 52, 92, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  }
+
+  .process-bento-card:hover {
+    box-shadow: 0 28px 82px rgba(22, 52, 92, 0.12);
+  }
+
+  .contact-detail:hover {
+    border-color: rgba(200, 164, 93, 0.18);
+  }
+
+  .motion-link:hover svg,
+  .motion-link:hover .lucide {
+    transform: translateX(-2px);
+  }
+
+  .whatsapp-fab:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 18px 40px rgba(22, 52, 92, 0.12),
+      0 0 0 5px rgba(255, 255, 255, 0.88),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    border-color: rgba(200, 164, 93, 0.28);
+  }
+
+  .accessibility-trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgba(200, 164, 93, 0.22);
+    box-shadow:
+      0 20px 34px rgba(22, 52, 92, 0.15),
+      0 0 0 4px rgba(255, 255, 255, 0.88),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-figure:hover .hero-figure__frame {
+    transform: translateY(-3px);
+    box-shadow: 0 42px 96px rgba(22, 52, 92, 0.16);
+  }
+
+  .hero-figure:hover .hero-figure__image {
+    transform: scale(1.11) translateY(-4px);
+    filter: saturate(0.86) brightness(0.97);
   }
 }
