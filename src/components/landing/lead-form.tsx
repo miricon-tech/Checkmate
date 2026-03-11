@@ -184,9 +184,9 @@ export function LeadForm({
   };
 
   return (
-    <Panel tone={tone} className={cn("p-6 md:p-7", className)}>
-      <form className="space-y-4" noValidate onSubmit={handleSubmit}>
-        <div className="space-y-1">
+    <Panel tone={tone} className={cn("p-6 md:p-8", className)}>
+      <form className="space-y-6" noValidate onSubmit={handleSubmit}>
+        <div className="space-y-2">
           <p className="type-form-title text-[var(--accent-deep)]">
             {title}
           </p>
@@ -202,7 +202,7 @@ export function LeadForm({
           onChange={handleChange}
         />
 
-        <div className="grid gap-3">
+        <div className="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2">
           <label className="ui-field">
             <span className="ui-field__label">שם מלא</span>
             <input
@@ -293,7 +293,7 @@ export function LeadForm({
             ) : null}
           </label>
 
-          <label className="ui-field">
+          <label className="ui-field sm:col-span-2">
             <span className="ui-field__label">מה האתגר המרכזי היום?</span>
             <textarea
               name="challenge"
@@ -350,15 +350,17 @@ export function LeadForm({
           resetKey={turnstileResetKey}
         />
 
-        <Button
-          aria-busy={isSubmitting}
-          className="w-full justify-center"
-          disabled={isSubmitting}
-          type="submit"
-          variant="gold"
-        >
-          {isSubmitting ? "שולחים..." : submitLabel}
-        </Button>
+        <div className="flex justify-start pt-1 sm:justify-end">
+          <Button
+            aria-busy={isSubmitting}
+            className="w-full justify-center sm:w-auto sm:min-w-[13rem]"
+            disabled={isSubmitting}
+            type="submit"
+            variant="gold"
+          >
+            {isSubmitting ? "שולחים..." : submitLabel}
+          </Button>
+        </div>
 
         <p className="ui-form-note">{note}</p>
       </form>

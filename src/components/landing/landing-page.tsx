@@ -13,6 +13,69 @@ import { LeadForm } from "@/components/landing/lead-form";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Panel } from "@/components/ui/panel";
 
+function BusinessIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.8"
+    >
+      <path d="M4.75 20h14.5" />
+      <path d="M6 20V8.4A1.4 1.4 0 0 1 7.4 7h9.2A1.4 1.4 0 0 1 18 8.4V20" />
+      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
+      <path d="M9 11h.01M12 11h.01M15 11h.01M9 14.5h.01M12 14.5h.01M15 14.5h.01" />
+    </svg>
+  );
+}
+
+function LinkFlowIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.8"
+    >
+      <path d="M6 7.5h5.5" />
+      <path d="M6 16.5h5.5" />
+      <path d="M15 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z" />
+      <path d="M15 12a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z" />
+      <path d="M9 7.5v9" />
+      <path d="M9 12h3" />
+    </svg>
+  );
+}
+
+function GrowthIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.8"
+    >
+      <path d="M4.5 19.5h15" />
+      <path d="M6.5 15.5 10 12l2.8 2.8L18 9.5" />
+      <path d="M13.5 9.5H18V14" />
+    </svg>
+  );
+}
+
+const ctaDetailIcons = [BusinessIcon, LinkFlowIcon, GrowthIcon] as const;
+
 export function LandingPage() {
   return (
     <>
@@ -116,40 +179,54 @@ export function LandingPage() {
         </section>
 
         <section id="cta" className="px-6 pb-16 pt-6 md:px-10 md:pb-24">
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-[rgba(22,52,92,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(252,248,239,0.96)_100%)] px-6 py-8 text-[var(--accent-deep)] shadow-[0_28px_90px_rgba(22,52,92,0.08)] md:px-10 md:py-12">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(200,164,93,0.18),transparent_72%)]" />
-            <div className="pointer-events-none absolute -left-12 top-12 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(22,52,92,0.08),transparent_72%)] blur-3xl" />
-            <div className="pointer-events-none absolute -right-16 bottom-0 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(200,164,93,0.16),transparent_74%)] blur-3xl" />
+          <div className="contact-split mx-auto max-w-7xl">
+            <div className="contact-split__grid" dir="ltr">
+              <div className="contact-split__aside" dir="rtl">
+                <div className="contact-split__surface" aria-hidden="true">
+                  <div className="contact-split__pattern" />
+                  <div className="contact-split__glow" />
+                </div>
 
-            <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-              <div className="relative space-y-6">
-                <p className="type-kicker text-[var(--accent)]">
-                  בדיקת התאמה
-                </p>
-                <h2 className="type-display-section text-[var(--accent-deep)]">
-                  השיחה הראשונה לא נועדה למכור בלחץ. היא נועדה לבדוק אם יש כאן
-                  פוטנציאל צמיחה אמיתי.
-                </h2>
-                <p className="type-body-lg max-w-2xl text-[var(--muted)]">
-                  בבדיקת ההתאמה נבחן איפה העסק תקוע, מה כרגע נשען יותר מדי על
-                  הבעלים, האם יש בסיס נכון להגדלת מחזור, והאם מודל העבודה של
-                  Checkmate מתאים לשלב הבא.
-                </p>
+                <div className="contact-split__content">
+                  <p className="type-kicker text-[var(--accent)]">
+                    בדיקת התאמה
+                  </p>
+                  <h2 className="type-display-section text-[var(--accent-deep)]">
+                    השיחה הראשונה לא נועדה למכור בלחץ. היא נועדה לבדוק אם יש כאן
+                    פוטנציאל צמיחה אמיתי.
+                  </h2>
+                  <p className="type-body-lg mt-6 max-w-[32rem] text-[var(--muted)]">
+                    בבדיקת ההתאמה נבחן איפה העסק תקוע, מה כרגע נשען יותר מדי על
+                    הבעלים, האם יש בסיס נכון להגדלת מחזור, והאם מודל העבודה של
+                    Checkmate מתאים לשלב הבא.
+                  </p>
 
-                <div className="grid gap-3">
-                  {ctaChecklist.map((item) => (
-                    <div
-                      key={item}
-                      className="type-body inline-flex items-start gap-3 rounded-[24px] border border-[rgba(22,52,92,0.08)] bg-white/72 px-4 py-4 text-right font-medium text-[var(--accent-deep)]"
-                    >
-                      <span className="mt-1 text-[var(--accent)]">●</span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                  <dl className="contact-detail-list">
+                    {ctaChecklist.map((item, index) => {
+                      const Icon = ctaDetailIcons[index] ?? BusinessIcon;
+
+                      return (
+                        <div key={item} className="contact-detail">
+                          <dt className="contact-detail__icon">
+                            <span className="sr-only">{item}</span>
+                            <Icon />
+                          </dt>
+                          <dd className="type-body text-[var(--accent-deep)]">
+                            {item}
+                          </dd>
+                        </div>
+                      );
+                    })}
+                  </dl>
                 </div>
               </div>
 
-              <LeadForm submitLabel="לקביעת בדיקת התאמה" />
+              <div className="contact-split__form-wrap" dir="rtl">
+                <LeadForm
+                  className="contact-form-panel"
+                  submitLabel="לקביעת בדיקת התאמה"
+                />
+              </div>
             </div>
           </div>
         </section>
