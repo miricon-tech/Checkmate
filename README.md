@@ -58,6 +58,10 @@ SMTP_USER=
 SMTP_PASS=
 LEAD_FORM_FROM_EMAIL=
 LEAD_FORM_TO_EMAIL=ofek@checkmate.co.il
+ALLOWED_FORM_ORIGINS=https://checkmate.co.il,https://www.checkmate.co.il
+LEAD_FORM_RATE_LIMIT_MAX=5
+LEAD_FORM_RATE_LIMIT_WINDOW_SECONDS=600
+LEAD_FORM_MAX_BODY_BYTES=12000
 ```
 
 Notes:
@@ -65,3 +69,5 @@ Notes:
 - `LEAD_FORM_TO_EMAIL` defaults to `ofek@checkmate.co.il` if not set.
 - `LEAD_FORM_FROM_EMAIL` should be an address your SMTP provider allows sending from.
 - If your provider uses port `465`, set `SMTP_SECURE=true`.
+- `ALLOWED_FORM_ORIGINS` lets you whitelist production domains explicitly.
+- The default rate limit is `5` submissions per `10` minutes per IP, with a max body size of `12KB`.

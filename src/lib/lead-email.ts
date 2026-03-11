@@ -1,3 +1,4 @@
+import "server-only";
 import nodemailer from "nodemailer";
 import {
   monthlyRevenueOptions,
@@ -68,9 +69,17 @@ function getTransporter() {
 
   transporter = nodemailer.createTransport({
     auth: config.auth,
+    connectionTimeout: 10_000,
+    disableFileAccess: true,
+    disableUrlAccess: true,
+    greetingTimeout: 10_000,
     host: config.host,
     port: config.port,
     secure: config.secure,
+    socketTimeout: 15_000,
+    tls: {
+      minVersion: "TLSv1.2",
+    },
   });
 
   return transporter;

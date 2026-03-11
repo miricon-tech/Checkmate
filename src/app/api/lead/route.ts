@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { sendLeadNotification } from "@/lib/lead-email";
 import {
+  checkLeadRateLimit,
+  getLeadGuardConfig,
+  hasAllowedLeadOrigin,
+  hasJsonContentType,
+  isBodyTooLarge,
+} from "@/lib/lead-request-guards";
+import {
   leadFormSchema,
   type LeadFormValues,
 } from "@/lib/lead-form-schema";
@@ -9,6 +16,23 @@ export const runtime = "nodejs";
 
 type LeadFieldErrors = Partial<Record<keyof LeadFormValues, string>>;
 
+function jsonResponse(
+  body: Record<string, unknown>,
+  init?: ResponseInit
+) {
+  const headers = new Headers(init?.headers);
+
+  headers.set("Cache-Control", "no-store, max-age=0");
+  headers.set("Referrer-Policy", "same-origin");
+  headers.set("Vary", "Origin");
+  headers.set("X-Content-Type-Options", "nosniff");
+
+  return NextResponse.json(body, {
+    ...init,
+    headers,
+  });
+}
+
 function getFieldErrors(payload: Record<string, string[] | undefined>) {
   return Object.fromEntries(
     Object.entries(payload).map(([key, messages]) => [key, messages?.[0] ?? ""])
@@ -16,12 +40,54 @@ function getFieldErrors(payload: Record<string, string[] | undefined>) {
 }
 
 export async function POST(request: Request) {
+  const guardConfig = getLeadGuardConfig();
+
+  if (!hasAllowedLeadOrigin(request)) {
+    return jsonResponse(
+      { message: "מקור הבקשה לא מורשה לשליחת הטופס." },
+      { status: 403 }
+    );
+  }
+
+  if (!hasJsonContentType(request)) {
+    return jsonResponse(
+      { message: "פורמט הבקשה לא נתמך." },
+      { status: 415 }
+    );
+  }
+
+  if (isBodyTooLarge(request)) {
+    return jsonResponse(
+      {
+        message: `הבקשה גדולה מדי. אפשר לשלוח עד ${guardConfig.maxBodyBytes} בתים.`,
+      },
+      { status: 413 }
+    );
+  }
+
+  const rateLimit = checkLeadRateLimit(request);
+
+  if (rateLimit.limited) {
+    return jsonResponse(
+      {
+        message:
+          "נשלחו יותר מדי ניסיונות בפרק זמן קצר. נסו שוב בעוד כמה דקות.",
+      },
+      {
+        headers: {
+          "Retry-After": String(rateLimit.retryAfterSeconds),
+        },
+        status: 429,
+      }
+    );
+  }
+
   let payload: unknown;
 
   try {
     payload = await request.json();
   } catch {
-    return NextResponse.json(
+    return jsonResponse(
       { message: "לא הצלחנו לקרוא את פרטי הטופס. נסו שוב." },
       { status: 400 }
     );
@@ -38,12 +104,12 @@ export async function POST(request: Request) {
     const fieldErrors = getFieldErrors(result.error.flatten().fieldErrors);
 
     if (fieldErrors.website) {
-      return NextResponse.json({
+      return jsonResponse({
         message: "הפרטים התקבלו. אם יש התאמה, ניצור קשר להמשך.",
       });
     }
 
-    return NextResponse.json(
+    return jsonResponse(
       {
         fieldErrors,
         message: "יש כמה פרטים שכדאי לדייק לפני שליחה.",
@@ -55,13 +121,13 @@ export async function POST(request: Request) {
   try {
     await sendLeadNotification(result.data);
 
-    return NextResponse.json({
+    return jsonResponse({
       message: "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
     });
   } catch (error) {
     console.error("Failed to deliver lead form email", error);
 
-    return NextResponse.json(
+    return jsonResponse(
       {
         message:
           "השליחה לא הושלמה כרגע. אפשר לנסות שוב בעוד רגע או לפנות אלינו ישירות.",
