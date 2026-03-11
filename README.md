@@ -58,9 +58,6 @@ SMTP_USER=
 SMTP_PASS=
 LEAD_FORM_FROM_EMAIL=
 LEAD_FORM_TO_EMAIL=ofek@checkmate.co.il
-NEXT_PUBLIC_TURNSTILE_SITE_KEY=
-TURNSTILE_SECRET_KEY=
-TURNSTILE_ALLOWED_HOSTNAMES=checkmate.co.il,www.checkmate.co.il
 ALLOWED_FORM_ORIGINS=https://checkmate.co.il,https://www.checkmate.co.il
 LEAD_FORM_RATE_LIMIT_MAX=5
 LEAD_FORM_RATE_LIMIT_WINDOW_SECONDS=600
@@ -72,7 +69,5 @@ Notes:
 - `LEAD_FORM_TO_EMAIL` defaults to `ofek@checkmate.co.il` if not set.
 - `LEAD_FORM_FROM_EMAIL` should be an address your SMTP provider allows sending from.
 - If your provider uses port `465`, set `SMTP_SECURE=true`.
-- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` are required to enforce Cloudflare Turnstile on the lead form.
-- `TURNSTILE_ALLOWED_HOSTNAMES` should match the domains configured inside Cloudflare Turnstile.
 - `ALLOWED_FORM_ORIGINS` lets you whitelist production domains explicitly.
 - The default rate limit is `5` submissions per `10` minutes per IP, with a max body size of `12KB`.
