@@ -561,23 +561,23 @@ a {
   text-decoration: none;
   will-change: transform;
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease;
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
 }
 
 .ui-button::before {
   content: "";
   position: absolute;
   inset-inline: 18%;
-  bottom: 0.5rem;
-  height: 0.7rem;
+  bottom: 0.34rem;
+  height: 0.55rem;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(22, 52, 92, 0.2) 0%, rgba(22, 52, 92, 0) 72%);
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.16) 0%, rgba(22, 52, 92, 0) 72%);
   opacity: 0;
-  filter: blur(10px);
+  filter: blur(8px);
   pointer-events: none;
   transition:
     opacity 220ms ease,
@@ -594,11 +594,11 @@ a {
   background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0) 18%,
-    rgba(255, 255, 255, 0.34) 48%,
+    rgba(255, 255, 255, 0.2) 48%,
     rgba(255, 255, 255, 0) 82%
   );
   transform: translateX(-145%) skewX(-18deg);
-  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ui-button:focus-visible {
@@ -641,15 +641,15 @@ a {
 }
 
 .ui-button--primary::before {
-  background: radial-gradient(circle, rgba(22, 52, 92, 0.28) 0%, rgba(22, 52, 92, 0) 72%);
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.22) 0%, rgba(22, 52, 92, 0) 72%);
 }
 
 .ui-button--surface::before {
-  background: radial-gradient(circle, rgba(22, 52, 92, 0.14) 0%, rgba(22, 52, 92, 0) 72%);
+  background: radial-gradient(circle, rgba(22, 52, 92, 0.11) 0%, rgba(22, 52, 92, 0) 72%);
 }
 
 .ui-button--gold::before {
-  background: radial-gradient(circle, rgba(200, 164, 93, 0.28) 0%, rgba(200, 164, 93, 0) 72%);
+  background: radial-gradient(circle, rgba(200, 164, 93, 0.2) 0%, rgba(200, 164, 93, 0) 72%);
 }
 
 .ui-badge {
@@ -890,11 +890,11 @@ a {
   height: 1px;
   background-image: linear-gradient(
     90deg,
-    rgba(200, 164, 93, 0.9) 0%,
-    rgba(22, 52, 92, 0.6) 100%
+    rgba(200, 164, 93, 0.78) 0%,
+    rgba(22, 52, 92, 0.42) 100%
   );
   opacity: 0;
-  transform: scaleX(0.72);
+  transform: scaleX(0.86);
   transform-origin: right center;
   transition:
     opacity 180ms ease,
@@ -2093,41 +2093,43 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   .ui-button:hover {
-    transform: translateY(-2px) scale(1.01);
+    transform: translateY(-1px);
   }
 
   .ui-button:hover::before {
-    opacity: 1;
-    transform: translateY(0.08rem) scaleX(1.08);
+    opacity: 0.62;
+    transform: translateY(0.03rem) scaleX(1.03);
   }
 
   .motion-button:hover::after {
-    transform: translateX(145%) skewX(-18deg);
+    transform: translateX(120%) skewX(-18deg);
   }
 
   .ui-button--primary:hover {
+    border-color: rgba(16, 40, 74, 0.98);
     box-shadow:
-      0 22px 42px rgba(22, 52, 92, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      0 18px 34px rgba(22, 52, 92, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .ui-button--surface:hover {
-    border-color: rgba(200, 164, 93, 0.24);
+    border-color: rgba(22, 52, 92, 0.16);
+    background: rgba(255, 255, 255, 0.985);
     box-shadow:
-      0 18px 34px rgba(22, 52, 92, 0.1),
+      0 14px 26px rgba(22, 52, 92, 0.08),
       inset 0 1px 0 rgba(255, 255, 255, 0.94);
   }
 
   .ui-button--gold:hover {
-    background: #e2c27b;
-    border-color: rgba(169, 109, 8, 0.34);
+    background: #dfc07a;
+    border-color: rgba(169, 109, 8, 0.3);
     box-shadow:
-      0 20px 38px rgba(184, 132, 28, 0.18),
-      inset 0 1px 0 rgba(255, 249, 224, 0.82);
+      0 16px 30px rgba(184, 132, 28, 0.16),
+      inset 0 1px 0 rgba(255, 249, 224, 0.8);
   }
 
   .motion-link:hover::after {
-    opacity: 0.88;
+    opacity: 0.72;
     transform: scaleX(1);
   }
 
@@ -2156,11 +2158,7 @@ a {
 
   .motion-link:hover svg,
   .motion-link:hover .lucide {
-    transform: translateX(-2px);
-  }
-
-  .motion-link:hover {
-    color: var(--accent);
+    transform: translateX(-1px);
   }
 
   .whatsapp-fab:hover {
@@ -2236,7 +2234,19 @@ a {
 }
 
 .ui-button:active {
-  transform: translateY(0) scale(0.992);
+  transform: translateY(0.5px);
+}
+
+.ui-button:active::before {
+  opacity: 0.32;
+}
+
+.ui-button--primary:active,
+.ui-button--surface:active,
+.ui-button--gold:active {
+  box-shadow:
+    0 8px 18px rgba(22, 52, 92, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .motion-link:active svg,
