@@ -54,32 +54,32 @@ export function HeroSection() {
             dir="rtl"
             className="mx-auto max-w-2xl lg:col-start-2 lg:row-start-1 lg:mx-0 lg:max-w-[34rem] lg:justify-self-end lg:pt-10"
           >
-            <div className="mt-8 sm:mt-12 lg:mt-10">
+            <div className="mt-6 sm:mt-10 lg:mt-8">
               <div className="inline-flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.16)] px-3 py-1 text-sm font-semibold text-[var(--accent-deep)]">
+                <span className="rounded-full border border-[rgba(200,164,93,0.28)] bg-[rgba(240,209,138,0.15)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
                 </span>
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--muted)]">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[color:rgba(93,108,119,0.96)] sm:text-sm">
                   <span>שותף צמיחה לעסקי B2B ושירות בישראל</span>
                   <ChevronRightTiny />
                 </span>
               </div>
             </div>
 
-            <h1 className="mt-10 text-pretty font-display text-5xl leading-[0.93] font-semibold tracking-[-0.045em] text-[var(--accent-deep)] sm:text-6xl lg:text-[5.35rem]">
+            <h1 className="mt-9 max-w-[11ch] text-pretty font-display text-5xl leading-[0.92] font-semibold tracking-[-0.05em] text-[var(--accent-deep)] sm:text-6xl lg:max-w-[10.5ch] lg:text-[5.45rem]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+            <p className="mt-7 max-w-[32rem] text-lg leading-8 text-[var(--muted)] sm:text-xl">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Button href="#cta" variant="gold" size="lg">
                 בדיקת התאמה (15 דק׳)
               </Button>
@@ -93,9 +93,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:justify-self-start lg:pt-6">
+          <div className="mx-auto mt-16 flex w-full max-w-2xl justify-center sm:mt-20 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:max-w-none lg:translate-x-4 lg:-translate-y-3 lg:justify-self-start lg:pt-4">
             <div className="w-full max-w-3xl sm:max-w-5xl lg:max-w-[44rem] xl:max-w-[47rem]">
-              <div className="relative overflow-hidden rounded-[34px] bg-[rgba(255,255,255,0.94)] p-2 shadow-[0_32px_90px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
+              <div className="relative overflow-hidden rounded-[36px] bg-[rgba(255,255,255,0.95)] p-2 shadow-[0_34px_96px_rgba(22,52,92,0.14)] ring-1 ring-[rgba(22,52,92,0.08)]">
                 <Image
                   src="/home-page-hero/Chessboard.png"
                   alt="לוח שחמט באווירה עסקית"
@@ -103,7 +103,7 @@ export function HeroSection() {
                   height={1024}
                   priority
                   sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="w-full rounded-[30px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.07)]"
+                  className="w-full rounded-[32px] bg-[rgba(255,255,255,0.7)] shadow-[0_24px_50px_rgba(22,52,92,0.12)] ring-1 ring-[rgba(22,52,92,0.06)]"
                 />
               </div>
             </div>
