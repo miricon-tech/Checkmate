@@ -24,7 +24,11 @@ export function LandingPage() {
         דלגו לתוכן הראשי
       </a>
       <main id="main-content" className="page-shell relative overflow-hidden pb-16">
-        <div className="pointer-events-none absolute inset-x-0 top-16 -z-10 mx-auto h-64 max-w-5xl rounded-full bg-[radial-gradient(circle,rgba(200,164,93,0.16),transparent_74%)] blur-3xl" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-16 -z-10 mx-auto h-px max-w-5xl"
+          style={{ backgroundImage: "var(--trim-gradient)" }}
+        />
         <LandingHeader />
         <HeroSection />
 

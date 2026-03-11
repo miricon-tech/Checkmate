@@ -74,8 +74,20 @@ export function HeroQualification({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-[34px] border border-[rgba(22,52,92,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(253,249,241,0.98)_100%)] p-6 shadow-[0_28px_80px_rgba(22,52,92,0.12)] lg:p-7">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.9)_8%,rgba(255,255,255,0.72)_62%,rgba(240,209,138,0.18)_100%)]" />
+    <div className="relative overflow-hidden rounded-[34px] border border-[var(--line)] bg-[rgba(255,255,255,0.97)] p-6 shadow-[0_28px_80px_rgba(22,52,92,0.09)] lg:p-7">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-7 top-4 h-px"
+        style={{ backgroundImage: "var(--trim-gradient)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-y-0 left-0 w-[32%]"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(22, 52, 92, 0.03) 0%, rgba(22, 52, 92, 0) 76%)",
+        }}
+      />
 
       <div className="relative space-y-6">
         <div className="space-y-2">
