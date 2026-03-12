@@ -226,3 +226,13 @@ export const ctaChecklist = [
   "צורך לחבר שיווק, מכירות ותהליך סגירה אחד לשני",
   "רצון אמיתי לייצר צמיחה מדידה ולא עוד פעילות חלקית",
 ] as const;
+
+export const linkedinProfileCard = {
+  alt: "אופק מזור - פרופיל לינקדאין",
+  badge: "LinkedIn",
+  ctaLabel: "לפרופיל בלינקדאין",
+  description: "להיכרות קצרה לפני שיחת ההתאמה, אפשר לעבור לפרופיל המקצועי.",
+  name: "אופק מזור",
+  role: "Checkmate",
+  url: "https://www.linkedin.com/in/%D7%90%D7%95%D7%A4%D7%A7%D7%9E%D7%96%D7%95%D7%A8/",
+} as const;

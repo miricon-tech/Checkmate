@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { LandingFaq } from "@/components/landing/landing-faq";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LeadForm } from "@/components/landing/lead-form";
+import { LinkedInProfileCard } from "@/components/landing/linkedin-profile-card";
 import { ProcessBento } from "@/components/landing/process-bento";
 import { ResultsShowcase } from "@/components/landing/results-showcase";
 
@@ -77,6 +78,10 @@ export function LandingPage() {
                       );
                     })}
                   </dl>
+
+                  <div className="contact-split__profile">
+                    <LinkedInProfileCard />
+                  </div>
                 </div>
               </div>
 
