@@ -12,6 +12,12 @@ import {
   type LeadFormValues,
 } from "@/lib/lead-form-schema";
 
+const leadFormSignals = [
+  { label: "זמן", value: "15 דק׳" },
+  { label: "אופי", value: "בלי לחץ" },
+  { label: "מטרה", value: "התאמה אמיתית" },
+] as const;
+
 const initialValues: LeadFormValues = {
   fullName: "",
   phone: "",
@@ -62,6 +68,7 @@ export function LeadForm({
   const formId = useId();
 
   const fieldErrorId = (field: keyof LeadFormValues) => `${formId}-${field}-error`;
+  const isFilled = (field: keyof LeadFormValues) => values[field].trim().length > 0;
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -162,14 +169,41 @@ export function LeadForm({
 
   return (
     <Panel tone={tone} className={cn("p-6 lg:p-8", className)}>
-      <form className="space-y-6" noValidate onSubmit={handleSubmit}>
-        <div className="space-y-2">
-          <p className="type-form-title text-[var(--accent-deep)]">
-            {title}
-          </p>
-          <p className="type-body-sm text-[rgba(17,26,31,0.62)]">
-            {description}
-          </p>
+      <form className="lead-form" noValidate onSubmit={handleSubmit}>
+        <div className="lead-form__hero">
+          <div className="lead-form__hero-surface" aria-hidden="true" />
+          <div className="lead-form__hero-top">
+            <span className="lead-form__eyebrow">Intro Call</span>
+            <span className="lead-form__eyebrow-pill">שלב 01</span>
+          </div>
+
+          <div className="lead-form__hero-copy">
+            <p className="type-form-title text-[var(--accent-deep)]">
+              {title}
+            </p>
+            <p className="type-body-sm text-[rgba(17,26,31,0.62)]">
+              {description}
+            </p>
+          </div>
+
+          <div className="lead-form__signals" aria-label="מאפייני השיחה">
+            {leadFormSignals.map((signal) => (
+              <div key={signal.label} className="lead-form__signal">
+                <span className="lead-form__signal-label">{signal.label}</span>
+                <strong className="lead-form__signal-value">{signal.value}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="lead-form__section-header">
+          <div>
+            <p className="lead-form__section-kicker">כמה פרטים קצרים</p>
+            <p className="lead-form__section-title">
+              כדי להבין אם יש בסיס נכון לשיחה.
+            </p>
+          </div>
+          <span className="lead-form__section-index">01</span>
         </div>
 
         <input
@@ -179,9 +213,17 @@ export function LeadForm({
           onChange={handleChange}
         />
 
-        <div className="grid grid-cols-1 gap-x-5 gap-y-4 lg:grid-cols-2">
-          <label className="ui-field">
-            <span className="ui-field__label">שם מלא</span>
+        <div className="lead-form__fields grid grid-cols-1 gap-x-5 gap-y-4 lg:grid-cols-2">
+          <label
+            className={cn(
+              "ui-field",
+              isFilled("fullName") && "ui-field--filled",
+              errors.fullName && "ui-field--error"
+            )}
+          >
+            <span className="ui-field__label-row">
+              <span className="ui-field__label">שם מלא</span>
+            </span>
             <input
               type="text"
               name="fullName"
@@ -200,8 +242,16 @@ export function LeadForm({
             ) : null}
           </label>
 
-          <label className="ui-field">
-            <span className="ui-field__label">טלפון</span>
+          <label
+            className={cn(
+              "ui-field",
+              isFilled("phone") && "ui-field--filled",
+              errors.phone && "ui-field--error"
+            )}
+          >
+            <span className="ui-field__label-row">
+              <span className="ui-field__label">טלפון</span>
+            </span>
             <input
               type="tel"
               name="phone"
@@ -221,8 +271,16 @@ export function LeadForm({
             ) : null}
           </label>
 
-          <label className="ui-field">
-            <span className="ui-field__label">שם העסק</span>
+          <label
+            className={cn(
+              "ui-field",
+              isFilled("company") && "ui-field--filled",
+              errors.company && "ui-field--error"
+            )}
+          >
+            <span className="ui-field__label-row">
+              <span className="ui-field__label">שם העסק</span>
+            </span>
             <input
               type="text"
               name="company"
@@ -241,8 +299,16 @@ export function LeadForm({
             ) : null}
           </label>
 
-          <label className="ui-field">
-            <span className="ui-field__label">מחזור חודשי משוער</span>
+          <label
+            className={cn(
+              "ui-field",
+              isFilled("monthlyRevenue") && "ui-field--filled",
+              errors.monthlyRevenue && "ui-field--error"
+            )}
+          >
+            <span className="ui-field__label-row">
+              <span className="ui-field__label">מחזור חודשי משוער</span>
+            </span>
             <select
               name="monthlyRevenue"
               className="ui-input ui-select"
@@ -270,8 +336,17 @@ export function LeadForm({
             ) : null}
           </label>
 
-          <label className="ui-field lg:col-span-2">
-            <span className="ui-field__label">מה האתגר המרכזי היום?</span>
+          <label
+            className={cn(
+              "ui-field lg:col-span-2",
+              isFilled("challenge") && "ui-field--filled",
+              errors.challenge && "ui-field--error"
+            )}
+          >
+            <span className="ui-field__label-row">
+              <span className="ui-field__label">מה האתגר המרכזי היום?</span>
+              <span className="ui-field__hint">3-4 שורות קצרות מספיקות</span>
+            </span>
             <textarea
               name="challenge"
               rows={4}
@@ -302,10 +377,13 @@ export function LeadForm({
           </div>
         ) : null}
 
-        <div className="flex justify-start pt-1 lg:justify-end">
+        <div className="lead-form__actions">
+          <p className="lead-form__action-copy">
+            נחזור רק אם נראה שיש בסיס אמיתי להתאמה ולעבודה משותפת.
+          </p>
           <Button
             aria-busy={isSubmitting}
-            className="w-full justify-center lg:w-auto lg:min-w-[13rem]"
+            className="w-full justify-center lg:w-auto lg:min-w-[14rem]"
             disabled={isSubmitting}
             type="submit"
             variant="primary"
@@ -314,7 +392,10 @@ export function LeadForm({
           </Button>
         </div>
 
-        <p className="ui-form-note">{note}</p>
+        <p className="ui-form-note lead-form__note">
+          <span className="lead-form__note-dot" aria-hidden="true" />
+          <span>{note}</span>
+        </p>
       </form>
     </Panel>
   );
