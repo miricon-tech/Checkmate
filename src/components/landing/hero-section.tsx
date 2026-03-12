@@ -33,13 +33,13 @@ export function HeroSection() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 pt-2 pb-14 sm:pt-3 sm:pb-16 lg:px-8 lg:pt-6 lg:pb-20 xl:pt-8 xl:pb-24">
+      <div className="mx-auto max-w-7xl px-6 pt-0 pb-14 sm:pt-1 sm:pb-16 lg:px-8 lg:pt-4 lg:pb-20 xl:pt-6 xl:pb-24">
         <div dir="rtl" className="lg:flex lg:items-start">
           <div
             dir="rtl"
-            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-4 xl:max-w-[31rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] xl:max-w-[31rem]"
           >
-            <div className="mt-5 sm:mt-6 lg:mt-8 xl:mt-10">
+            <div className="mt-3 sm:mt-4 lg:mt-5 xl:mt-6">
               <div className="inline-flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[var(--line-gold)] bg-[rgba(200,164,93,0.09)] px-3 py-1 type-body-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
@@ -51,20 +51,20 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-6 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-6 lg:max-w-[11.8ch]">
+            <h1 className="type-display-hero mt-5 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-5 lg:max-w-[11.8ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-5 max-w-[27rem] text-[var(--muted)] lg:mt-6">
+            <p className="type-body-xl mt-4 max-w-[27rem] text-[var(--muted)] lg:mt-5">
               Checkmate נכנסת לעסקי B2B ושירות בישראל כשותף צמיחה חיצוני, כדי
               להפוך פעילות מפוזרת ליותר פגישות איכותיות, יותר שליטה בתהליך
               ויותר הכנסה מדידה.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-7">
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-6">
               <Button href="#cta" variant="primary" size="lg">
                 בדיקת התאמה (15 דק׳)
               </Button>

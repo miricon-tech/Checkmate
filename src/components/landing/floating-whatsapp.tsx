@@ -1,48 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 const whatsappNumber = "972546712130";
-const compactThreshold = 220;
 
 const whatsappMessage = encodeURIComponent(
   "היי אופק,\nיש לי עסק שמתמחה ב/אני עוסק ב\nוהייתי רוצה להבין קצת יותר פרטים לגבי השירותים שלך"
 );
 
 export function FloatingWhatsApp() {
-  const [isCompact, setIsCompact] = useState(true);
-
-  useEffect(() => {
-    let frameId = 0;
-
-    const updateState = () => {
-      frameId = 0;
-      setIsCompact(window.scrollY < compactThreshold);
-    };
-
-    const handleScroll = () => {
-      if (frameId) {
-        return;
-      }
-
-      frameId = window.requestAnimationFrame(updateState);
-    };
-
-    updateState();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-
-      if (frameId) {
-        window.cancelAnimationFrame(frameId);
-      }
-    };
-  }, []);
-
   return (
     <a
       href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
@@ -50,7 +12,6 @@ export function FloatingWhatsApp() {
       rel="noreferrer"
       aria-label="פתיחת שיחה ב-WhatsApp עם Checkmate"
       className="whatsapp-fab"
-      data-compact={isCompact ? "true" : "false"}
     >
       <span className="whatsapp-fab__content">
         <span className="whatsapp-fab__eyebrow">WhatsApp</span>
