@@ -32,11 +32,11 @@ export function HeroSection() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-6 lg:pb-24">
-        <div className="lg:grid lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-center lg:gap-x-12 xl:gap-x-16">
+      <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-8 lg:pb-28 xl:py-32">
+        <div className="lg:flex lg:items-start">
           <div
             dir="rtl"
-            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:w-full lg:max-w-[31rem] lg:justify-self-end xl:max-w-[33rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[31rem] lg:pt-8 xl:max-w-[33rem]"
           >
             <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -77,8 +77,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 w-full max-w-2xl sm:mt-12 lg:mx-0 lg:mt-0 lg:w-full lg:max-w-[40rem] lg:justify-self-start xl:max-w-[44rem]">
-            <div className="w-full">
+          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:mr-10 lg:max-w-none lg:flex-none xl:mr-28">
+            <div className="w-full lg:w-[44rem] xl:w-[49rem]">
               <div className="hero-figure">
                 <div className="hero-figure__frame">
                   <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
@@ -87,7 +87,7 @@ export function HeroSection() {
                       alt="לוח שחמט באווירה עסקית"
                       fill
                       priority
-                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, 48vw"
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 44rem, 49rem"
                       className="hero-figure__image object-cover object-[60%_center] scale-[1.1] brightness-[0.965] contrast-[0.965] saturate-[0.76]"
                     />
                     <div aria-hidden="true" className="hero-figure__edge" />
