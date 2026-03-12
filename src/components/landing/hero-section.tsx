@@ -89,8 +89,9 @@ export function HeroSection() {
                         fill
                         priority
                         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 58rem, (max-width: 1728px) 68rem, 76rem"
-                        className="hero-figure__image object-cover object-[58%_center] scale-[1.08] brightness-[0.965] contrast-[0.965] saturate-[0.76]"
+                        className="hero-figure__image object-cover object-[56%_center] scale-[1.045] brightness-[0.982] contrast-[1.02] saturate-[0.84] sepia-[0.02]"
                       />
+                      <div aria-hidden="true" className="hero-figure__grain" />
                       <div aria-hidden="true" className="hero-figure__edge" />
                       <div aria-hidden="true" className="hero-figure__base" />
                     </div>
