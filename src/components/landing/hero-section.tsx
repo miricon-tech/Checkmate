@@ -36,7 +36,7 @@ export function HeroSection() {
         <div className="lg:flex lg:items-start">
           <div
             dir="rtl"
-            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[31rem] lg:pt-8 xl:max-w-[33rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-8 xl:max-w-[31rem]"
           >
             <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -50,14 +50,14 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[12.2ch]">
+            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[11.8ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-6 max-w-[28.5rem] text-[var(--muted)] lg:mt-7">
+            <p className="type-body-xl mt-6 max-w-[27rem] text-[var(--muted)] lg:mt-7">
               Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
               בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
               סגירה למערכת אחת שמביאה תוצאות מדידות.
@@ -77,8 +77,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:mr-10 lg:max-w-none lg:flex-none xl:mr-28">
-            <div className="w-full lg:w-[44rem] xl:w-[49rem]">
+          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:mr-8 lg:max-w-none lg:flex-none xl:mr-16 xl:-ml-8 2xl:-ml-16">
+            <div className="w-full lg:w-[45rem] xl:w-[50rem] 2xl:w-[53rem]">
               <div className="hero-figure">
                 <div className="hero-figure__frame">
                   <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
@@ -87,7 +87,7 @@ export function HeroSection() {
                       alt="לוח שחמט באווירה עסקית"
                       fill
                       priority
-                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 44rem, 49rem"
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 45rem, (max-width: 1728px) 50rem, 53rem"
                       className="hero-figure__image object-cover object-[60%_center] scale-[1.1] brightness-[0.965] contrast-[0.965] saturate-[0.76]"
                     />
                     <div aria-hidden="true" className="hero-figure__edge" />
