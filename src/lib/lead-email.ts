@@ -7,7 +7,7 @@ import {
 
 const monthlyRevenueLabels = Object.fromEntries(
   monthlyRevenueOptions.map((option) => [option.value, option.label])
-) as Record<LeadFormValues["monthlyRevenue"], string>;
+) as Record<string, string>;
 
 let transporter: nodemailer.Transporter | null = null;
 
@@ -19,6 +19,18 @@ function getRequiredEnv(name: string) {
   }
 
   return value;
+}
+
+function getOptionalEnv(...names: string[]) {
+  for (const name of names) {
+    const value = process.env[name];
+
+    if (value) {
+      return value;
+    }
+  }
+
+  return undefined;
 }
 
 function getPort(value: string) {
@@ -42,11 +54,12 @@ function getSmtpConfig() {
     throw new Error("SMTP_USER and SMTP_PASS must be provided together.");
   }
 
-  const fromEmail = process.env.LEAD_FORM_FROM_EMAIL ?? user;
+  const fromEmail =
+    getOptionalEnv("LEAD_FORM_FROM_EMAIL", "LEAD_FROM") ?? user;
 
   if (!fromEmail) {
     throw new Error(
-      "Missing required environment variable: LEAD_FORM_FROM_EMAIL or SMTP_USER"
+      "Missing required environment variable: LEAD_FORM_FROM_EMAIL, LEAD_FROM, or SMTP_USER"
     );
   }
 
@@ -56,7 +69,9 @@ function getSmtpConfig() {
     host,
     port,
     secure,
-    toEmail: process.env.LEAD_FORM_TO_EMAIL ?? "ofek@checkmate.co.il",
+    toEmail:
+      getOptionalEnv("LEAD_FORM_TO_EMAIL", "LEAD_TO") ??
+      "ofek@checkmate.co.il",
   };
 }
 
@@ -98,7 +113,10 @@ export async function sendLeadNotification(values: LeadFormValues) {
   const config = getSmtpConfig();
   const emailTransporter = getTransporter();
   const revenueLabel =
-    monthlyRevenueLabels[values.monthlyRevenue] ?? values.monthlyRevenue;
+    monthlyRevenueLabels[values.monthlyRevenue] ||
+    values.monthlyRevenue ||
+    "לא צוין";
+  const challengeText = values.challenge.trim() || "לא צוין";
   const submittedAt = new Intl.DateTimeFormat("he-IL", {
     dateStyle: "full",
     timeStyle: "short",
@@ -115,7 +133,7 @@ export async function sendLeadNotification(values: LeadFormValues) {
     `מועד שליחה: ${submittedAt}`,
     "",
     "האתגר המרכזי:",
-    values.challenge,
+    challengeText,
   ];
 
   await emailTransporter.sendMail({
@@ -129,7 +147,7 @@ export async function sendLeadNotification(values: LeadFormValues) {
         <p style="margin: 0 0 8px;"><strong>מחזור חודשי משוער:</strong> ${escapeHtml(revenueLabel)}</p>
         <p style="margin: 0 0 16px;"><strong>מועד שליחה:</strong> ${escapeHtml(submittedAt)}</p>
         <p style="margin: 0 0 8px;"><strong>האתגר המרכזי:</strong></p>
-        <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(values.challenge)}</p>
+        <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(challengeText)}</p>
       </div>
     `,
     subject: `ליד חדש מ-Checkmate | ${values.fullName} | ${values.company}`,

@@ -308,6 +308,7 @@ export function LeadForm({
           >
             <span className="ui-field__label-row">
               <span className="ui-field__label">מחזור חודשי משוער</span>
+              <span className="ui-field__hint">אופציונלי</span>
             </span>
             <select
               name="monthlyRevenue"
@@ -319,7 +320,7 @@ export function LeadForm({
                 errors.monthlyRevenue ? fieldErrorId("monthlyRevenue") : undefined
               }
             >
-              <option value="">בחרו טווח מחזור</option>
+              <option value="">אפשר להשאיר ריק</option>
               {monthlyRevenueOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -345,12 +346,12 @@ export function LeadForm({
           >
             <span className="ui-field__label-row">
               <span className="ui-field__label">מה האתגר המרכזי היום?</span>
-              <span className="ui-field__hint">3-4 שורות קצרות מספיקות</span>
+              <span className="ui-field__hint">אופציונלי</span>
             </span>
             <textarea
               name="challenge"
               rows={4}
-              placeholder="למשל: יש לידים אבל אין תהליך סגירה ברור, הכול נשען עליי, או שאין מספיק פגישות שמתקיימות."
+              placeholder="אם נוח לך, אפשר לכתוב בקצרה מה מרגיש תקוע כרגע."
               className="ui-input ui-textarea"
               value={values.challenge}
               onChange={handleChange}

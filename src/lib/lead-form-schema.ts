@@ -3,10 +3,12 @@ import { z } from "zod";
 const phoneCharactersPattern = /^[\d\s()+-]+$/;
 
 export const monthlyRevenueOptions = [
-  { value: "up_to_80", label: "עד 80,000 ש\"ח" },
-  { value: "80_to_150", label: "80,000–150,000 ש\"ח" },
-  { value: "150_to_300", label: "150,000–300,000 ש\"ח" },
-  { value: "300_plus", label: "300,000 ש\"ח ומעלה" },
+  { value: "up_to_50", label: "עד 50,000 ש\"ח" },
+  { value: "50_to_100", label: "50,000–100,000 ש\"ח" },
+  { value: "100_to_250", label: "100,000–250,000 ש\"ח" },
+  { value: "250_to_500", label: "250,000–500,000 ש\"ח" },
+  { value: "500_plus", label: "500,000 ש\"ח ומעלה" },
+  { value: "variable_or_other", label: "משתנה / אחר" },
 ] as const;
 
 const monthlyRevenueValues = new Set(
@@ -30,14 +32,21 @@ export const leadFormSchema = z.object({
     .string()
     .trim()
     .refine(
-      (value) => monthlyRevenueValues.has(value as (typeof monthlyRevenueOptions)[number]["value"]),
-      "יש לבחור מחזור חודשי משוער."
+      (value) =>
+        value.length === 0 ||
+        monthlyRevenueValues.has(
+          value as (typeof monthlyRevenueOptions)[number]["value"]
+        ),
+      "יש לבחור טווח תקין או להשאיר ריק."
     ),
   challenge: z
     .string()
     .trim()
-    .min(10, "כדאי לפרט בקצרה מה האתגר המרכזי היום.")
-    .max(800, "אפשר לקצר מעט את התיאור."),
+    .max(800, "אפשר לקצר מעט את התיאור.")
+    .refine(
+      (value) => value.length === 0 || value.length >= 10,
+      "אם בוחרים לפרט, כדאי לכתוב לפחות כמה מילים."
+    ),
   website: z.string().trim().max(0, "Invalid submission."),
 });
 
