@@ -11,6 +11,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LeadForm } from "@/components/landing/lead-form";
 import { ProcessBento } from "@/components/landing/process-bento";
+import { ResultsShowcase } from "@/components/landing/results-showcase";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Panel } from "@/components/ui/panel";
 
@@ -39,6 +40,7 @@ export function LandingPage() {
         </section>
 
         <ProcessBento />
+        <ResultsShowcase />
 
         <section
           id="fit"
@@ -48,7 +50,7 @@ export function LandingPage() {
             <SectionHeading
               eyebrow="למי זה מתאים"
               title="לעסקים בישראל שכבר הוכיחו שיש שוק, אבל מרגישים שהתקרה קרובה מדי."
-              description="זה לא מסלול לעסק בתחילת הדרך. זה מתאים לעסקים שכבר מוכרים, יודעים שהשירות שלהם חזק, אבל נתקעים כי השיווק, המכירות והניהול לא מחוברים למערכת אחת שעובדת."
+              description="זה לא מסלול לעסק בתחילת הדרך, אלא למי שרוצה להפוך פעילות טובה למנוע צמיחה עקבי."
             />
             <Panel tone="soft" className="p-6 lg:p-7">
               <p className="type-body-lg text-foreground">

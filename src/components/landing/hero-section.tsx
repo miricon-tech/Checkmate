@@ -58,9 +58,9 @@ export function HeroSection() {
             </h1>
 
             <p className="type-body-xl mt-6 max-w-[27rem] text-[var(--muted)] lg:mt-7">
-              Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות
-              בישראל כשותף צמיחה חיצוני, ומחברים שיווק, לידים, מכירות ותהליך
-              סגירה למערכת אחת שמביאה תוצאות מדידות.
+              Checkmate נכנסת לעסקי B2B ושירות בישראל כשותף צמיחה חיצוני, כדי
+              להפוך פעילות מפוזרת ליותר פגישות איכותיות, יותר שליטה בתהליך
+              ויותר הכנסה מדידה.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-9">
