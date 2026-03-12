@@ -29,10 +29,6 @@ export function LinkedInProfileCard() {
             <Linkedin className="h-4 w-4" strokeWidth={1.8} />
             <span>{linkedinProfileCard.badge}</span>
           </span>
-          <span className="linkedin-profile-card__action">
-            <span>{linkedinProfileCard.ctaLabel}</span>
-            <ArrowUpLeft className="h-4 w-4" strokeWidth={1.8} />
-          </span>
         </div>
 
         <div className="linkedin-profile-card__copy">
@@ -46,6 +42,11 @@ export function LinkedInProfileCard() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+        </div>
+
+        <div className="linkedin-profile-card__footer">
+          <span>{linkedinProfileCard.ctaLabel}</span>
+          <ArrowUpLeft className="h-4 w-4" strokeWidth={1.8} />
         </div>
       </div>
     </a>

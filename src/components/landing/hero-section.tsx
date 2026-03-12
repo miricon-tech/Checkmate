@@ -33,13 +33,13 @@ export function HeroSection() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-8 lg:pb-28 xl:py-32">
+      <div className="mx-auto max-w-7xl px-6 pt-2 pb-14 sm:pt-3 sm:pb-16 lg:px-8 lg:pt-6 lg:pb-20 xl:pt-8 xl:pb-24">
         <div dir="rtl" className="lg:flex lg:items-start">
           <div
             dir="rtl"
-            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-8 xl:max-w-[31rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-4 xl:max-w-[31rem]"
           >
-            <div className="mt-4 sm:mt-6 lg:mt-0">
+            <div className="mt-5 sm:mt-6 lg:mt-8 xl:mt-10">
               <div className="inline-flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[var(--line-gold)] bg-[rgba(200,164,93,0.09)] px-3 py-1 type-body-sm font-semibold text-[var(--accent-deep)]">
                   לא עוד שיווק. מערכת צמיחה מלאה.
@@ -51,20 +51,20 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[11.8ch]">
+            <h1 className="type-display-hero mt-6 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-6 lg:max-w-[11.8ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-6 max-w-[27rem] text-[var(--muted)] lg:mt-7">
+            <p className="type-body-xl mt-5 max-w-[27rem] text-[var(--muted)] lg:mt-6">
               Checkmate נכנסת לעסקי B2B ושירות בישראל כשותף צמיחה חיצוני, כדי
               להפוך פעילות מפוזרת ליותר פגישות איכותיות, יותר שליטה בתהליך
               ויותר הכנסה מדידה.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-9">
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-7">
               <Button href="#cta" variant="primary" size="lg">
                 בדיקת התאמה (15 דק׳)
               </Button>
@@ -80,12 +80,12 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:ml-0 lg:mr-10 lg:max-w-none lg:flex-none xl:mr-24 2xl:mr-32">
+          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-8 flex w-full max-w-2xl sm:mt-10 lg:mt-0 lg:ml-0 lg:mr-10 lg:max-w-none lg:flex-none xl:mr-24 2xl:mr-32">
             <div className="w-full max-w-3xl sm:max-w-5xl lg:w-auto lg:max-w-none lg:flex-none">
               <div className="w-full lg:w-[58rem] xl:w-[68rem] 2xl:w-[76rem]">
                 <div className="hero-figure">
                   <div className="hero-figure__frame">
-                    <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem] 2xl:h-[45rem]">
+                    <div className="hero-figure__media h-[19rem] sm:h-[23rem] lg:h-[34rem] xl:h-[38rem] 2xl:h-[41rem]">
                       <Image
                         src={heroChessboard}
                         alt="לוח שחמט באווירה עסקית"

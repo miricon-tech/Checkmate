@@ -23,19 +23,11 @@ export function LandingFaq() {
 
           <div className="faq-list">
             {faqItems.map((item, index) => (
-              <details
-                key={item.question}
-                className="faq-item"
-                open={index === 0}
-              >
+              <details key={item.question} className="faq-item">
                 <summary className="faq-item__summary">
-                  <span className="faq-item__count">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="faq-item__summary-copy">
-                    <span className="faq-item__marker" aria-hidden="true" />
-                    <span className="faq-item__label">
-                      שאלה
+                  <div className="faq-item__summary-main">
+                    <span className="faq-item__count">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
                     <h3 className="faq-item__question">{item.question}</h3>
                   </div>
