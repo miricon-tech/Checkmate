@@ -3,6 +3,7 @@ import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 type SharedButtonProps = {
@@ -14,6 +15,9 @@ type SharedButtonProps = {
 
 type LinkButtonProps = SharedButtonProps & {
   href: string;
+  prefetch?: boolean | null;
+  replace?: boolean;
+  scroll?: boolean;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "href">;
 
 type NativeButtonProps = SharedButtonProps & {
@@ -35,21 +39,50 @@ const sizeClasses = {
   lg: "px-6 py-3.5 text-base",
 } as const;
 
+function isExternalHref(href: string) {
+  return /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(href) || href.startsWith("//");
+}
+
+function isHashHref(href: string) {
+  return href.startsWith("#");
+}
+
 export function Button(props: ButtonProps) {
   if ("href" in props && typeof props.href === "string") {
     const {
       children,
       className,
       href,
+      prefetch,
+      replace,
+      scroll,
       size = "md",
       variant = "primary",
       ...anchorProps
     } = props;
 
+    const classes = cn(variantClasses[variant], sizeClasses[size], className);
+    const isInternalRoute = !isExternalHref(href) && !isHashHref(href);
+
+    if (isInternalRoute) {
+      return (
+        <Link
+          href={href}
+          prefetch={prefetch}
+          replace={replace}
+          scroll={scroll}
+          className={classes}
+          {...anchorProps}
+        >
+          {children}
+        </Link>
+      );
+    }
+
     return (
       <a
         href={href}
-        className={cn(variantClasses[variant], sizeClasses[size], className)}
+        className={classes}
         {...anchorProps}
       >
         {children}

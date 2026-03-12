@@ -8,7 +8,7 @@ type BrandLogoProps = {
 export function BrandLogo({ className, compact = false }: BrandLogoProps) {
   return (
     <a
-      href="#"
+      href="#hero"
       dir="ltr"
       aria-label="Checkmate"
       className={cn("brand-lockup", compact && "brand-lockup--compact", className)}

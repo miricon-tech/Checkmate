@@ -308,7 +308,7 @@ export function LeadForm({
             className="w-full justify-center lg:w-auto lg:min-w-[13rem]"
             disabled={isSubmitting}
             type="submit"
-            variant="gold"
+            variant="primary"
           >
             {isSubmitting ? "שולחים..." : submitLabel}
           </Button>

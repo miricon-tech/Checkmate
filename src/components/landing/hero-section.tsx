@@ -64,16 +64,18 @@ export function HeroSection() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-9">
-              <Button href="#cta" variant="gold" size="lg">
+              <Button href="#cta" variant="primary" size="lg">
                 בדיקת התאמה (15 דק׳)
               </Button>
-              <a
+              <Button
                 href="#qualification"
-                className="motion-link type-link inline-flex items-center gap-2 text-[var(--accent-deep)] transition hover:text-[var(--accent)]"
+                variant="secondary"
+                size="lg"
+                className="gap-2"
               >
                 <span>למי זה מתאים</span>
                 <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
-              </a>
+              </Button>
             </div>
           </div>
 

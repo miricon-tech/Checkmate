@@ -17,9 +17,19 @@ function ResultVisual({
   bullets: readonly string[];
   index: number;
 }) {
+  const caseLabel = `מקרה ${String(index + 1).padStart(2, "0")}`;
+
   if (index === 0) {
     return (
       <div className="results-showcase-story__visual results-showcase-story__visual--route">
+        <div className="results-showcase-story__visual-meta">
+          <span className="results-showcase-story__visual-badge">{caseLabel}</span>
+          <div className="results-showcase-story__visual-dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
         <div className="results-showcase-route">
           {bullets.map((bullet) => (
             <div key={bullet} className="results-showcase-route__chip">
@@ -33,6 +43,14 @@ function ResultVisual({
 
   return (
     <div className="results-showcase-story__visual results-showcase-story__visual--dashboard">
+      <div className="results-showcase-story__visual-meta">
+        <span className="results-showcase-story__visual-badge">{caseLabel}</span>
+        <div className="results-showcase-story__visual-dots" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
       <div className="results-showcase-dashboard">
         {bullets.map((bullet, bulletIndex) => (
           <div key={bullet} className="results-showcase-dashboard__row">
@@ -58,6 +76,16 @@ export function ResultsShowcase() {
           <article className="results-showcase-intro premium-card">
             <div className="results-showcase-intro__surface" aria-hidden="true" />
             <div className="results-showcase-intro__content">
+              <div className="results-showcase-intro__scan" aria-hidden="true">
+                <span className="results-showcase-intro__scan-count">
+                  {String(resultStories.length).padStart(2, "0")}
+                </span>
+                <div className="results-showcase-intro__scan-rails">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
               <Badge tone="gold">{resultsShowcase.eyebrow}</Badge>
               <h2 className="type-display-section results-showcase-intro__title text-foreground">
                 {resultsShowcase.title}
@@ -107,13 +135,21 @@ export function ResultsShowcase() {
 
                   {isMetricOutcome ? (
                     <div className="results-showcase-story__metric">
+                      <span className="results-showcase-story__result-label">
+                        תוצאה בפועל
+                      </span>
                       <strong>{story.outcome.value}</strong>
                       <span>{story.outcome.caption}</span>
                     </div>
                   ) : (
-                    <p className="results-showcase-story__outcome">
-                      {story.outcome.value}
-                    </p>
+                    <div className="results-showcase-story__outcome-block">
+                      <span className="results-showcase-story__result-label">
+                        תוצאה בפועל
+                      </span>
+                      <p className="results-showcase-story__outcome">
+                        {story.outcome.value}
+                      </p>
+                    </div>
                   )}
                 </div>
               </article>
