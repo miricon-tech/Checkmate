@@ -1,6 +1,10 @@
+import { faqItems } from "@/content/landing";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
-const pageTitle = "שותף צמיחה חיצוני לעסקי B2B ושירות בישראל";
+const pageTitle = siteConfig.homeTitle;
+const pageDescription = siteConfig.homeDescription;
+const primaryImageId = absoluteUrl("/#primaryimage");
+const faqPageId = absoluteUrl("/#faq");
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -11,37 +15,61 @@ const structuredData = {
       name: siteConfig.name,
       url: siteConfig.siteUrl,
       logo: absoluteUrl(siteConfig.ogImage),
-      description: siteConfig.description,
+      description: pageDescription,
       areaServed: {
         "@type": "Country",
         name: "Israel",
       },
-      knowsLanguage: ["he-IL"],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: siteConfig.whatsappNumber,
+          areaServed: "IL",
+          availableLanguage: ["he-IL"],
+        },
+      ],
+      knowsLanguage: [siteConfig.language],
     },
     {
       "@type": "WebSite",
       "@id": absoluteUrl("/#website"),
       url: siteConfig.siteUrl,
       name: siteConfig.name,
-      inLanguage: "he-IL",
+      inLanguage: siteConfig.language,
       publisher: {
         "@id": absoluteUrl("/#organization"),
       },
+    },
+    {
+      "@type": "ImageObject",
+      "@id": primaryImageId,
+      url: absoluteUrl(siteConfig.ogImage),
+      contentUrl: absoluteUrl(siteConfig.ogImage),
+      width: siteConfig.ogImageWidth,
+      height: siteConfig.ogImageHeight,
+      caption: `${siteConfig.name} - שותף צמיחה חיצוני לעסקי B2B ושירות בישראל`,
     },
     {
       "@type": "WebPage",
       "@id": absoluteUrl("/#webpage"),
       url: siteConfig.siteUrl,
       name: `${siteConfig.name} | ${pageTitle}`,
-      description: siteConfig.description,
-      inLanguage: "he-IL",
+      description: pageDescription,
+      inLanguage: siteConfig.language,
       isPartOf: {
         "@id": absoluteUrl("/#website"),
       },
       about: {
         "@id": absoluteUrl("/#organization"),
       },
-      primaryImageOfPage: absoluteUrl(siteConfig.ogImage),
+      primaryImageOfPage: {
+        "@id": primaryImageId,
+      },
+      mainEntity: [
+        { "@id": absoluteUrl("/#service") },
+        { "@id": faqPageId },
+      ],
       potentialAction: {
         "@type": "CommunicateAction",
         name: "בדיקת התאמה (15 דק׳)",
@@ -51,8 +79,9 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": absoluteUrl("/#service"),
-      name: "Checkmate Growth Partner Program",
-      description: siteConfig.description,
+      name: pageTitle,
+      description: pageDescription,
+      url: siteConfig.siteUrl,
       serviceType: [
         "שותף צמיחה חיצוני",
         "טיפול בלידים",
@@ -72,7 +101,24 @@ const structuredData = {
         "@type": "BusinessAudience",
         audienceType: "עסקים עם עסקה ממוצעת של 15,000 ש\"ח ומעלה",
       },
-      availableLanguage: ["he-IL"],
+      availableLanguage: [siteConfig.language],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": faqPageId,
+      url: absoluteUrl("/#faq"),
+      inLanguage: siteConfig.language,
+      isPartOf: {
+        "@id": absoluteUrl("/#webpage"),
+      },
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer.join(" "),
+        },
+      })),
     },
   ],
 };

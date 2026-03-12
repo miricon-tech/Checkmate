@@ -1,23 +1,42 @@
-const rawSiteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  process.env.SITE_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  process.env.VERCEL_URL ||
-  "http://localhost:3000";
-
 function normalizeSiteUrl(value: string) {
   const withProtocol = value.startsWith("http") ? value : `https://${value}`;
   return withProtocol.replace(/\/$/, "");
 }
 
+function getNormalizedHostname(value: string) {
+  return new URL(value).hostname.replace(/^www\./, "");
+}
+
+const canonicalSiteUrl = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.SITE_URL ||
+    "https://checkmate.co.il"
+);
+
+const runtimeSiteUrl = normalizeSiteUrl(
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VERCEL_URL ||
+    canonicalSiteUrl
+);
+
+const canonicalHost = getNormalizedHostname(canonicalSiteUrl);
+const runtimeHost = getNormalizedHostname(runtimeSiteUrl);
+
 export const siteConfig = {
   name: "Checkmate",
   locale: "he_IL",
-  siteUrl: normalizeSiteUrl(rawSiteUrl),
-  defaultTitle: "Checkmate | שותף צמיחה לעסקי B2B ושירות בישראל",
+  language: "he-IL",
+  direction: "rtl",
+  siteUrl: canonicalSiteUrl,
+  runtimeSiteUrl,
+  isIndexable: canonicalHost === runtimeHost,
+  defaultTitle: "Checkmate | שותף צמיחה חיצוני לעסקי B2B ושירות בישראל",
   titleTemplate: "%s | Checkmate",
   description:
     "Checkmate היא לא עוד סוכנות שיווק. אנחנו נכנסים לעסקי B2B ושירות בישראל כשותף צמיחה חיצוני ומחברים שיווק, לידים, מכירות ותהליך סגירה למערכת אחת עם ROI מדיד.",
+  homeTitle: "שותף צמיחה חיצוני לעסקי B2B ושירות בישראל",
+  homeDescription:
+    "Checkmate מחברת בין שיווק, טיפול בלידים, מכירות ומדידה למערכת צמיחה אחת לעסקי B2B ושירות בישראל.",
   keywords: [
     "Checkmate",
     "שותף צמיחה",
@@ -33,9 +52,10 @@ export const siteConfig = {
     "שקיפות מכירות",
     "מערכת מכירות לעסקים",
   ],
-  ogImage: "/checkmate_logo.png",
+  ogImage: "/checkmate-og.jpg",
   ogImageWidth: 1536,
   ogImageHeight: 1024,
+  whatsappNumber: "+972546712130",
 } as const;
 
 export function absoluteUrl(path = "/") {

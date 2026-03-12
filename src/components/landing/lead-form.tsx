@@ -1,7 +1,14 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useId, useState } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import { Check, ChevronDown } from "lucide-react";
 import type { ZodError } from "zod";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -42,6 +49,14 @@ type LeadFormProps = {
   tone?: "default" | "strong" | "soft" | "dark";
 };
 
+type RevenueSelectProps = {
+  describedBy?: string;
+  error?: string;
+  onChange: (value: LeadFormValues["monthlyRevenue"]) => void;
+  options: typeof monthlyRevenueOptions;
+  value: LeadFormValues["monthlyRevenue"];
+};
+
 function getFieldErrors(error: ZodError<LeadFormValues>) {
   const fieldErrors = error.flatten().fieldErrors;
 
@@ -51,6 +66,162 @@ function getFieldErrors(error: ZodError<LeadFormValues>) {
       messages?.[0] ?? "",
     ])
   ) as LeadFormErrors;
+}
+
+function RevenueSelect({
+  describedBy,
+  error,
+  onChange,
+  options,
+  value,
+}: RevenueSelectProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const listboxId = useId();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const selectedOption = options.find((option) => option.value === value);
+  const selectedLabel = selectedOption?.label ?? "אפשר להשאיר ריק";
+
+  const handlePointerDownOutside = useEffectEvent((event: PointerEvent) => {
+    const target = event.target;
+
+    if (!(target instanceof Node)) {
+      return;
+    }
+
+    if (!rootRef.current?.contains(target)) {
+      setIsOpen(false);
+    }
+  });
+
+  const handleEscape = useEffectEvent((event: KeyboardEvent) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    setIsOpen(false);
+    buttonRef.current?.focus();
+  });
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    document.addEventListener("pointerdown", handlePointerDownOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDownOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  const handleSelect = (nextValue: LeadFormValues["monthlyRevenue"]) => {
+    onChange(nextValue);
+    setIsOpen(false);
+
+    requestAnimationFrame(() => {
+      buttonRef.current?.focus();
+    });
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      className={cn(
+        "ui-select-menu",
+        isOpen && "ui-select-menu--open",
+        value && "ui-select-menu--filled",
+        error && "ui-select-menu--error"
+      )}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        className="ui-input ui-select-menu__trigger"
+        aria-controls={listboxId}
+        aria-describedby={describedBy}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <span
+          className={cn(
+            "ui-select-menu__value",
+            !value && "ui-select-menu__value--placeholder"
+          )}
+        >
+          {selectedLabel}
+        </span>
+        <span className="ui-select-menu__icon-shell" aria-hidden="true">
+          <ChevronDown className="ui-select-menu__icon" strokeWidth={1.9} />
+        </span>
+      </button>
+
+      <div
+        id={listboxId}
+        role="listbox"
+        aria-hidden={!isOpen}
+        className="ui-select-menu__panel"
+        data-open={isOpen ? "true" : "false"}
+      >
+        <div className="ui-select-menu__panel-inner">
+          <button
+            type="button"
+            role="option"
+            tabIndex={isOpen ? 0 : -1}
+            aria-selected={!value}
+            className={cn(
+              "ui-select-menu__option",
+              !value && "ui-select-menu__option--selected"
+            )}
+            onClick={() => handleSelect("")}
+          >
+            <span className="ui-select-menu__option-copy">
+              <span className="ui-select-menu__option-title">
+                אפשר להשאיר ריק
+              </span>
+              <span className="ui-select-menu__option-caption">
+                לא חובה לבחור טווח בשלב הזה
+              </span>
+            </span>
+            <Check
+              className="ui-select-menu__check"
+              strokeWidth={2}
+            />
+          </button>
+
+          {options.map((option) => {
+            const isSelected = option.value === value;
+
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="option"
+                tabIndex={isOpen ? 0 : -1}
+                aria-selected={isSelected}
+                className={cn(
+                  "ui-select-menu__option",
+                  isSelected && "ui-select-menu__option--selected"
+                )}
+                onClick={() => handleSelect(option.value)}
+              >
+                <span className="ui-select-menu__option-title">
+                  {option.label}
+                </span>
+                <Check
+                  className="ui-select-menu__check"
+                  strokeWidth={2}
+                />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function LeadForm({
@@ -69,13 +240,10 @@ export function LeadForm({
 
   const fieldErrorId = (field: keyof LeadFormValues) => `${formId}-${field}-error`;
   const isFilled = (field: keyof LeadFormValues) => values[field].trim().length > 0;
-
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  const updateFieldValue = (
+    fieldName: keyof LeadFormValues,
+    value: LeadFormValues[keyof LeadFormValues]
   ) => {
-    const { name, value } = event.target;
-    const fieldName = name as keyof LeadFormValues;
-
     setValues((current) => ({ ...current, [fieldName]: value }));
 
     if (errors[fieldName]) {
@@ -85,6 +253,15 @@ export function LeadForm({
     if (status) {
       setStatus(null);
     }
+  };
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    const fieldName = name as keyof LeadFormValues;
+
+    updateFieldValue(fieldName, value);
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -103,7 +280,8 @@ export function LeadForm({
         setErrors({});
         setStatus({
           tone: "success",
-          message: "הפרטים התקבלו. אם יש התאמה, ניצור קשר להמשך.",
+          message:
+            "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
         });
         setValues(initialValues);
         return;
@@ -154,7 +332,7 @@ export function LeadForm({
         tone: "success",
         message:
           payload?.message ??
-          "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
+          "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
       });
       setValues(initialValues);
     } catch {
@@ -310,23 +488,17 @@ export function LeadForm({
               <span className="ui-field__label">מחזור חודשי משוער</span>
               <span className="ui-field__hint">אופציונלי</span>
             </span>
-            <select
-              name="monthlyRevenue"
-              className="ui-input ui-select"
+            <RevenueSelect
               value={values.monthlyRevenue}
-              onChange={handleChange}
-              aria-invalid={Boolean(errors.monthlyRevenue)}
-              aria-describedby={
+              options={monthlyRevenueOptions}
+              error={errors.monthlyRevenue}
+              describedBy={
                 errors.monthlyRevenue ? fieldErrorId("monthlyRevenue") : undefined
               }
-            >
-              <option value="">אפשר להשאיר ריק</option>
-              {monthlyRevenueOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+              onChange={(nextValue) => {
+                updateFieldValue("monthlyRevenue", nextValue);
+              }}
+            />
             {errors.monthlyRevenue ? (
               <span
                 id={fieldErrorId("monthlyRevenue")}

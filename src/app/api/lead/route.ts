@@ -105,7 +105,8 @@ export async function POST(request: Request) {
 
     if (fieldErrors.website) {
       return jsonResponse({
-        message: "הפרטים התקבלו. אם יש התאמה, ניצור קשר להמשך.",
+        message:
+          "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
       });
     }
 
@@ -122,7 +123,8 @@ export async function POST(request: Request) {
     await sendLeadNotification(result.data);
 
     return jsonResponse({
-      message: "הפרטים התקבלו. אם העסק מתאים, נחזור לתיאום בדיקת התאמה.",
+      message:
+        "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
     });
   } catch (error) {
     console.error("Failed to deliver lead form email", error);

@@ -42,11 +42,7 @@ export const leadFormSchema = z.object({
   challenge: z
     .string()
     .trim()
-    .max(800, "אפשר לקצר מעט את התיאור.")
-    .refine(
-      (value) => value.length === 0 || value.length >= 10,
-      "אם בוחרים לפרט, כדאי לכתוב לפחות כמה מילים."
-    ),
+    .max(800, "אפשר לקצר מעט את התיאור."),
   website: z.string().trim().max(0, "Invalid submission."),
 });
 

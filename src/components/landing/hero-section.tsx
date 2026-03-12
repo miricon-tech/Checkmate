@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroChessboard from "../../../public/home-page-hero/Chessboard.jpg";
 
 export function HeroSection() {
   return (
@@ -32,11 +33,11 @@ export function HeroSection() {
         }}
       />
 
-      <div className="mx-auto max-w-[92rem] px-6 pt-3 pb-20 sm:px-8 sm:pt-4 sm:pb-24 lg:px-10 lg:pt-8 lg:pb-28 xl:px-12 xl:py-32 2xl:max-w-[98rem] 2xl:px-16">
+      <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-8 lg:pb-28 xl:py-32">
         <div dir="rtl" className="lg:flex lg:items-start">
           <div
             dir="rtl"
-            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[34rem] lg:flex-[0_1_35rem] lg:pt-10 xl:max-w-[37rem] xl:flex-[0_1_38rem] 2xl:max-w-[40rem] 2xl:flex-[0_1_41rem]"
+            className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-8 xl:max-w-[31rem]"
           >
             <div className="mt-4 sm:mt-6 lg:mt-0">
               <div className="inline-flex flex-wrap items-center gap-3">
@@ -50,14 +51,14 @@ export function HeroSection() {
               </div>
             </div>
 
-            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[12.4ch] xl:max-w-[13.1ch] 2xl:max-w-[13.6ch]">
+            <h1 className="type-display-hero mt-7 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-8 lg:max-w-[11.8ch]">
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?
               </span>
             </h1>
 
-            <p className="type-body-xl mt-6 max-w-[27rem] text-[var(--muted)] lg:mt-7 lg:max-w-[31rem] xl:max-w-[33.5rem] 2xl:max-w-[35rem]">
+            <p className="type-body-xl mt-6 max-w-[27rem] text-[var(--muted)] lg:mt-7">
               Checkmate נכנסת לעסקי B2B ושירות בישראל כשותף צמיחה חיצוני, כדי
               להפוך פעילות מפוזרת ליותר פגישות איכותיות, יותר שליטה בתהליך
               ויותר הכנסה מדידה.
@@ -86,10 +87,12 @@ export function HeroSection() {
                   <div className="hero-figure__frame">
                     <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem] 2xl:h-[45rem]">
                       <Image
-                        src="/home-page-hero/Chessboard.png"
+                        src={heroChessboard}
                         alt="לוח שחמט באווירה עסקית"
                         fill
                         priority
+                        placeholder="blur"
+                        quality={76}
                         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 58rem, (max-width: 1728px) 68rem, 76rem"
                         className="hero-figure__image object-cover object-[56%_center] scale-[1.045] brightness-[0.982] contrast-[1.02] saturate-[0.84] sepia-[0.02]"
                       />
