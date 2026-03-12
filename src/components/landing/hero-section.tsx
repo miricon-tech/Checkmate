@@ -33,7 +33,7 @@ export function HeroSection() {
       />
 
       <div className="mx-auto max-w-7xl px-6 pt-3 pb-20 sm:pt-4 sm:pb-24 lg:px-8 lg:pt-8 lg:pb-28 xl:py-32">
-        <div className="lg:flex lg:items-start">
+        <div dir="rtl" className="lg:flex lg:items-start">
           <div
             dir="rtl"
             className="motion-fade-up motion-fade-up--delay-1 mx-auto max-w-2xl shrink-0 lg:mx-0 lg:max-w-[29rem] lg:pt-8 xl:max-w-[31rem]"
@@ -77,21 +77,23 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:mr-8 lg:max-w-none lg:flex-none xl:mr-16 xl:-ml-8 2xl:-ml-16">
-            <div className="w-full lg:w-[45rem] xl:w-[50rem] 2xl:w-[53rem]">
-              <div className="hero-figure">
-                <div className="hero-figure__frame">
-                  <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem]">
-                    <Image
-                      src="/home-page-hero/Chessboard.png"
-                      alt="לוח שחמט באווירה עסקית"
-                      fill
-                      priority
-                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 45rem, (max-width: 1728px) 50rem, 53rem"
-                      className="hero-figure__image object-cover object-[60%_center] scale-[1.1] brightness-[0.965] contrast-[0.965] saturate-[0.76]"
-                    />
-                    <div aria-hidden="true" className="hero-figure__edge" />
-                    <div aria-hidden="true" className="hero-figure__base" />
+          <div className="motion-fade-up motion-fade-up--delay-2 mx-auto mt-10 flex w-full max-w-2xl sm:mt-12 lg:mt-0 lg:ml-0 lg:mr-10 lg:max-w-none lg:flex-none xl:mr-24 2xl:mr-32">
+            <div className="w-full max-w-3xl sm:max-w-5xl lg:w-auto lg:max-w-none lg:flex-none">
+              <div className="w-full lg:w-[58rem] xl:w-[68rem] 2xl:w-[76rem]">
+                <div className="hero-figure">
+                  <div className="hero-figure__frame">
+                    <div className="hero-figure__media h-[22rem] sm:h-[26rem] lg:h-[38rem] xl:h-[42rem] 2xl:h-[45rem]">
+                      <Image
+                        src="/home-page-hero/Chessboard.png"
+                        alt="לוח שחמט באווירה עסקית"
+                        fill
+                        priority
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 82vw, (max-width: 1440px) 58rem, (max-width: 1728px) 68rem, 76rem"
+                        className="hero-figure__image object-cover object-[58%_center] scale-[1.08] brightness-[0.965] contrast-[0.965] saturate-[0.76]"
+                      />
+                      <div aria-hidden="true" className="hero-figure__edge" />
+                      <div aria-hidden="true" className="hero-figure__base" />
+                    </div>
                   </div>
                 </div>
               </div>
