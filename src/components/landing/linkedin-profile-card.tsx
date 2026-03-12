@@ -36,11 +36,16 @@ export function LinkedInProfileCard() {
         </div>
 
         <div className="linkedin-profile-card__copy">
+          <p className="linkedin-profile-card__eyebrow">
+            {linkedinProfileCard.eyebrow}
+          </p>
           <p className="linkedin-profile-card__name">{linkedinProfileCard.name}</p>
           <p className="linkedin-profile-card__role">{linkedinProfileCard.role}</p>
-          <p className="linkedin-profile-card__description">
-            {linkedinProfileCard.description}
-          </p>
+          <div className="linkedin-profile-card__description">
+            {linkedinProfileCard.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </div>
     </a>

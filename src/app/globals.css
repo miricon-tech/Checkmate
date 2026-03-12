@@ -2203,7 +2203,16 @@ a {
 
 .linkedin-profile-card__copy {
   display: grid;
-  gap: 0.26rem;
+  gap: 0.32rem;
+}
+
+.linkedin-profile-card__eyebrow {
+  color: rgba(22, 52, 92, 0.52);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .linkedin-profile-card__name {
@@ -2224,12 +2233,18 @@ a {
 }
 
 .linkedin-profile-card__description {
-  max-width: 24rem;
+  max-width: 29rem;
+  display: grid;
+  gap: 0.55rem;
   color: rgba(62, 75, 90, 0.82);
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.012em;
   line-height: 1.64;
+}
+
+.linkedin-profile-card__description p:last-child {
+  color: var(--accent-deep);
 }
 
 @media (max-width: 639px) {
