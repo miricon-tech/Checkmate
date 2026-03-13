@@ -55,6 +55,19 @@ export const siteConfig = {
   ogImage: "/checkmate-og.jpg",
   ogImageWidth: 1536,
   ogImageHeight: 1024,
+  logoImage: "/checkmate_logo.png",
+  founderName: "אופק מזור",
+  founderJobTitle: "Founder",
+  founderLinkedIn:
+    "https://www.linkedin.com/in/%D7%90%D7%95%D7%A4%D7%A7%D7%9E%D7%96%D7%95%D7%A8/",
+  founderImage: "/ofek-linkedin-profile.jpeg",
+  sameAs: [
+    "https://www.linkedin.com/in/%D7%90%D7%95%D7%A4%D7%A7%D7%9E%D7%96%D7%95%D7%A8/",
+  ],
+  lastModified:
+    process.env.NEXT_PUBLIC_SITE_UPDATED_AT ||
+    process.env.SITE_UPDATED_AT ||
+    "2026-03-13",
   whatsappNumber: "+972546712130",
 } as const;
 

@@ -4,18 +4,34 @@ import { absoluteUrl, siteConfig } from "@/lib/site-config";
 const pageTitle = siteConfig.homeTitle;
 const pageDescription = siteConfig.homeDescription;
 const primaryImageId = absoluteUrl("/#primaryimage");
+const logoImageId = absoluteUrl("/#logo");
+const founderId = absoluteUrl("/#founder");
+const founderImageId = absoluteUrl("/#founder-image");
 const faqPageId = absoluteUrl("/#faq");
+const hasFaqItems = faqItems.length > 0;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "ImageObject",
+      "@id": logoImageId,
+      url: absoluteUrl(siteConfig.logoImage),
+      contentUrl: absoluteUrl(siteConfig.logoImage),
+    },
+    {
       "@type": "Organization",
       "@id": absoluteUrl("/#organization"),
       name: siteConfig.name,
       url: siteConfig.siteUrl,
-      logo: absoluteUrl(siteConfig.ogImage),
+      logo: {
+        "@id": logoImageId,
+      },
       description: pageDescription,
+      sameAs: [...siteConfig.sameAs],
+      founder: {
+        "@id": founderId,
+      },
       areaServed: {
         "@type": "Country",
         name: "Israel",
@@ -30,6 +46,26 @@ const structuredData = {
         },
       ],
       knowsLanguage: [siteConfig.language],
+    },
+    {
+      "@type": "ImageObject",
+      "@id": founderImageId,
+      url: absoluteUrl(siteConfig.founderImage),
+      contentUrl: absoluteUrl(siteConfig.founderImage),
+    },
+    {
+      "@type": "Person",
+      "@id": founderId,
+      name: siteConfig.founderName,
+      jobTitle: siteConfig.founderJobTitle,
+      url: siteConfig.founderLinkedIn,
+      sameAs: [siteConfig.founderLinkedIn],
+      image: {
+        "@id": founderImageId,
+      },
+      worksFor: {
+        "@id": absoluteUrl("/#organization"),
+      },
     },
     {
       "@type": "WebSite",
@@ -68,7 +104,7 @@ const structuredData = {
       },
       mainEntity: [
         { "@id": absoluteUrl("/#service") },
-        { "@id": faqPageId },
+        ...(hasFaqItems ? [{ "@id": faqPageId }] : []),
       ],
       potentialAction: {
         "@type": "CommunicateAction",
@@ -103,23 +139,28 @@ const structuredData = {
       },
       availableLanguage: [siteConfig.language],
     },
-    {
-      "@type": "FAQPage",
-      "@id": faqPageId,
-      url: absoluteUrl("/#faq"),
-      inLanguage: siteConfig.language,
-      isPartOf: {
-        "@id": absoluteUrl("/#webpage"),
-      },
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer.join(" "),
-        },
-      })),
-    },
+    ...(hasFaqItems
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": faqPageId,
+            url: absoluteUrl("/#faq"),
+            inLanguage: siteConfig.language,
+            isPartOf: {
+              "@id": absoluteUrl("/#webpage"),
+            },
+            mainEntity: faqItems.map((item, index) => ({
+              "@type": "Question",
+              "@id": absoluteUrl(`/#faq-question-${index + 1}`),
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer.join(" "),
+              },
+            })),
+          },
+        ]
+      : []),
   ],
 };
 
