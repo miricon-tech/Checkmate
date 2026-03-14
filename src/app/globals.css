@@ -3607,8 +3607,11 @@ a {
   }
 
   .whatsapp-fab {
-    max-width: calc(100vw - 1.5rem);
-    padding: 0.48rem 0.58rem 0.48rem 0.86rem;
+    right: 0.75rem;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.8rem);
+    max-width: min(18.75rem, calc(100vw - 5.7rem));
+    min-height: 3.4rem;
+    padding: 0.48rem 0.58rem 0.48rem 0.82rem;
   }
 
   .whatsapp-fab__copy {
@@ -3617,11 +3620,22 @@ a {
 
   .accessibility-dock {
     left: 0.75rem;
-    bottom: 6.6rem;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.8rem);
   }
 
   .accessibility-panel {
     width: min(calc(100vw - 1.5rem), 16.8rem);
+  }
+
+  .accessibility-trigger {
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 1.05rem;
+  }
+
+  .accessibility-trigger__icon {
+    width: 2.34rem;
+    height: 2.34rem;
   }
 
   .accessibility-panel__grid {
