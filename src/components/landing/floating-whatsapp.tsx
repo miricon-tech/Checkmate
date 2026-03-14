@@ -1,8 +1,9 @@
- "use client";
+"use client";
 
 import { trackEvent } from "@/lib/analytics";
+import { siteConfig } from "@/lib/site-config";
 
-const whatsappNumber = "972546712130";
+const whatsappNumber = siteConfig.whatsappNumber.replace(/\D/g, "");
 
 const whatsappMessage = encodeURIComponent(
   "היי אופק,\nיש לי עסק שמתמחה ב/אני עוסק ב\nוהייתי רוצה להבין קצת יותר פרטים לגבי השירותים שלך"

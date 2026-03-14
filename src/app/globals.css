@@ -3647,6 +3647,48 @@ a {
   }
 }
 
+@media (max-width: 767px) {
+  .whatsapp-fab {
+    gap: 0.55rem;
+    max-width: min(14.25rem, calc(100vw - 5.3rem));
+    min-height: 3.15rem;
+    padding: 0.42rem 0.5rem 0.42rem 0.72rem;
+  }
+
+  .whatsapp-fab__content {
+    gap: 0;
+  }
+
+  .whatsapp-fab__eyebrow {
+    display: none;
+  }
+
+  .whatsapp-fab__copy {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .whatsapp-fab__icon-shell {
+    width: 2.35rem;
+    height: 2.35rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.86),
+      0 9px 18px rgba(22, 52, 92, 0.08);
+  }
+
+  .accessibility-trigger {
+    width: 3.15rem;
+    height: 3.15rem;
+    border-radius: 1rem;
+  }
+
+  .accessibility-trigger__icon {
+    width: 2.16rem;
+    height: 2.16rem;
+    border-radius: 0.8rem;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .ui-button:hover {
     transform: translateY(-1px);
