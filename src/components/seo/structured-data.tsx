@@ -1,8 +1,10 @@
 import { faqItems } from "@/content/landing";
+import { getLandingLastModified } from "@/lib/content-last-modified";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 const pageTitle = siteConfig.homeTitle;
 const pageDescription = siteConfig.homeDescription;
+const dateModified = getLandingLastModified().toISOString();
 const primaryImageId = absoluteUrl("/#primaryimage");
 const logoImageId = absoluteUrl("/#logo");
 const founderId = absoluteUrl("/#founder");
@@ -93,6 +95,7 @@ const structuredData = {
       name: `${siteConfig.name} | ${pageTitle}`,
       description: pageDescription,
       inLanguage: siteConfig.language,
+      dateModified,
       isPartOf: {
         "@id": absoluteUrl("/#website"),
       },
@@ -117,6 +120,7 @@ const structuredData = {
       "@id": absoluteUrl("/#service"),
       name: pageTitle,
       description: pageDescription,
+      dateModified,
       url: siteConfig.siteUrl,
       serviceType: [
         "שותף צמיחה חיצוני",
@@ -146,6 +150,7 @@ const structuredData = {
             "@id": faqPageId,
             url: absoluteUrl("/#faq"),
             inLanguage: siteConfig.language,
+            dateModified,
             isPartOf: {
               "@id": absoluteUrl("/#webpage"),
             },

@@ -3,6 +3,8 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { LandingPage } from "@/components/landing/landing-page";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: siteConfig.homeTitle,
   description: siteConfig.homeDescription,

@@ -1,11 +1,11 @@
 import { Building2, TrendingUp, Workflow } from "lucide-react";
 import { ctaChecklist } from "@/content/landing";
-import { AccessibilityControls } from "@/components/landing/accessibility-controls";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { HeroQualification } from "@/components/landing/hero-qualification";
 import { HeroSection } from "@/components/landing/hero-section";
 import { LandingFaq } from "@/components/landing/landing-faq";
 import { LandingHeader } from "@/components/landing/landing-header";
+import { LazyAccessibilityControls } from "@/components/landing/lazy-accessibility-controls";
 import { LeadForm } from "@/components/landing/lead-form";
 import { LinkedInProfileCard } from "@/components/landing/linkedin-profile-card";
 import { ProcessBento } from "@/components/landing/process-bento";
@@ -107,7 +107,7 @@ export function LandingPage() {
         </footer>
 
         <FloatingWhatsApp />
-        <AccessibilityControls />
+        <LazyAccessibilityControls />
       </main>
     </>
   );

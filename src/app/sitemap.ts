@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getLandingLastModified } from "@/lib/content-last-modified";
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date(siteConfig.lastModified);
+  const lastModified = getLandingLastModified();
 
   return [
     {
