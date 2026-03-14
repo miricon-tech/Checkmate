@@ -62,6 +62,8 @@ ALLOWED_FORM_ORIGINS=https://checkmate.co.il,https://www.checkmate.co.il
 LEAD_FORM_RATE_LIMIT_MAX=5
 LEAD_FORM_RATE_LIMIT_WINDOW_SECONDS=600
 LEAD_FORM_MAX_BODY_BYTES=12000
+UNIMI_SITE_KEY=
+UNIMI_LEADS_ENDPOINT=https://unimi.io/api/leads
 ```
 
 Notes:
@@ -71,3 +73,5 @@ Notes:
 - If your provider uses port `465`, set `SMTP_SECURE=true`.
 - `ALLOWED_FORM_ORIGINS` lets you whitelist production domains explicitly.
 - The default rate limit is `5` submissions per `10` minutes per IP, with a max body size of `12KB`.
+- `UNIMI_SITE_KEY` enables server-side lead sync from `POST /api/lead` to the central `unimi.io` dashboard.
+- The sync is sent server-to-server so it does not depend on browser `Origin` whitelisting.

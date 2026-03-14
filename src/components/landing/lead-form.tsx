@@ -12,6 +12,7 @@ import { Check, ChevronDown } from "lucide-react";
 import type { ZodError } from "zod";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 import {
   leadFormSchema,
@@ -35,6 +36,32 @@ const initialValues: LeadFormValues = {
 };
 
 type LeadFormErrors = Partial<Record<keyof LeadFormValues, string>>;
+
+type LeadAttribution = Partial<
+  Record<
+    | "utm_source"
+    | "utm_medium"
+    | "utm_campaign"
+    | "utm_term"
+    | "utm_content"
+    | "fbclid"
+    | "gclid"
+    | "fbc"
+    | "fbp"
+    | "landing_path"
+    | "captured_at",
+    string
+  >
+>;
+
+type LeadSubmissionPayload = LeadFormValues & {
+  attribution?: LeadAttribution;
+  eventId: string;
+  locale: "he" | "en";
+  pageUrl: string;
+  sourcePath: string;
+  submittedAtClient: string;
+};
 
 type LeadFormStatus =
   | { tone: "success" | "error"; message: string }
@@ -66,6 +93,78 @@ function getFieldErrors(error: ZodError<LeadFormValues>) {
       messages?.[0] ?? "",
     ])
   ) as LeadFormErrors;
+}
+
+function getCookieValue(name: string) {
+  if (typeof document === "undefined") {
+    return undefined;
+  }
+
+  const cookie = document.cookie
+    .split("; ")
+    .find((entry) => entry.startsWith(`${name}=`));
+
+  if (!cookie) {
+    return undefined;
+  }
+
+  return cookie.slice(name.length + 1);
+}
+
+function createLeadEventId() {
+  const randomPart =
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID().slice(0, 8)
+      : Math.random().toString(36).slice(2, 10);
+
+  return `lead-${Date.now()}-${randomPart}`;
+}
+
+function buildLeadSubmissionPayload(
+  values: LeadFormValues
+): LeadSubmissionPayload {
+  const url = new URL(window.location.href);
+  const searchParams = url.searchParams;
+  const locale = document.documentElement.lang.startsWith("en") ? "en" : "he";
+  const attribution = Object.fromEntries(
+    [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+      "fbclid",
+      "gclid",
+    ].flatMap((key) => {
+      const value = searchParams.get(key)?.trim();
+
+      return value ? [[key, value]] : [];
+    })
+  ) as LeadAttribution;
+
+  const fbc = getCookieValue("_fbc");
+  const fbp = getCookieValue("_fbp");
+
+  if (fbc) {
+    attribution.fbc = decodeURIComponent(fbc);
+  }
+
+  if (fbp) {
+    attribution.fbp = decodeURIComponent(fbp);
+  }
+
+  attribution.landing_path = url.pathname;
+  attribution.captured_at = new Date().toISOString();
+
+  return {
+    ...values,
+    attribution,
+    eventId: createLeadEventId(),
+    locale,
+    pageUrl: url.toString(),
+    sourcePath: url.pathname,
+    submittedAtClient: new Date().toISOString(),
+  };
 }
 
 function RevenueSelect({
@@ -234,6 +333,7 @@ export function LeadForm({
 }: LeadFormProps) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<LeadFormErrors>({});
+  const [hasStarted, setHasStarted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<LeadFormStatus>(null);
   const formId = useId();
@@ -264,12 +364,27 @@ export function LeadForm({
     updateFieldValue(fieldName, value);
   };
 
+  const handleFormFocus = () => {
+    if (hasStarted) {
+      return;
+    }
+
+    setHasStarted(true);
+    trackEvent("lead_form_start", {
+      location: "cta_form",
+    });
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (isSubmitting) {
       return;
     }
+
+    trackEvent("lead_submit_attempt", {
+      location: "cta_form",
+    });
 
     const result = leadFormSchema.safeParse(values);
 
@@ -288,6 +403,10 @@ export function LeadForm({
       }
 
       setErrors(nextErrors);
+      trackEvent("lead_submit_validation_error", {
+        location: "cta_form",
+        errorCount: Object.values(nextErrors).filter(Boolean).length,
+      });
       setStatus({
         tone: "error",
         message: "יש כמה פרטים שכדאי לדייק לפני שליחה.",
@@ -299,8 +418,9 @@ export function LeadForm({
     setIsSubmitting(true);
 
     try {
+      const submissionPayload = buildLeadSubmissionPayload(values);
       const response = await fetch("/api/lead", {
-        body: JSON.stringify(values),
+        body: JSON.stringify(submissionPayload),
         headers: {
           "Content-Type": "application/json",
         },
@@ -319,6 +439,10 @@ export function LeadForm({
           setErrors(payload.fieldErrors);
         }
 
+        trackEvent("lead_submit_error", {
+          location: "cta_form",
+          status: response.status,
+        });
         setStatus({
           tone: "error",
           message:
@@ -334,8 +458,15 @@ export function LeadForm({
           payload?.message ??
           "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
       });
+      trackEvent("lead_submit_success", {
+        location: "cta_form",
+      });
       setValues(initialValues);
     } catch {
+      trackEvent("lead_submit_error", {
+        location: "cta_form",
+        status: "network",
+      });
       setStatus({
         tone: "error",
         message: "יש בעיית תקשורת זמנית. נסו שוב בעוד רגע.",
@@ -347,7 +478,12 @@ export function LeadForm({
 
   return (
     <Panel tone={tone} className={cn("p-6 lg:p-8", className)}>
-      <form className="lead-form" noValidate onSubmit={handleSubmit}>
+      <form
+        className="lead-form"
+        noValidate
+        onSubmit={handleSubmit}
+        onFocusCapture={handleFormFocus}
+      >
         <div className="lead-form__hero">
           <div className="lead-form__hero-surface" aria-hidden="true" />
           <div className="lead-form__hero-top">

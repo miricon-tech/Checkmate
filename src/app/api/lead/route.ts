@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { sendLeadNotification } from "@/lib/lead-email";
 import {
+  isUnimiLeadSyncEnabled,
+  syncLeadToUnimi,
+} from "@/lib/unimi-lead-sync";
+import {
   checkLeadRateLimit,
   getLeadGuardConfig,
   hasAllowedLeadOrigin,
@@ -97,6 +101,10 @@ export async function POST(request: Request) {
     payload && typeof payload === "object"
       ? { website: "", ...(payload as Record<string, unknown>) }
       : payload;
+  const leadPayload =
+    normalizedPayload && typeof normalizedPayload === "object"
+      ? (normalizedPayload as Record<string, unknown>)
+      : null;
 
   const result = leadFormSchema.safeParse(normalizedPayload);
 
@@ -120,14 +128,42 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendLeadNotification(result.data);
+    const emailPromise = sendLeadNotification(result.data);
+    const unimiPromise =
+      leadPayload && isUnimiLeadSyncEnabled()
+        ? syncLeadToUnimi(result.data, leadPayload, request)
+        : Promise.resolve({ enabled: false, ok: false as const });
+
+    const [emailResult, unimiResult] = await Promise.allSettled([
+      emailPromise,
+      unimiPromise,
+    ]);
+
+    const emailOk = emailResult.status === "fulfilled";
+    const unimiOk =
+      unimiResult.status === "fulfilled" && unimiResult.value.ok;
+
+    if (!emailOk) {
+      console.error(
+        "Failed to deliver lead form email",
+        emailResult.reason
+      );
+    }
+
+    if (unimiResult.status === "rejected") {
+      console.error("Failed to sync lead to Unimi", unimiResult.reason);
+    }
+
+    if (!emailOk && !unimiOk) {
+      throw new Error("Lead delivery failed for all configured destinations.");
+    }
 
     return jsonResponse({
       message:
         "הבקשה התקבלה. אם יש התאמה לשירות, נחזור אליכם בהקדם לתיאום שיחת התאמה.",
     });
   } catch (error) {
-    console.error("Failed to deliver lead form email", error);
+    console.error("Lead processing failed", error);
 
     return jsonResponse(
       {

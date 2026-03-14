@@ -1,6 +1,9 @@
+ "use client";
+
 import Image from "next/image";
 import { ArrowUpLeft, Linkedin } from "lucide-react";
 import { linkedinProfileCard } from "@/content/landing";
+import { trackEvent } from "@/lib/analytics";
 import ofekLinkedinProfile from "../../../public/ofek-linkedin-profile.jpeg";
 
 export function LinkedInProfileCard() {
@@ -12,6 +15,12 @@ export function LinkedInProfileCard() {
       className="linkedin-profile-card"
       dir="rtl"
       aria-label={`${linkedinProfileCard.ctaLabel} - ${linkedinProfileCard.name}`}
+      onClick={() =>
+        trackEvent("linkedin_click", {
+          location: "cta_profile_card",
+          target: "linkedin",
+        })
+      }
     >
       <div className="linkedin-profile-card__media">
         <Image

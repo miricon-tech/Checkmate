@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TrackedExternalLink } from "@/components/ui/tracked-external-link";
 import { cn } from "@/lib/cn";
 import { resultStories, resultsShowcase } from "@/content/landing";
 
@@ -131,15 +132,21 @@ export function ResultsShowcase() {
                   ) : null}
 
                   <div className="results-showcase-story__footer">
-                    <a
+                    <TrackedExternalLink
                       href={story.site.url}
                       target="_blank"
                       rel="noreferrer"
                       className="motion-link results-showcase-story__link"
+                      analyticsEventName="case_study_click"
+                      analyticsProperties={{
+                        client: story.client,
+                        domain: story.site.domain,
+                        location: "results",
+                      }}
                     >
                       <span>{story.site.label}</span>
                       <ArrowUpLeft className="h-4 w-4" strokeWidth={1.8} />
-                    </a>
+                    </TrackedExternalLink>
                     <span className="results-showcase-story__domain">
                       {story.site.domain}
                     </span>
@@ -169,6 +176,12 @@ export function ResultsShowcase() {
               variant="primary"
               size="lg"
               className="results-showcase-summary__cta"
+              analyticsEventName="cta_click"
+              analyticsProperties={{
+                location: "results_summary",
+                target: "cta",
+                variant: "primary",
+              }}
             >
               {resultsShowcase.ctaLabel}
             </Button>

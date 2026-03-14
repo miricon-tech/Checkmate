@@ -1,3 +1,7 @@
+ "use client";
+
+import { trackEvent } from "@/lib/analytics";
+
 const whatsappNumber = "972546712130";
 
 const whatsappMessage = encodeURIComponent(
@@ -12,6 +16,12 @@ export function FloatingWhatsApp() {
       rel="noreferrer"
       aria-label="פתיחת שיחה ב-WhatsApp עם Checkmate"
       className="whatsapp-fab"
+      onClick={() =>
+        trackEvent("whatsapp_click", {
+          location: "floating_fab",
+          target: "whatsapp",
+        })
+      }
     >
       <span className="whatsapp-fab__content">
         <span className="whatsapp-fab__eyebrow">WhatsApp</span>

@@ -1,3 +1,5 @@
+"use client";
+
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -5,8 +7,11 @@ import type {
 } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { trackEvent } from "@/lib/analytics";
 
 type SharedButtonProps = {
+  analyticsEventName?: string;
+  analyticsProperties?: Record<string, string | number | boolean | null | undefined>;
   children: ReactNode;
   className?: string;
   size?: "sm" | "md" | "lg";
@@ -50,9 +55,12 @@ function isHashHref(href: string) {
 export function Button(props: ButtonProps) {
   if ("href" in props && typeof props.href === "string") {
     const {
+      analyticsEventName,
+      analyticsProperties,
       children,
       className,
       href,
+      onClick,
       prefetch,
       replace,
       scroll,
@@ -63,6 +71,15 @@ export function Button(props: ButtonProps) {
 
     const classes = cn(variantClasses[variant], sizeClasses[size], className);
     const isInternalRoute = !isExternalHref(href) && !isHashHref(href);
+    const handleClick: AnchorHTMLAttributes<HTMLAnchorElement>["onClick"] = (
+      event
+    ) => {
+      if (analyticsEventName) {
+        trackEvent(analyticsEventName, analyticsProperties);
+      }
+
+      onClick?.(event);
+    };
 
     if (isInternalRoute) {
       return (
@@ -72,6 +89,7 @@ export function Button(props: ButtonProps) {
           replace={replace}
           scroll={scroll}
           className={classes}
+          onClick={handleClick}
           {...anchorProps}
         >
           {children}
@@ -83,6 +101,7 @@ export function Button(props: ButtonProps) {
       <a
         href={href}
         className={classes}
+        onClick={handleClick}
         {...anchorProps}
       >
         {children}
@@ -91,18 +110,32 @@ export function Button(props: ButtonProps) {
   }
 
   const {
+    analyticsEventName,
+    analyticsProperties,
     children,
     className,
+    onClick,
     size = "md",
     type = "button",
     variant = "primary",
     ...buttonProps
   } = props;
 
+  const handleClick: ButtonHTMLAttributes<HTMLButtonElement>["onClick"] = (
+    event
+  ) => {
+    if (analyticsEventName) {
+      trackEvent(analyticsEventName, analyticsProperties);
+    }
+
+    onClick?.(event);
+  };
+
   return (
     <button
       type={type}
       className={cn(variantClasses[variant], sizeClasses[size], className)}
+      onClick={handleClick}
       {...buttonProps}
     >
       {children}

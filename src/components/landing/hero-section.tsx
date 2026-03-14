@@ -65,7 +65,17 @@ export function HeroSection() {
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-6">
-              <Button href="#cta" variant="primary" size="lg">
+              <Button
+                href="#cta"
+                variant="primary"
+                size="lg"
+                analyticsEventName="cta_click"
+                analyticsProperties={{
+                  location: "hero",
+                  target: "cta",
+                  variant: "primary",
+                }}
+              >
                 בדיקת התאמה (15 דק׳)
               </Button>
               <Button
@@ -73,6 +83,12 @@ export function HeroSection() {
                 variant="secondary"
                 size="lg"
                 className="gap-2"
+                analyticsEventName="cta_click"
+                analyticsProperties={{
+                  location: "hero",
+                  target: "qualification",
+                  variant: "secondary",
+                }}
               >
                 <span>למי זה מתאים</span>
                 <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
