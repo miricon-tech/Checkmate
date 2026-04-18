@@ -334,12 +334,50 @@ export function LeadForm({
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<LeadFormErrors>({});
   const [hasStarted, setHasStarted] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showExtendedFields, setShowExtendedFields] = useState(false);
   const [status, setStatus] = useState<LeadFormStatus>(null);
+  const companyInputRef = useRef<HTMLInputElement | null>(null);
   const formId = useId();
 
   const fieldErrorId = (field: keyof LeadFormValues) => `${formId}-${field}-error`;
   const isFilled = (field: keyof LeadFormValues) => values[field].trim().length > 0;
+  const hasPrimaryFields =
+    values.fullName.trim().length > 0 && values.phone.trim().length > 0;
+  const shouldShowExtendedFields =
+    !isMobileViewport || showExtendedFields || hasPrimaryFields;
+  const isProgressiveMobileStep =
+    isMobileViewport && !shouldShowExtendedFields;
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const syncViewport = () => {
+      setIsMobileViewport(mediaQuery.matches);
+    };
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncViewport);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileViewport) {
+      return;
+    }
+
+    if (hasPrimaryFields) {
+      setShowExtendedFields(true);
+    }
+  }, [hasPrimaryFields, isMobileViewport]);
+
   const updateFieldValue = (
     fieldName: keyof LeadFormValues,
     value: LeadFormValues[keyof LeadFormValues]
@@ -375,6 +413,18 @@ export function LeadForm({
     });
   };
 
+  const revealExtendedFields = () => {
+    if (!isMobileViewport) {
+      return;
+    }
+
+    setShowExtendedFields(true);
+
+    requestAnimationFrame(() => {
+      companyInputRef.current?.focus();
+    });
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -403,6 +453,13 @@ export function LeadForm({
       }
 
       setErrors(nextErrors);
+      if (
+        isMobileViewport &&
+        !shouldShowExtendedFields &&
+        (nextErrors.company || nextErrors.monthlyRevenue || nextErrors.challenge)
+      ) {
+        revealExtendedFields();
+      }
       trackEvent("lead_submit_validation_error", {
         location: "cta_form",
         errorCount: Object.values(nextErrors).filter(Boolean).length,
@@ -479,7 +536,10 @@ export function LeadForm({
   return (
     <Panel tone={tone} className={cn("p-6 lg:p-8", className)}>
       <form
-        className="lead-form"
+        className={cn(
+          "lead-form",
+          isProgressiveMobileStep && "lead-form--progressive-mobile"
+        )}
         noValidate
         onSubmit={handleSubmit}
         onFocusCapture={handleFormFocus}
@@ -500,7 +560,13 @@ export function LeadForm({
             </p>
           </div>
 
-          <div className="lead-form__signals" aria-label="מאפייני השיחה">
+          <div
+            className={cn(
+              "lead-form__signals",
+              isProgressiveMobileStep && "lead-form__signals--compact-hidden"
+            )}
+            aria-label="מאפייני השיחה"
+          >
             {leadFormSignals.map((signal) => (
               <div key={signal.label} className="lead-form__signal">
                 <span className="lead-form__signal-label">{signal.label}</span>
@@ -510,7 +576,12 @@ export function LeadForm({
           </div>
         </div>
 
-        <div className="lead-form__section-header">
+        <div
+          className={cn(
+            "lead-form__section-header",
+            isProgressiveMobileStep && "lead-form__section-header--compact-hidden"
+          )}
+        >
           <div>
             <p className="lead-form__section-kicker">כמה פרטים קצרים</p>
             <p className="lead-form__section-title">
@@ -584,6 +655,25 @@ export function LeadForm({
               </span>
             ) : null}
           </label>
+        </div>
+
+        <div
+          className={cn(
+            "lead-form__mobile-prompt",
+            !isProgressiveMobileStep && "lead-form__mobile-prompt--hidden"
+          )}
+        >
+          <p className="lead-form__mobile-prompt-copy">
+            מתחילים בשם וטלפון. אחר כך נפתח עוד כמה פרטים קצרים.
+          </p>
+        </div>
+
+        <div
+          className={cn(
+            "lead-form__fields lead-form__fields--secondary grid grid-cols-1 gap-x-5 gap-y-4 lg:grid-cols-2",
+            !shouldShowExtendedFields && "lead-form__fields--hidden"
+          )}
+        >
 
           <label
             className={cn(
@@ -596,6 +686,7 @@ export function LeadForm({
               <span className="ui-field__label">שם העסק</span>
             </span>
             <input
+              ref={companyInputRef}
               type="text"
               name="company"
               placeholder="איך נקרא העסק?"
@@ -686,22 +777,39 @@ export function LeadForm({
           </div>
         ) : null}
 
-        <div className="lead-form__actions">
+        <div
+          className={cn(
+            "lead-form__actions",
+            isProgressiveMobileStep && "lead-form__actions--mobile-first"
+          )}
+        >
           <p className="lead-form__action-copy">
-            נחזור רק אם נראה שיש בסיס אמיתי להתאמה ולעבודה משותפת.
+            {isProgressiveMobileStep
+              ? "הכפתור כבר כאן. אחרי שני הפרטים הראשונים נפתח את ההמשך."
+              : "נחזור רק אם נראה שיש בסיס אמיתי להתאמה ולעבודה משותפת."}
           </p>
           <Button
-            aria-busy={isSubmitting}
+            aria-busy={!isProgressiveMobileStep && isSubmitting}
             className="w-full justify-center lg:w-auto lg:min-w-[14rem]"
-            disabled={isSubmitting}
-            type="submit"
+            disabled={!isProgressiveMobileStep && isSubmitting}
+            onClick={isProgressiveMobileStep ? revealExtendedFields : undefined}
+            type={isProgressiveMobileStep ? "button" : "submit"}
             variant="primary"
           >
-            {isSubmitting ? "שולחים..." : submitLabel}
+            {isProgressiveMobileStep
+              ? "להמשך"
+              : isSubmitting
+                ? "שולחים..."
+                : submitLabel}
           </Button>
         </div>
 
-        <p className="ui-form-note lead-form__note">
+        <p
+          className={cn(
+            "ui-form-note lead-form__note",
+            isProgressiveMobileStep && "lead-form__note--compact-hidden"
+          )}
+        >
           <span className="lead-form__note-dot" aria-hidden="true" />
           <span>{note}</span>
         </p>
