@@ -52,6 +52,7 @@ export function HeroSection() {
             </div>
 
             <h1 className="type-display-hero mt-5 max-w-[13.4ch] text-[var(--accent-deep)] lg:mt-5 lg:max-w-[11.8ch]">
+              <span className="sr-only">Checkmate - </span>
               העסק כבר עובד.
               <span className="mt-3 block text-[var(--accent)]">
                 אז למה הצמיחה עדיין תקועה?

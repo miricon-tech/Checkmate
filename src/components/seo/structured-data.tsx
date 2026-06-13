@@ -25,11 +25,13 @@ const structuredData = {
       "@type": "Organization",
       "@id": absoluteUrl("/#organization"),
       name: siteConfig.name,
+      alternateName: ["Check mate", "Checkmate Israel", "Checkmate ישראל"],
       url: siteConfig.siteUrl,
       logo: {
         "@id": logoImageId,
       },
       description: pageDescription,
+      slogan: "מנוע הצמיחה של העסק",
       sameAs: [...siteConfig.sameAs],
       founder: {
         "@id": founderId,
@@ -74,6 +76,7 @@ const structuredData = {
       "@id": absoluteUrl("/#website"),
       url: siteConfig.siteUrl,
       name: siteConfig.name,
+      alternateName: ["Check mate", "Checkmate ישראל"],
       inLanguage: siteConfig.language,
       publisher: {
         "@id": absoluteUrl("/#organization"),
@@ -118,7 +121,8 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": absoluteUrl("/#service"),
-      name: pageTitle,
+      name: `${siteConfig.name} - ${pageTitle}`,
+      alternateName: pageTitle,
       description: pageDescription,
       dateModified,
       url: siteConfig.siteUrl,

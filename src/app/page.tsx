@@ -6,7 +6,9 @@ import { absoluteUrl, siteConfig } from "@/lib/site-config";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: siteConfig.homeTitle,
+  title: {
+    absolute: `${siteConfig.name} - ${siteConfig.homeTitle}`,
+  },
   description: siteConfig.homeDescription,
   keywords: [
     ...siteConfig.keywords,
