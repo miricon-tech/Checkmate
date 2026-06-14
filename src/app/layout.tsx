@@ -95,15 +95,7 @@ export default function RootLayout({
     <html lang="he" dir={siteConfig.direction}>
       <head>
         <link rel="preconnect" href="https://use.typekit.net" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://use.typekit.net" />
-        <link rel="dns-prefetch" href="https://p.typekit.net" />
-        <link
-          rel="preload"
-          href="https://use.typekit.net/nvz5wxq.css"
-          as="style"
-        />
-        <link rel="stylesheet" href="https://use.typekit.net/nvz5wxq.css" />
       </head>
       <body>
         {children}
